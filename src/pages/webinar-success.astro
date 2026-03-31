@@ -1,0 +1,85 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Payment Successful — Cashflow Girlies" description="Your registration is confirmed!">
+  <main class="success-page">
+    <div class="container success-inner">
+      <div class="success-icon">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      </div>
+
+      <h1 class="success-title">You're in!</h1>
+      <p class="success-sub">Payment confirmed. Check your email for the confirmation details.</p>
+
+      <div class="success-card">
+        <h3>Cashflow Girlies</h3>
+        <p>Cara uruskan cukai for freelancers / content creator</p>
+        <div class="success-details">
+          <span>📅 10 April 2026</span>
+          <span>🕐 8:00 PM (MYT)</span>
+          <span>💻 Via Zoom</span>
+        </div>
+        <p class="success-note">Zoom link will be sent to your email 1 day before the webinar.</p>
+      </div>
+
+      <div class="success-actions">
+        <a href="/webinar" class="btn btn--outline">Back to Webinar Page</a>
+        <a href="https://wa.me/60186617981?text=Hi%20Iman!%20I%20just%20registered%20for%20Cashflow%20Girlies%20webinar" target="_blank" class="btn btn--wa">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg>
+          Say Hi on WhatsApp
+        </a>
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .success-page {
+    min-height: calc(100vh - 200px);
+    display: flex;
+    align-items: center;
+    padding: 8rem 2rem 4rem;
+    background: var(--cream);
+  }
+  .success-inner { max-width: 500px; margin: 0 auto; text-align: center; }
+
+  .success-icon { color: #25D366; margin-bottom: 1.5rem; }
+  .success-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    color: var(--text);
+    margin-bottom: 0.5rem;
+  }
+  .success-sub {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    font-weight: 300;
+    margin-bottom: 2rem;
+  }
+
+  .success-card {
+    background: var(--pink);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    text-align: left;
+  }
+  .success-card h3 { font-size: 1.1rem; margin-bottom: 0.3rem; }
+  .success-card > p { font-size: 0.88rem; color: var(--text-secondary); font-weight: 300; }
+  .success-details {
+    display: flex; flex-direction: column; gap: 0.3rem;
+    margin: 1rem 0;
+    font-size: 0.88rem; color: var(--text-secondary);
+  }
+  .success-note {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    font-style: italic;
+    border-top: 1px solid var(--border);
+    padding-top: 0.8rem;
+  }
+
+  .success-actions { display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap; }
+</style>

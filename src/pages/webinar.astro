@@ -1,0 +1,428 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Cashflow Girlies — Webinar | Iman Abdul Rahim" description="Cara uruskan cukai for freelancers & content creators. Live webinar on 10 April 2026, 8PM.">
+  <main>
+    <!-- Hero -->
+    <section class="webinar-hero">
+      <div class="container hero-inner">
+        <div class="hero-badge">LIVE WEBINAR</div>
+        <h1 class="hero-title">Cashflow <em>Girlies</em></h1>
+        <p class="hero-subtitle">Cara uruskan cukai for freelancers / content creator</p>
+
+        <div class="hero-meta">
+          <div class="meta-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            <span>10 April 2026</span>
+          </div>
+          <div class="meta-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span>8:00 PM (MYT)</span>
+          </div>
+          <div class="meta-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 10l5 5-5 5"/><path d="M4 4v7a4 4 0 0 0 4 4h12"/></svg>
+            <span>Via Zoom</span>
+          </div>
+        </div>
+
+        <!-- Countdown -->
+        <div class="countdown" id="countdown">
+          <div class="cd-item"><span class="cd-num" id="cdDays">--</span><span class="cd-label">Days</span></div>
+          <div class="cd-sep">:</div>
+          <div class="cd-item"><span class="cd-num" id="cdHours">--</span><span class="cd-label">Hours</span></div>
+          <div class="cd-sep">:</div>
+          <div class="cd-item"><span class="cd-num" id="cdMins">--</span><span class="cd-label">Min</span></div>
+          <div class="cd-sep">:</div>
+          <div class="cd-item"><span class="cd-num" id="cdSecs">--</span><span class="cd-label">Sec</span></div>
+        </div>
+
+        <div class="hero-pricing">
+          <div class="price-tag">
+            <span class="price-early">Early Bird</span>
+            <span class="price-amount">RM29</span>
+            <span class="price-note">First 20 seats only</span>
+          </div>
+          <div class="price-tag price-tag--regular">
+            <span class="price-early">Regular</span>
+            <span class="price-amount">RM39</span>
+          </div>
+        </div>
+
+        <a href="#register" class="btn btn--primary btn--lg">Secure My Spot</a>
+        <p class="hero-spots" id="spotsLeft">Limited seats available</p>
+      </div>
+
+      <!-- Decorative -->
+      <div class="hero-deco-1"></div>
+      <div class="hero-deco-2"></div>
+    </section>
+
+    <!-- What you'll learn -->
+    <section class="section section--alt" id="learn">
+      <div class="container">
+        <p class="section-label">What you'll learn</p>
+        <h2 class="section-heading">Benda yang <em>korang kena tahu</em></h2>
+        <p class="section-sub" style="margin-bottom:2.5rem">Tak kisah korang baru start freelance atau dah lama buat content — cukai ni benda yang ramai ignore sampai kena penalty.</p>
+
+        <div class="learn-grid">
+          <div class="learn-card">
+            <span class="learn-num">01</span>
+            <h3>Kenapa freelancer kena declare cukai</h3>
+            <p>Dan apa jadi kalau tak declare. Spoiler: LHDN boleh track income korang.</p>
+          </div>
+          <div class="learn-card">
+            <span class="learn-num">02</span>
+            <h3>Cara kira income & expenses</h3>
+            <p>Apa yang boleh claim sebagai business expense — phone bill, internet, equipment, travel, dan banyak lagi.</p>
+          </div>
+          <div class="learn-card">
+            <span class="learn-num">03</span>
+            <h3>Step-by-step isi e-Filing LHDN</h3>
+            <p>Dari register sampai submit. Live demo so korang boleh follow along.</p>
+          </div>
+          <div class="learn-card">
+            <span class="learn-num">04</span>
+            <h3>Cukai vs SSM vs PCB</h3>
+            <p>Beza semua ni dan mana yang wajib untuk korang sebagai freelancer atau content creator.</p>
+          </div>
+          <div class="learn-card">
+            <span class="learn-num">05</span>
+            <h3>Tips simpan duit untuk cukai</h3>
+            <p>Supaya tak panik bila musim tax. Simple system yang korang boleh start hari ni.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Who is this for -->
+    <section class="section" id="who">
+      <div class="container" style="text-align:center">
+        <p class="section-label">Who is this for</p>
+        <h2 class="section-heading">Webinar ni untuk <em>korang</em> kalau...</h2>
+        <div class="who-grid">
+          <div class="who-item">Freelancer yang tak pernah declare cukai</div>
+          <div class="who-item">Content creator yang baru start earn income</div>
+          <div class="who-item">Side hustler yang confuse pasal tax</div>
+          <div class="who-item">Sesiapa yang nak faham e-Filing LHDN</div>
+          <div class="who-item">Yang dah kena surat LHDN dan tak tahu apa nak buat</div>
+          <div class="who-item">Yang nak belajar claim expenses properly</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About the speaker -->
+    <section class="section section--pink" id="speaker">
+      <div class="container speaker-inner">
+        <div class="speaker-text">
+          <p class="section-label">Your host</p>
+          <h2 class="section-heading">Iman <em>Abdul Rahim</em></h2>
+          <p class="speaker-desc">Licensed Financial Planner (CFP, IFP) yang dah bantu ramai Malaysians uruskan kewangan. From budgeting basics to full financial planning — I simplify the complicated stuff so korang boleh focus on buat duit.</p>
+          <div class="speaker-badges">
+            <span class="s-badge">CFP Certified</span>
+            <span class="s-badge">SC Licensed</span>
+            <span class="s-badge">BNM Licensed</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Registration -->
+    <section class="section section--alt" id="register">
+      <div class="container" style="max-width:550px">
+        <div style="text-align:center;margin-bottom:2rem">
+          <p class="section-label">Register now</p>
+          <h2 class="section-heading">Secure your <em>spot</em></h2>
+        </div>
+
+        <form class="reg-form" id="regForm">
+          <div class="form-group">
+            <label class="form-label">Full Name</label>
+            <input type="text" class="form-input" id="regName" placeholder="e.g. Siti Nurhaliza" required style="text-transform:capitalize" autocapitalize="words" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email</label>
+            <input type="email" class="form-input" id="regEmail" placeholder="e.g. siti@gmail.com" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Phone (WhatsApp)</label>
+            <input type="tel" class="form-input" id="regPhone" placeholder="e.g. 0123456789" required />
+          </div>
+
+          <div id="regError" style="display:none;margin-bottom:1rem"></div>
+
+          <button type="submit" class="btn btn--primary" style="width:100%" id="regBtn">
+            Register & Pay — RM29
+          </button>
+          <p class="reg-note">You'll be redirected to ToyyibPay for secure payment via FPX. Zoom link will be sent to your email after payment.</p>
+        </form>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section" id="faq">
+      <div class="container" style="max-width:700px">
+        <div style="text-align:center;margin-bottom:2rem">
+          <p class="section-label">FAQ</p>
+          <h2 class="section-heading">Soalan <em>lazim</em></h2>
+        </div>
+
+        <div class="faq-list">
+          <details class="faq-item">
+            <summary>Akan ada recording tak?</summary>
+            <p>Ya! Semua yang dah bayar akan dapat recording link via email dalam masa 48 jam selepas webinar. Link tu valid untuk 7 hari.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Boleh refund tak kalau tak boleh join?</summary>
+            <p>Refund boleh dibuat sehingga 24 jam sebelum webinar. Lepas tu, korang akan dapat recording sebagai pengganti.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Kena ada background accounting ke?</summary>
+            <p>Langsung tak perlu! Webinar ni memang untuk beginners. Kami explain semua dari basic.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Macam mana nak join on the day?</summary>
+            <p>Korang akan dapat Zoom link via email selepas bayar. On the day, just click the link 5 minit sebelum start.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Ada Q&A session tak?</summary>
+            <p>Yes! Last 15-20 minit will be open for Q&A. Korang boleh tanya apa-apa pasal cukai and kewangan.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="section section--pink" style="text-align:center">
+      <div class="container">
+        <h2 class="section-heading" style="margin-bottom:1rem">Jangan tunggu sampai <em>kena penalty</em></h2>
+        <p class="section-sub" style="margin:0 auto 2rem;text-align:center">RM29 je untuk ilmu yang boleh save korang thousands. Limited seats.</p>
+        <a href="#register" class="btn btn--primary btn--lg">Secure My Spot</a>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<script>
+  // Countdown
+  const target = new Date('2026-04-10T20:00:00+08:00').getTime();
+  function updateCountdown() {
+    const now = Date.now();
+    const diff = target - now;
+    if (diff <= 0) {
+      document.getElementById('countdown')!.innerHTML = '<p style="color:var(--rose-gold);font-weight:600">Webinar has started!</p>';
+      return;
+    }
+    const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const s = Math.floor((diff % (1000 * 60)) / 1000);
+    document.getElementById('cdDays')!.textContent = String(d).padStart(2, '0');
+    document.getElementById('cdHours')!.textContent = String(h).padStart(2, '0');
+    document.getElementById('cdMins')!.textContent = String(m).padStart(2, '0');
+    document.getElementById('cdSecs')!.textContent = String(s).padStart(2, '0');
+  }
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+
+  // Registration form
+  document.getElementById('regForm')!.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = document.getElementById('regBtn') as HTMLButtonElement;
+    const errEl = document.getElementById('regError')!;
+    errEl.style.display = 'none';
+
+    const name = (document.getElementById('regName') as HTMLInputElement).value.trim();
+    const email = (document.getElementById('regEmail') as HTMLInputElement).value.trim();
+    const phone = (document.getElementById('regPhone') as HTMLInputElement).value.trim();
+
+    if (!name || !email || !phone) {
+      errEl.style.display = '';
+      errEl.innerHTML = '<p class="form-error">Please fill in all fields.</p>';
+      return;
+    }
+
+    btn.disabled = true;
+    btn.textContent = 'Processing...';
+
+    try {
+      const res = await fetch('/api/register-webinar', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, phone }),
+      });
+      const data = await res.json();
+
+      if (data.paymentUrl) {
+        window.location.href = data.paymentUrl;
+      } else {
+        errEl.style.display = '';
+        errEl.innerHTML = `<p class="form-error">${data.error || 'Something went wrong. Please try again.'}</p>`;
+        btn.disabled = false;
+        btn.textContent = 'Register & Pay — RM29';
+      }
+    } catch {
+      errEl.style.display = '';
+      errEl.innerHTML = '<p class="form-error">Connection error. Please try again.</p>';
+      btn.disabled = false;
+      btn.textContent = 'Register & Pay — RM29';
+    }
+  });
+</script>
+
+<style>
+  /* Hero */
+  .webinar-hero {
+    position: relative;
+    padding: 8rem 2rem 5rem;
+    background: linear-gradient(135deg, var(--pink) 0%, var(--cream) 50%, var(--pink-soft) 100%);
+    text-align: center;
+    overflow: hidden;
+  }
+  .hero-inner { position: relative; z-index: 1; }
+  .hero-badge {
+    display: inline-block;
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    font-weight: 700;
+    color: var(--rose-gold);
+    background: rgba(201,132,140,0.1);
+    border: 1px solid rgba(201,132,140,0.2);
+    padding: 0.4rem 1.2rem;
+    border-radius: 100px;
+    margin-bottom: 1.5rem;
+  }
+  .hero-title {
+    font-size: clamp(2.5rem, 7vw, 4rem);
+    margin-bottom: 0.5rem;
+  }
+  .hero-title em { font-style: italic; color: var(--rose-gold); }
+  .hero-subtitle {
+    font-size: clamp(1rem, 2.5vw, 1.3rem);
+    color: var(--text-secondary);
+    font-weight: 300;
+    margin-bottom: 2rem;
+  }
+
+  .hero-meta { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 2rem; }
+  .meta-item {
+    display: flex; align-items: center; gap: 0.4rem;
+    font-size: 0.88rem; color: var(--text-secondary); font-weight: 400;
+  }
+  .meta-item svg { color: var(--rose-gold); }
+
+  /* Countdown */
+  .countdown {
+    display: flex; justify-content: center; align-items: center; gap: 0.5rem;
+    margin-bottom: 2rem;
+  }
+  .cd-item { text-align: center; }
+  .cd-num {
+    display: block;
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    font-weight: 600;
+    color: var(--text);
+    min-width: 2ch;
+  }
+  .cd-label { font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; }
+  .cd-sep { font-size: 1.5rem; color: var(--text-muted); font-weight: 300; margin-top: -0.8rem; }
+
+  /* Pricing */
+  .hero-pricing { display: flex; justify-content: center; gap: 1rem; margin-bottom: 1.5rem; }
+  .price-tag {
+    background: var(--white);
+    border: 2px solid var(--rose-gold);
+    border-radius: 16px;
+    padding: 1rem 1.5rem;
+    text-align: center;
+    min-width: 130px;
+  }
+  .price-tag--regular { border-color: var(--border); opacity: 0.6; }
+  .price-tag--regular .price-amount { text-decoration: line-through; color: var(--text-muted); }
+  .price-early { display: block; font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--rose-gold); font-weight: 600; margin-bottom: 0.2rem; }
+  .price-amount { display: block; font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 700; color: var(--text); }
+  .price-note { display: block; font-size: 0.68rem; color: var(--text-muted); margin-top: 0.2rem; }
+
+  .btn--lg { padding: 1rem 3rem; font-size: 1rem; }
+  .hero-spots { font-size: 0.78rem; color: var(--text-muted); margin-top: 0.8rem; font-style: italic; }
+
+  .hero-deco-1 {
+    position: absolute; width: 400px; height: 400px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(250,212,220,0.4), transparent 70%);
+    top: -100px; right: -100px; pointer-events: none;
+  }
+  .hero-deco-2 {
+    position: absolute; width: 300px; height: 300px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,160,122,0.2), transparent 70%);
+    bottom: -80px; left: -80px; pointer-events: none;
+  }
+
+  /* Learn grid */
+  .learn-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.2rem; }
+  .learn-card {
+    background: var(--cream); border: 1px solid var(--border-light);
+    border-radius: 16px; padding: 1.8rem;
+    transition: all 0.25s;
+  }
+  .learn-card:hover { transform: translateY(-3px); box-shadow: 0 8px 30px var(--shadow); }
+  .learn-num { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--blush); font-weight: 700; display: block; margin-bottom: 0.5rem; }
+  .learn-card h3 { font-size: 1.05rem; margin-bottom: 0.5rem; }
+  .learn-card p { font-size: 0.88rem; color: var(--text-secondary); font-weight: 300; line-height: 1.7; }
+
+  /* Who grid */
+  .who-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.6rem; margin-top: 1.5rem; }
+  .who-item {
+    background: var(--white); border: 1px solid var(--border-light);
+    padding: 0.8rem 1.4rem; border-radius: 100px;
+    font-size: 0.88rem; color: var(--text-secondary); font-weight: 400;
+    transition: all 0.2s;
+  }
+  .who-item:hover { border-color: var(--rose-gold); color: var(--rose-gold); }
+
+  /* Speaker */
+  .speaker-inner { max-width: 650px; margin: 0 auto; }
+  .speaker-desc { font-size: 0.95rem; color: var(--text-secondary); line-height: 1.8; font-weight: 300; margin-bottom: 1.2rem; }
+  .speaker-badges { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+  .s-badge {
+    font-size: 0.7rem; padding: 0.3rem 0.8rem; border-radius: 100px;
+    border: 1px solid var(--border); color: var(--text-secondary); font-weight: 500;
+    letter-spacing: 0.04em;
+  }
+
+  /* Registration form */
+  .reg-form { background: var(--cream); border: 1px solid var(--border-light); border-radius: 20px; padding: 2rem; }
+  .form-group { margin-bottom: 1rem; }
+  .form-label { display: block; font-size: 0.78rem; font-weight: 600; color: var(--text); margin-bottom: 0.3rem; letter-spacing: 0.02em; }
+  .form-input {
+    width: 100%; padding: 0.8rem 1rem; border: 1.5px solid var(--border);
+    border-radius: 12px; font-family: 'DM Sans', sans-serif; font-size: 0.9rem;
+    color: var(--text); background: var(--white); outline: none; transition: border-color 0.2s;
+  }
+  .form-input:focus { border-color: var(--rose-gold); }
+  .form-input::placeholder { color: var(--text-muted); }
+  .form-error { color: var(--rose-gold-dark); font-size: 0.82rem; background: rgba(201,132,140,0.08); padding: 0.6rem 1rem; border-radius: 8px; }
+  .reg-note { font-size: 0.72rem; color: var(--text-muted); text-align: center; margin-top: 0.8rem; line-height: 1.6; }
+
+  /* FAQ */
+  .faq-list { display: flex; flex-direction: column; gap: 0.5rem; }
+  .faq-item {
+    background: var(--white); border: 1px solid var(--border-light);
+    border-radius: 14px; overflow: hidden; transition: border-color 0.2s;
+  }
+  .faq-item[open] { border-color: var(--rose-gold); }
+  .faq-item summary {
+    padding: 1.2rem 1.5rem; cursor: pointer; font-weight: 500; font-size: 0.95rem;
+    color: var(--text); list-style: none; display: flex; justify-content: space-between; align-items: center;
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: '+'; font-size: 1.2rem; color: var(--rose-gold); font-weight: 300; transition: transform 0.2s; }
+  .faq-item[open] summary::after { content: '-'; }
+  .faq-item p { padding: 0 1.5rem 1.2rem; font-size: 0.88rem; color: var(--text-secondary); line-height: 1.8; font-weight: 300; }
+
+  @media (max-width: 640px) {
+    .hero-pricing { flex-direction: column; align-items: center; }
+    .countdown { gap: 0.3rem; }
+    .cd-num { font-size: 1.6rem; }
+  }
+</style>
