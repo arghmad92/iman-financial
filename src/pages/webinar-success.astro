@@ -2,84 +2,141 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Payment Successful — Cashflow Girlies" description="Your registration is confirmed!">
-  <main class="success-page">
-    <div class="container success-inner">
-      <div class="success-icon">
-        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+<Layout
+  title="Payment Successful · Cashflow Girlies"
+  description="Your registration is confirmed!"
+>
+  <section class="success">
+    <div class="container container--narrow text-center">
+      <span class="success__icon" aria-hidden="true">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="20 6 9 17 4 12" />
+        </svg>
+      </span>
+
+      <span class="eyebrow eyebrow--center">Registration confirmed</span>
+      <h1 class="h-display success__title">
+        You're <em>in.</em>
+      </h1>
+      <p class="lede lede--center success__sub">
+        Payment confirmed. Check your email for confirmation details, Zoom
+        link goes out 1 day before the webinar.
+      </p>
+
+      <div class="success__card card card--cream">
+        <span class="chip chip--rose">Cashflow Girlies</span>
+        <h3>Cara uruskan cukai for freelancers &amp; content creators</h3>
+        <dl class="success__meta">
+          <div>
+            <dt>Date</dt>
+            <dd>10 April 2026</dd>
+          </div>
+          <div>
+            <dt>Time</dt>
+            <dd>8:00 PM (MYT)</dd>
+          </div>
+          <div>
+            <dt>Platform</dt>
+            <dd>Zoom</dd>
+          </div>
+        </dl>
       </div>
 
-      <h1 class="success-title">You're in!</h1>
-      <p class="success-sub">Payment confirmed. Check your email for the confirmation details.</p>
-
-      <div class="success-card">
-        <h3>Cashflow Girlies</h3>
-        <p>Cara uruskan cukai for freelancers / content creator</p>
-        <div class="success-details">
-          <span>📅 10 April 2026</span>
-          <span>🕐 8:00 PM (MYT)</span>
-          <span>💻 Via Zoom</span>
-        </div>
-        <p class="success-note">Zoom link will be sent to your email 1 day before the webinar.</p>
-      </div>
-
-      <div class="success-actions">
-        <a href="/webinar" class="btn btn--outline">Back to Webinar Page</a>
-        <a href="https://wa.me/60186617981?text=Hi%20Iman!%20I%20just%20registered%20for%20Cashflow%20Girlies%20webinar" target="_blank" class="btn btn--wa">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg>
-          Say Hi on WhatsApp
+      <div class="success__actions">
+        <a href="/webinar" class="btn btn--ghost">Back to webinar</a>
+        <a
+          href="https://wa.me/60186617981?text=Hi%20Iman!%20I%20just%20registered%20for%20Cashflow%20Girlies%20webinar"
+          target="_blank"
+          rel="noopener"
+          class="btn btn--wa"
+        >
+          Say hi on WhatsApp
         </a>
       </div>
     </div>
-  </main>
+  </section>
 </Layout>
 
 <style>
-  .success-page {
-    min-height: calc(100vh - 200px);
+  .success {
+    min-height: calc(100vh - 120px);
     display: flex;
     align-items: center;
-    padding: 8rem 2rem 4rem;
-    background: var(--cream);
+    padding: clamp(7rem, 12vw, 10rem) 0 clamp(4rem, 7vw, 6rem);
+    background:
+      radial-gradient(circle at 50% -5%, var(--rose-tint) 0%, transparent 40%),
+      var(--cream);
   }
-  .success-inner { max-width: 500px; margin: 0 auto; text-align: center; }
-
-  .success-icon { color: #25D366; margin-bottom: 1.5rem; }
-  .success-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.5rem;
-    color: var(--text);
-    margin-bottom: 0.5rem;
+  .success__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: var(--ink);
+    color: var(--cream);
+    margin-bottom: 1.75rem;
+    box-shadow: 0 6px 18px rgba(22, 26, 40, 0.15);
   }
-  .success-sub {
-    font-size: 1rem;
-    color: var(--text-secondary);
-    font-weight: 300;
-    margin-bottom: 2rem;
+  .success__title {
+    margin-bottom: 1.25rem;
   }
-
-  .success-card {
-    background: var(--pink);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 1.5rem;
-    margin-bottom: 2rem;
+  .success__sub {
+    margin-bottom: 2.5rem;
+  }
+  .success__card {
     text-align: left;
+    max-width: 440px;
+    margin: 0 auto 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
   }
-  .success-card h3 { font-size: 1.1rem; margin-bottom: 0.3rem; }
-  .success-card > p { font-size: 0.88rem; color: var(--text-secondary); font-weight: 300; }
-  .success-details {
-    display: flex; flex-direction: column; gap: 0.3rem;
-    margin: 1rem 0;
-    font-size: 0.88rem; color: var(--text-secondary);
+  .success__card h3 {
+    font-family: var(--font-serif);
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+    line-height: 1.3;
   }
-  .success-note {
-    font-size: 0.78rem;
-    color: var(--text-muted);
-    font-style: italic;
-    border-top: 1px solid var(--border);
-    padding-top: 0.8rem;
+  .success__meta {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--hairline);
+    margin: 0;
+  }
+  .success__meta div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+  .success__meta dt {
+    font-size: 0.66rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--text-3);
+    font-weight: 600;
+  }
+  .success__meta dd {
+    font-family: var(--font-serif);
+    font-size: 0.96rem;
+    color: var(--ink);
+    margin: 0;
+  }
+  .success__actions {
+    display: flex;
+    gap: 0.8rem;
+    justify-content: center;
+    flex-wrap: wrap;
   }
 
-  .success-actions { display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap; }
+  @media (max-width: 480px) {
+    .success__meta {
+      grid-template-columns: 1fr;
+    }
+  }
 </style>

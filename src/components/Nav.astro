@@ -1,0 +1,243 @@
+---
+const pathname = Astro.url.pathname;
+const isActive = (href: string) =>
+  href === '/' ? pathname === '/' : pathname.startsWith(href);
+---
+
+<header class="header" id="header">
+  <nav class="nav container" aria-label="Primary">
+    <a href="/" class="logo" aria-label="Iman Abdul Rahim · Home">
+      <span class="logo-mark" aria-hidden="true">
+        <svg viewBox="0 0 32 32" width="28" height="28" fill="none">
+          <rect
+            x="1"
+            y="1"
+            width="30"
+            height="30"
+            rx="6"
+            stroke="currentColor"
+            stroke-width="1.2"></rect>
+          <path
+            d="M10.5 10v12M16 10v12M21.5 10v12"
+            stroke="currentColor"
+            stroke-width="1.3"
+            stroke-linecap="round"></path>
+        </svg>
+      </span>
+      <span class="logo-text">
+        <span class="logo-name">Iman Abdul Rahim</span>
+        <span class="logo-title">Licensed Financial Planner · CFP® · IFP</span>
+      </span>
+    </a>
+
+    <ul class="nav-links" id="navLinks">
+      <li>
+        <a href="/" class:list={['nav-link', isActive('/') && 'is-active']}>Home</a>
+      </li>
+      <li>
+        <a
+          href="/planning"
+          class:list={['nav-link', isActive('/planning') && 'is-active']}
+        >
+          Financial Planning
+        </a>
+      </li>
+      <li>
+        <a
+          href="/fhc"
+          class:list={['nav-link', isActive('/fhc') && 'is-active']}
+        >
+          Health Check
+        </a>
+      </li>
+      <li>
+        <a
+          href="/webinar"
+          class:list={['nav-link', isActive('/webinar') && 'is-active']}
+        >
+          Webinar
+        </a>
+      </li>
+      <li class="nav-cta-wrap">
+        <a
+          href="https://wa.me/60186617981"
+          target="_blank"
+          rel="noopener"
+          class="btn btn--primary btn--sm"
+        >
+          Book a call
+        </a>
+      </li>
+    </ul>
+
+    <button
+      class="menu-toggle"
+      id="menuToggle"
+      aria-label="Toggle menu"
+      aria-expanded="false"
+      aria-controls="navLinks"
+    >
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+</header>
+
+<style>
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: rgba(236, 228, 214, 0.82);
+    backdrop-filter: saturate(140%) blur(18px);
+    -webkit-backdrop-filter: saturate(140%) blur(18px);
+    border-bottom: 1px solid transparent;
+    transition:
+      border-color 0.3s ease,
+      background 0.3s ease,
+      box-shadow 0.3s ease;
+  }
+  .header.scrolled {
+    border-bottom-color: var(--hairline);
+    background: rgba(236, 228, 214, 0.94);
+  }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    padding: 1.1rem clamp(1.25rem, 4vw, 2.5rem);
+  }
+
+  .logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    color: var(--ink);
+    flex-shrink: 0;
+  }
+  .logo-mark {
+    color: var(--ink);
+    display: inline-flex;
+    align-items: center;
+  }
+  .logo-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+  }
+  .logo-name {
+    font-family: var(--font-serif);
+    font-size: 1.05rem;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  .logo-title {
+    font-family: var(--font-sans);
+    font-size: 0.66rem;
+    color: var(--text-3);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-top: 2px;
+  }
+
+  .nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    padding: 0;
+    margin: 0;
+  }
+  .nav-link {
+    position: relative;
+    font-size: 0.88rem;
+    font-weight: 450;
+    color: var(--text-2);
+    transition: color 0.2s ease;
+    padding: 0.25rem 0;
+  }
+  .nav-link:hover {
+    color: var(--ink);
+  }
+  .nav-link.is-active {
+    color: var(--ink);
+  }
+  .nav-link.is-active::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -4px;
+    height: 1px;
+    background: var(--rose-deep);
+  }
+
+  .btn--sm {
+    padding: 0.55rem 1.05rem;
+    font-size: 0.84rem;
+    border-radius: 8px;
+  }
+
+  .menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+    color: var(--ink);
+  }
+  .menu-toggle span {
+    display: block;
+    width: 22px;
+    height: 1.5px;
+    background: currentColor;
+    transition: transform 0.2s ease;
+  }
+
+  @media (max-width: 860px) {
+    .logo-title {
+      display: none;
+    }
+    .nav-links {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      align-items: stretch;
+      background: var(--cream);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem clamp(1.25rem, 4vw, 2.5rem) 1.5rem;
+      gap: 0.35rem;
+    }
+    .nav-links.open {
+      display: flex;
+    }
+    .nav-link {
+      padding: 0.75rem 0;
+      font-size: 0.98rem;
+      border-bottom: 1px solid var(--hairline);
+    }
+    .nav-link.is-active::after {
+      display: none;
+    }
+    .nav-cta-wrap {
+      padding-top: 0.75rem;
+    }
+    .nav-cta-wrap .btn {
+      width: 100%;
+    }
+    .menu-toggle {
+      display: flex;
+    }
+  }
+</style>

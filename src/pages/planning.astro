@@ -1,640 +1,481 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+const pillars = [
+  {
+    num: '01',
+    title: 'Cash Flow Planning',
+    desc: 'Bina foundation kewangan yang kukuh dengan manage income, expenses, savings, dan hutang dengan betul.',
+  },
+  {
+    num: '02',
+    title: 'Investment Planning',
+    desc: 'Grow kekayaan you secara strategic dengan portfolio yang tailored ikut risk profile dan long-term goals you.',
+  },
+  {
+    num: '03',
+    title: 'Risk Management',
+    desc: 'Protect apa yang paling penting dalam hidup you dengan insurance dan takaful coverage yang smart.',
+  },
+  {
+    num: '04',
+    title: 'Estate Planning',
+    desc: 'Pastikan legacy you selamat dan orang tersayang terjaga, termasuk preparation wasiat dan faraid.',
+  },
+  {
+    num: '05',
+    title: 'Goals-Based Planning',
+    desc: 'Rumah impian, pendidikan anak, pencen awal, plan setiap milestone dalam hidup you dengan intention.',
+  },
+  {
+    num: '06',
+    title: 'Tax Planning',
+    desc: 'Maximize kekayaan you dengan strategi tax yang smart dan compliant, simpan lebih, bayar yang patut je.',
+  },
+];
+
+const details = [
+  {
+    num: '01',
+    title: 'Cash Flow Management',
+    body: 'Cash flow ni macam nadi financial plan you. Kita akan map out setiap ringgit yang masuk dan keluar, identify area yang boleh improve, dan create sistem yang sustainable, supaya you boleh save consistently, bayar hutang secara strategic, dan bina emergency fund yang bagi you ketenangan. Dari sinilah clarity kewangan bermula.',
+  },
+  {
+    num: '02',
+    title: 'Investment Planning',
+    body: 'Nak grow kekayaan bukan sekadar pilih product yang betul je, you perlukan strategy. Kita akan assess risk tolerance, time horizon, dan financial goals you untuk bina diversified portfolio yang sesuai. Dari unit trusts dan ETFs sampai EPF optimization dan Shariah-compliant options, investment plan you akan se-unique impian you sendiri.',
+  },
+  {
+    num: '03',
+    title: 'Wealth Protection',
+    body: 'Hidup ni tak boleh predict kan. Risk management melalui insurance dan takaful pastikan kalau ada apa-apa berlaku, financial progress you tak terjejas. Kita akan review coverage you sekarang, identify gaps, dan recommend solutions yang protect income, kesihatan, dan keluarga you, tanpa over-insure atau bazir premium.',
+  },
+  {
+    num: '04',
+    title: 'Estate Planning',
+    body: 'Estate planning bukan untuk orang kaya je tau, ini untuk sesiapa yang nak pastikan aset diagihkan ikut kehendak sendiri. Kita akan tolong you set up wasiat (Islamic will), faham implikasi faraid, dan bina plan yang protect orang tersayang dan jaga legacy you untuk generasi akan datang.',
+  },
+  {
+    num: '05',
+    title: 'Retirement Planning',
+    body: 'Bila you nak retire? Macam mana retirement impian you nampak? Kita akan kira the numbers, bina savings trajectory, dan create investment strategy untuk sampai ke situ. Sama ada you impikan early retirement umur 45 atau hidup selesa lepas 60, kita akan map out the path dan track progress you setiap langkah.',
+  },
+  {
+    num: '06',
+    title: 'Tax Planning',
+    body: 'Setiap ringgit yang you jimat dari tax boleh dihalakan ke goals you. Kita akan review situasi tax you, identify reliefs dan deductions yang eligible, dan implement strategies untuk minimize tax burden secara legal dan ethical. Dari PRS contributions sampai education deductions, kita pastikan you simpan lebih dari apa yang you earn.',
+  },
+];
+
+const timeline = [
+  {
+    step: '01',
+    title: 'Discovery & Goal-Setting',
+    desc: 'Kita mula dengan borak mendalam pasal hidup you, values, dan apa yang you nak capai dari segi kewangan. Ni masa kita kenal antara satu sama lain.',
+  },
+  {
+    step: '02',
+    title: 'Kumpul Data & Analisis',
+    desc: 'You share dokumen kewangan, income, expenses, assets, liabilities, insurance policies, dan kita akan analyse semuanya dengan teliti.',
+  },
+  {
+    step: '03',
+    title: 'Present Your Financial Plan',
+    desc: 'Kita present financial plan yang detailed dan personalised, cover semua 6 pillars, lengkap dengan recommendations yang you boleh terus buat.',
+  },
+  {
+    step: '04',
+    title: 'Implementation Support',
+    desc: "I takkan bagi plan lepas tu tinggalkan you. Kita akan guide you through setiap step implementation, dari buka akaun sampai adjust coverage.",
+  },
+  {
+    step: '05',
+    title: 'Regular Reviews',
+    desc: 'Hidup berubah, plan you pun kena ikut. Kita akan regularly review dan adjust plan you bila keadaan you berubah.',
+  },
+  {
+    step: '06',
+    title: 'Biannual Check-Ins',
+    desc: 'Dua kali setahun, kita duduk untuk comprehensive review, pastikan you on track dan celebrate progress you sama-sama.',
+  },
+];
 ---
 
-<Layout title="Full Financial Planning — Iman Abdul Rahim">
-  <!-- Hero Section -->
-  <section class="section hero">
-    <div class="container">
-      <div class="hero__badge">Comprehensive Service</div>
-      <h1 class="hero__title">Full Financial Planning</h1>
-      <p class="hero__subtitle">
-        Engagement setahun yang direka untuk transform setiap aspek kewangan you.
-        Kita akan bina plan yang menyeluruh — align duit you dengan values, goals, dan impian you.
+<Layout title="Full Financial Planning · Iman Abdul Rahim">
+  <!-- =================== HERO =================== -->
+  <section class="hero">
+    <div class="hero__grain" aria-hidden="true"></div>
+    <div class="container hero__inner">
+      <span class="eyebrow">Comprehensive Service</span>
+      <h1 class="h-display">
+        Full Financial<br /><em>Planning.</em>
+      </h1>
+      <p class="lede hero__lede">
+        Engagement setahun yang direka untuk transform setiap aspek kewangan
+        you. Kita akan bina plan yang menyeluruh, align duit you dengan
+        values, goals, dan impian you.
       </p>
       <div class="hero__actions">
-        <a href="https://wa.me/60186617981" class="btn btn--primary" target="_blank" rel="noopener noreferrer">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          Jom Book Discovery Call
+        <a
+          href="https://wa.me/60186617981"
+          target="_blank"
+          rel="noopener"
+          class="btn btn--primary btn--lg"
+        >
+          Book Discovery Call
         </a>
-        <a href="#pillars" class="btn btn--outline">Tengok 6 Pillars</a>
+        <a href="#pillars" class="btn btn--ghost btn--lg btn--arrow">See 6 Pillars</a>
       </div>
     </div>
   </section>
 
-  <!-- 6 Planning Pillars -->
-  <section class="section pillars" id="pillars">
+  <!-- =================== PILLARS =================== -->
+  <section class="section section--paper" id="pillars">
     <div class="container">
-      <div class="section__header">
-        <h2 class="section__title">6 Tiang Utama Financial Plan You</h2>
-        <p class="section__subtitle">Setiap financial plan yang mantap dibina atas foundation yang kukuh. Ni 6 pillars yang kita akan go through sama-sama.</p>
-      </div>
-      <div class="pillars__grid">
-        <div class="card pillar-card">
-          <div class="pillar-card__icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-          </div>
-          <h3 class="pillar-card__title">Cash Flow Planning</h3>
-          <p class="pillar-card__desc">Bina foundation kewangan yang kukuh dengan manage income, expenses, savings, dan hutang dengan betul.</p>
-        </div>
-        <div class="card pillar-card">
-          <div class="pillar-card__icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-          </div>
-          <h3 class="pillar-card__title">Investment Planning</h3>
-          <p class="pillar-card__desc">Grow kekayaan you secara strategic dengan portfolio yang tailored ikut risk profile dan long-term goals you.</p>
-        </div>
-        <div class="card pillar-card">
-          <div class="pillar-card__icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          </div>
-          <h3 class="pillar-card__title">Risk Management</h3>
-          <p class="pillar-card__desc">Protect apa yang paling penting dalam hidup you dengan insurance dan takaful coverage yang smart.</p>
-        </div>
-        <div class="card pillar-card">
-          <div class="pillar-card__icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-          </div>
-          <h3 class="pillar-card__title">Estate Planning</h3>
-          <p class="pillar-card__desc">Pastikan legacy you selamat dan orang tersayang terjaga — termasuk preparation wasiat.</p>
-        </div>
-        <div class="card pillar-card">
-          <div class="pillar-card__icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          </div>
-          <h3 class="pillar-card__title">Goals-Based Planning</h3>
-          <p class="pillar-card__desc">Rumah impian, pendidikan anak, pencen awal — plan setiap milestone dalam hidup you dengan intention.</p>
-        </div>
-        <div class="card pillar-card">
-          <div class="pillar-card__icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
-          </div>
-          <h3 class="pillar-card__title">Tax Planning</h3>
-          <p class="pillar-card__desc">Maximize kekayaan you dengan strategi tax yang smart dan compliant — simpan lebih, bayar yang patut je.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Detailed Pillar Sections -->
-  <section class="section details">
-    <div class="container">
-      <div class="section__header">
-        <h2 class="section__title">Jom Tengok Setiap Pillar Dengan Lebih Dekat</h2>
-        <p class="section__subtitle">Tengok macam mana setiap area planning ni work together untuk bagi you gambaran kewangan yang lengkap.</p>
-      </div>
-
-      <div class="detail-block">
-        <div class="detail-block__number">01</div>
-        <div class="detail-block__content">
-          <h3 class="detail-block__title">Cash Flow Management</h3>
-          <p class="detail-block__text">
-            Cash flow ni macam nadi financial plan you. Kita akan map out setiap ringgit yang masuk dan keluar,
-            identify area yang boleh improve, dan create sistem yang sustainable — supaya you boleh save consistently,
-            bayar hutang secara strategic, dan bina emergency fund yang bagi you ketenangan. Dari sinilah
-            clarity kewangan bermula.
-          </p>
-        </div>
-      </div>
-
-      <div class="detail-block detail-block--alt">
-        <div class="detail-block__number">02</div>
-        <div class="detail-block__content">
-          <h3 class="detail-block__title">Investment Planning</h3>
-          <p class="detail-block__text">
-            Nak grow kekayaan bukan sekadar pilih product yang betul je — you perlukan strategy.
-            Kita akan assess risk tolerance, time horizon, dan financial goals you untuk bina diversified portfolio
-            yang sesuai untuk you. Dari unit trusts dan ETFs sampai EPF optimization dan Shariah-compliant options,
-            investment plan you akan se-unique impian you sendiri.
-          </p>
-        </div>
-      </div>
-
-      <div class="detail-block">
-        <div class="detail-block__number">03</div>
-        <div class="detail-block__content">
-          <h3 class="detail-block__title">Wealth Protection</h3>
-          <p class="detail-block__text">
-            Hidup ni tak boleh predict kan. Risk management melalui insurance dan takaful pastikan kalau ada apa-apa berlaku,
-            financial progress you tak terjejas. Kita akan review coverage you sekarang, identify gaps, dan recommend
-            solutions yang protect income, kesihatan, dan keluarga you — tanpa over-insure atau bazir premium.
-          </p>
-        </div>
-      </div>
-
-      <div class="detail-block detail-block--alt">
-        <div class="detail-block__number">04</div>
-        <div class="detail-block__content">
-          <h3 class="detail-block__title">Estate Planning</h3>
-          <p class="detail-block__text">
-            Estate planning bukan untuk orang kaya je tau — ini untuk sesiapa yang nak pastikan aset diagihkan
-            ikut kehendak sendiri. Kita akan tolong you set up wasiat (Islamic will), faham implikasi faraid,
-            dan bina plan yang protect orang tersayang dan jaga legacy you
-            untuk generasi akan datang.
-          </p>
-        </div>
-      </div>
-
-      <div class="detail-block">
-        <div class="detail-block__number">05</div>
-        <div class="detail-block__content">
-          <h3 class="detail-block__title">Retirement Planning</h3>
-          <p class="detail-block__text">
-            Bila you nak retire? Macam mana retirement impian you nampak? Kita akan kira the numbers,
-            bina savings trajectory, dan create investment strategy untuk sampai ke situ. Sama ada you impikan
-            early retirement umur 45 atau hidup selesa lepas 60, kita akan map out the path dan track
-            progress you setiap langkah.
-          </p>
-        </div>
-      </div>
-
-      <div class="detail-block detail-block--alt">
-        <div class="detail-block__number">06</div>
-        <div class="detail-block__content">
-          <h3 class="detail-block__title">Tax Planning</h3>
-          <p class="detail-block__text">
-            Setiap ringgit yang you jimat dari tax boleh dihalakan ke goals you. Kita akan review situasi tax you,
-            identify reliefs dan deductions yang eligible, dan implement strategies untuk minimize tax burden you
-            secara legal dan ethical. Dari PRS contributions sampai education deductions, kita pastikan you
-            simpan lebih dari apa yang you earn.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Engagement Timeline -->
-  <section class="section timeline-section">
-    <div class="container">
-      <div class="section__header">
-        <h2 class="section__title">Timeline Engagement You</h2>
-        <p class="section__subtitle">Macam ni lah journey financial planning you selama setahun — dari mula sampai habis.</p>
-      </div>
-      <div class="timeline">
-        <div class="timeline__item">
-          <div class="timeline__marker">1</div>
-          <div class="timeline__content">
-            <h4 class="timeline__title">Discovery &amp; Goal-Setting Session</h4>
-            <p class="timeline__desc">Kita mula dengan borak mendalam pasal hidup you, values, dan apa yang you nak capai dari segi kewangan. Ni masa kita kenal antara satu sama lain.</p>
-          </div>
-        </div>
-        <div class="timeline__item">
-          <div class="timeline__marker">2</div>
-          <div class="timeline__content">
-            <h4 class="timeline__title">Kumpul Data &amp; Analisis</h4>
-            <p class="timeline__desc">You share dokumen kewangan — income, expenses, assets, liabilities, insurance policies — dan kita akan analyse semuanya dengan teliti.</p>
-          </div>
-        </div>
-        <div class="timeline__item">
-          <div class="timeline__marker">3</div>
-          <div class="timeline__content">
-            <h4 class="timeline__title">Presentation Financial Plan You</h4>
-            <p class="timeline__desc">Kita present financial plan yang detailed dan personalised, cover semua 6 pillars, lengkap dengan recommendations yang you boleh terus buat.</p>
-          </div>
-        </div>
-        <div class="timeline__item">
-          <div class="timeline__marker">4</div>
-          <div class="timeline__content">
-            <h4 class="timeline__title">Implementation Support</h4>
-            <p class="timeline__desc">I takkan bagi plan lepas tu tinggalkan you. Kita akan guide you through setiap step implementation — dari buka akaun sampai adjust coverage.</p>
-          </div>
-        </div>
-        <div class="timeline__item">
-          <div class="timeline__marker">5</div>
-          <div class="timeline__content">
-            <h4 class="timeline__title">Review &amp; Update Berkala</h4>
-            <p class="timeline__desc">Hidup berubah, plan you pun kena ikut. Kita akan regularly review dan adjust plan you bila keadaan you berubah.</p>
-          </div>
-        </div>
-        <div class="timeline__item">
-          <div class="timeline__marker">6</div>
-          <div class="timeline__content">
-            <h4 class="timeline__title">Check-In Setiap 6 Bulan</h4>
-            <p class="timeline__desc">Dua kali setahun, kita duduk untuk comprehensive review — pastikan you on track dan celebrate progress you sama-sama.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Final CTA -->
-  <section class="section cta-section">
-    <div class="container">
-      <div class="cta-block">
-        <h2 class="cta-block__title">Financial planning yang se-dynamic hidup you</h2>
-        <p class="cta-block__text">
-          Dah ready nak take control of kewangan you? Jom kita mula dengan borak dulu.
+      <div class="section__intro section__intro--center">
+        <span class="eyebrow eyebrow--center">The Framework</span>
+        <h2 class="h-section">
+          6 tiang utama financial<br /><em>plan you.</em>
+        </h2>
+        <p class="lede lede--center">
+          Setiap financial plan yang mantap dibina atas foundation yang kukuh.
+          Ni 6 pillars yang kita akan go through sama-sama.
         </p>
-        <a href="https://wa.me/60186617981" class="btn btn--primary btn--lg" target="_blank" rel="noopener noreferrer">
-          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      </div>
+
+      <ul class="pillars">
+        {
+          pillars.map((p) => (
+            <li class="pillar">
+              <span class="pillar__num">{p.num}</span>
+              <h3 class="pillar__title">{p.title}</h3>
+              <p class="pillar__desc">{p.desc}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- =================== DETAILS =================== -->
+  <section class="section details">
+    <div class="container container--tight">
+      <div class="section__intro">
+        <span class="eyebrow">Deep dive</span>
+        <h2 class="h-section">
+          Jom tengok setiap pillar<br /><em>dengan lebih dekat.</em>
+        </h2>
+        <p class="lede">
+          Tengok macam mana setiap area planning ni work together untuk bagi
+          you gambaran kewangan yang lengkap.
+        </p>
+      </div>
+
+      <div class="details__list">
+        {
+          details.map((d) => (
+            <article class="detail">
+              <div class="detail__meta">
+                <span class="detail__num">{d.num}</span>
+                <span class="detail__rule" aria-hidden="true" />
+              </div>
+              <div class="detail__body">
+                <h3 class="detail__title">{d.title}</h3>
+                <p class="detail__text">{d.body}</p>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== TIMELINE =================== -->
+  <section class="section section--cream-deep">
+    <div class="container container--tight">
+      <div class="section__intro section__intro--center">
+        <span class="eyebrow eyebrow--center">The Journey</span>
+        <h2 class="h-section">
+          Your 12-month <em>engagement.</em>
+        </h2>
+        <p class="lede lede--center">
+          Macam ni lah journey financial planning you selama setahun, dari
+          mula sampai habis.
+        </p>
+      </div>
+
+      <ol class="timeline">
+        {
+          timeline.map((t) => (
+            <li class="t-item">
+              <span class="t-marker">{t.step}</span>
+              <div class="t-body">
+                <h4 class="t-title">{t.title}</h4>
+                <p class="t-desc">{t.desc}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  <!-- =================== CTA =================== -->
+  <section class="section section--ink">
+    <div class="container container--narrow text-center">
+      <span class="eyebrow eyebrow--center eyebrow--on-dark">Next step</span>
+      <h2 class="h-section" style="color:var(--cream)">
+        Financial planning yang<br /><em style="color:var(--rose-soft)">se-dynamic hidup you.</em>
+      </h2>
+      <p class="cta__sub">
+        Dah ready nak take control of kewangan you? Jom kita mula dengan borak
+        dulu, takde obligation, takde product push.
+      </p>
+      <div class="cta__actions">
+        <a
+          href="https://wa.me/60186617981"
+          target="_blank"
+          rel="noopener"
+          class="btn btn--wa btn--lg"
+        >
           Chat on WhatsApp
         </a>
+        <a href="/fhc" class="btn btn--on-dark btn--lg">Try Health Check · RM350</a>
       </div>
     </div>
   </section>
 </Layout>
 
 <style>
-  /* Hero Section */
+  /* =================== HERO =================== */
   .hero {
-    text-align: center;
-    padding: 6rem 1.5rem 4rem;
-    background: linear-gradient(135deg, var(--cream) 0%, var(--blush) 50%, var(--pink-soft) 100%);
     position: relative;
+    padding: clamp(8rem, 14vw, 12rem) 0 clamp(4rem, 7vw, 6rem);
+    background: var(--cream);
     overflow: hidden;
+    isolation: isolate;
   }
-
-  .hero::before {
-    content: '';
+  .hero__grain {
     position: absolute;
-    top: -50%;
-    right: -20%;
-    width: 600px;
-    height: 600px;
-    border-radius: 50%;
-    background: radial-gradient(circle, var(--rose-gold) 0%, transparent 70%);
-    opacity: 0.08;
-    pointer-events: none;
+    inset: 0;
+    background:
+      radial-gradient(circle at 80% 20%, var(--rose-tint) 0%, transparent 50%),
+      radial-gradient(circle at 20% 70%, var(--shell) 0%, transparent 45%);
+    opacity: 0.65;
+    z-index: -1;
   }
-
-  .hero__badge {
-    display: inline-block;
-    padding: 0.5rem 1.25rem;
-    background: rgba(183, 110, 121, 0.1);
-    border: 1px solid var(--rose-gold);
-    border-radius: 50px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.85rem;
-    font-weight: 500;
-    color: var(--rose-gold);
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    margin-bottom: 1.5rem;
+  .hero__inner {
+    max-width: 820px;
   }
-
-  .hero__title {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(2.5rem, 5vw, 4rem);
-    font-weight: 700;
-    color: var(--text);
-    margin-bottom: 1.25rem;
-    line-height: 1.15;
+  .hero__lede {
+    margin: 1.5rem 0 2rem;
   }
-
-  .hero__subtitle {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 1.15rem;
-    color: var(--text-secondary);
-    max-width: 640px;
-    margin: 0 auto 2.5rem;
-    line-height: 1.7;
-  }
-
   .hero__actions {
     display: flex;
-    gap: 1rem;
-    justify-content: center;
+    gap: 0.8rem;
     flex-wrap: wrap;
   }
-
-  /* Buttons */
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.875rem 2rem;
-    border-radius: 50px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 1rem;
-    font-weight: 600;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    cursor: pointer;
-    border: none;
+  @media (max-width: 640px) {
+    .hero__actions {
+      flex-direction: column;
+      align-items: stretch;
+    }
   }
 
-  .btn--primary {
-    background: var(--rose-gold);
-    color: var(--white);
-    box-shadow: 0 4px 20px rgba(183, 110, 121, 0.3);
-  }
-
-  .btn--primary:hover {
-    background: var(--pink);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 25px rgba(183, 110, 121, 0.4);
-  }
-
-  .btn--outline {
-    background: transparent;
-    color: var(--rose-gold);
-    border: 2px solid var(--rose-gold);
-  }
-
-  .btn--outline:hover {
-    background: var(--rose-gold);
-    color: var(--white);
-    transform: translateY(-2px);
-  }
-
-  .btn--lg {
-    padding: 1rem 2.5rem;
-    font-size: 1.1rem;
-  }
-
-  /* Section Styles */
-  .section {
-    padding: 5rem 1.5rem;
-  }
-
-  .container {
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-
-  .section__header {
-    text-align: center;
-    margin-bottom: 3.5rem;
-  }
-
-  .section__title {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
-    font-weight: 700;
-    color: var(--text);
-    margin-bottom: 1rem;
-  }
-
-  .section__subtitle {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 1.05rem;
-    color: var(--text-muted);
-    max-width: 600px;
-    margin: 0 auto;
-    line-height: 1.7;
-  }
-
-  /* Pillars Grid */
+  /* =================== PILLARS =================== */
   .pillars {
-    background: var(--white);
-  }
-
-  .pillars__grid {
+    list-style: none;
+    padding: 0;
+    margin: 0;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-  }
-
-  .pillar-card {
-    background: var(--white);
+    gap: 1px;
+    background: var(--border);
     border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 2rem;
-    transition: all 0.3s ease;
-    text-align: center;
+    border-radius: var(--r-lg);
+    overflow: hidden;
   }
-
-  .pillar-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 40px rgba(183, 110, 121, 0.12);
-    border-color: var(--rose-gold);
-  }
-
-  .pillar-card__icon {
-    width: 64px;
-    height: 64px;
-    border-radius: 16px;
-    background: linear-gradient(135deg, var(--blush), var(--pink-soft));
+  .pillar {
+    background: var(--paper);
+    padding: clamp(1.75rem, 3vw, 2.5rem);
     display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 1.25rem;
-    color: var(--rose-gold);
+    flex-direction: column;
+    gap: 0.75rem;
+    transition: background 0.2s ease;
   }
-
-  .pillar-card__title {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: var(--text);
-    margin-bottom: 0.75rem;
-  }
-
-  .pillar-card__desc {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.95rem;
-    color: var(--text-muted);
-    line-height: 1.65;
-  }
-
-  /* Detail Blocks */
-  .details {
+  .pillar:hover {
     background: var(--cream);
   }
-
-  .detail-block {
-    display: flex;
-    gap: 2rem;
-    align-items: flex-start;
-    padding: 2.5rem;
-    margin-bottom: 1.5rem;
-    background: var(--white);
-    border-radius: 16px;
-    border: 1px solid var(--border);
-    transition: all 0.3s ease;
+  .pillar__num {
+    font-family: var(--font-serif);
+    font-size: 1.05rem;
+    color: var(--rose-deep);
+    font-weight: 500;
+    letter-spacing: 0.05em;
   }
-
-  .detail-block:hover {
-    box-shadow: 0 8px 30px rgba(183, 110, 121, 0.08);
-  }
-
-  .detail-block:last-child {
-    margin-bottom: 0;
-  }
-
-  .detail-block--alt {
-    background: linear-gradient(135deg, var(--white) 0%, var(--blush) 100%);
-  }
-
-  .detail-block__number {
-    font-family: 'Playfair Display', serif;
-    font-size: 3rem;
-    font-weight: 700;
-    color: var(--rose-gold);
-    opacity: 0.3;
-    line-height: 1;
-    flex-shrink: 0;
-    min-width: 60px;
-  }
-
-  .detail-block__content {
-    flex: 1;
-  }
-
-  .detail-block__title {
-    font-family: 'Playfair Display', serif;
+  .pillar__title {
+    font-family: var(--font-serif);
     font-size: 1.35rem;
-    font-weight: 700;
-    color: var(--text);
-    margin-bottom: 0.75rem;
+    font-weight: 500;
+    color: var(--ink);
+    letter-spacing: -0.01em;
   }
-
-  .detail-block__text {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 1rem;
-    color: var(--text-secondary);
-    line-height: 1.75;
-  }
-
-  /* Timeline */
-  .timeline-section {
-    background: var(--white);
-  }
-
-  .timeline {
-    position: relative;
-    max-width: 700px;
-    margin: 0 auto;
-    padding-left: 3rem;
-  }
-
-  .timeline::before {
-    content: '';
-    position: absolute;
-    left: 20px;
-    top: 0;
-    bottom: 0;
-    width: 2px;
-    background: linear-gradient(to bottom, var(--rose-gold), var(--pink-soft));
-  }
-
-  .timeline__item {
-    position: relative;
-    margin-bottom: 2.5rem;
-    padding-left: 1.5rem;
-  }
-
-  .timeline__item:last-child {
-    margin-bottom: 0;
-  }
-
-  .timeline__marker {
-    position: absolute;
-    left: -2.35rem;
-    top: 0.25rem;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: var(--rose-gold);
-    color: var(--white);
-    font-family: 'Playfair Display', serif;
-    font-size: 1rem;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 4px 15px rgba(183, 110, 121, 0.3);
-    z-index: 1;
-  }
-
-  .timeline__title {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.15rem;
-    font-weight: 700;
-    color: var(--text);
-    margin-bottom: 0.5rem;
-  }
-
-  .timeline__desc {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.95rem;
-    color: var(--text-muted);
-    line-height: 1.65;
-  }
-
-  /* CTA Section */
-  .cta-section {
-    background: var(--text);
-    padding: 5rem 1.5rem;
-  }
-
-  .cta-block {
-    text-align: center;
-    max-width: 650px;
-    margin: 0 auto;
-  }
-
-  .cta-block__title {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(1.75rem, 3.5vw, 2.25rem);
-    font-weight: 700;
-    color: var(--white);
-    margin-bottom: 1.25rem;
-    line-height: 1.3;
-  }
-
-  .cta-block__text {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 1.1rem;
-    color: rgba(255, 255, 255, 0.7);
-    margin-bottom: 2rem;
+  .pillar__desc {
+    font-size: 0.93rem;
+    color: var(--text-2);
     line-height: 1.7;
   }
-
-  .cta-section .btn--primary {
-    background: var(--rose-gold);
-    color: var(--white);
+  @media (max-width: 900px) {
+    .pillars {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (max-width: 580px) {
+    .pillars {
+      grid-template-columns: 1fr;
+    }
   }
 
-  .cta-section .btn--primary:hover {
-    background: var(--gold);
+  /* =================== DETAILS =================== */
+  .details__list {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
   }
-
-  /* Responsive */
-  @media (max-width: 768px) {
-    .pillars__grid {
+  .detail {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 2rem;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .detail:last-child {
+    border-bottom: 0;
+    padding-bottom: 0;
+  }
+  .detail__meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.8rem;
+  }
+  .detail__num {
+    font-family: var(--font-serif);
+    font-size: 2.4rem;
+    font-weight: 400;
+    color: var(--rose-deep);
+    font-style: italic;
+    line-height: 1;
+  }
+  .detail__rule {
+    width: 40px;
+    height: 1px;
+    background: var(--rose);
+  }
+  .detail__title {
+    font-family: var(--font-serif);
+    font-size: clamp(1.4rem, 2.4vw, 1.75rem);
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.01em;
+  }
+  .detail__text {
+    font-size: 1rem;
+    color: var(--text-2);
+    line-height: 1.8;
+  }
+  @media (max-width: 640px) {
+    .detail {
       grid-template-columns: 1fr;
       gap: 1rem;
     }
-
-    .detail-block {
-      flex-direction: column;
-      gap: 1rem;
-      padding: 1.75rem;
-    }
-
-    .detail-block__number {
-      font-size: 2rem;
-      min-width: auto;
-    }
-
-    .hero {
-      padding: 4rem 1.25rem 3rem;
-    }
-
-    .section {
-      padding: 3.5rem 1.25rem;
-    }
-
-    .timeline {
-      padding-left: 2.5rem;
-    }
-
-    .timeline::before {
-      left: 15px;
-    }
-
-    .timeline__marker {
-      width: 34px;
-      height: 34px;
-      font-size: 0.9rem;
-      left: -2.1rem;
+    .detail__num {
+      font-size: 1.8rem;
     }
   }
 
-  @media (min-width: 769px) and (max-width: 1024px) {
-    .pillars__grid {
-      grid-template-columns: repeat(2, 1fr);
+  /* =================== TIMELINE =================== */
+  .timeline {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 19px;
+    top: 0.4rem;
+    bottom: 0.4rem;
+    width: 1px;
+    background: linear-gradient(
+      to bottom,
+      var(--rose-deep),
+      var(--rose-soft) 60%,
+      transparent
+    );
+  }
+  .t-item {
+    display: flex;
+    gap: 1.5rem;
+    padding-bottom: 2.2rem;
+    position: relative;
+  }
+  .t-item:last-child {
+    padding-bottom: 0;
+  }
+  .t-marker {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--ink);
+    color: var(--cream);
+    font-family: var(--font-serif);
+    font-size: 0.88rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: 0;
+    z-index: 1;
+    border: 3px solid var(--cream-deep);
+  }
+  .t-title {
+    font-family: var(--font-serif);
+    font-size: 1.18rem;
+    font-weight: 500;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+    margin-bottom: 0.4rem;
+  }
+  .t-desc {
+    font-size: 0.95rem;
+    color: var(--text-2);
+    line-height: 1.7;
+  }
+
+  /* =================== CTA =================== */
+  .cta__sub {
+    color: rgba(236, 228, 214, 0.7);
+    font-size: 1rem;
+    line-height: 1.7;
+    margin: 1.25rem auto 2.25rem;
+    max-width: 48ch;
+  }
+  .cta__actions {
+    display: flex;
+    gap: 0.8rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  @media (max-width: 560px) {
+    .cta__actions {
+      flex-direction: column;
+      align-items: stretch;
     }
   }
 </style>

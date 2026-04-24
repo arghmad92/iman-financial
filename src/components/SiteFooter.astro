@@ -1,0 +1,148 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <span class="footer-logo">Iman Abdul Rahim</span>
+        <span class="footer-tagline">Licensed Financial Planner · CFP® · IFP</span>
+        <p class="footer-desc">
+          Personalised, unbiased financial planning for Malaysians, built on
+          licensed expertise, fiduciary standards, and a plan tailored to your
+          life.
+        </p>
+        <div class="footer-badges">
+          <span class="chip chip--on-dark">CFP®</span>
+          <span class="chip chip--on-dark">IFP</span>
+          <span class="chip chip--on-dark">SC Licensed</span>
+          <span class="chip chip--on-dark">BNM Licensed</span>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <span class="footer-col-title">Services</span>
+        <a href="/planning">Full Financial Planning</a>
+        <a href="/fhc">Financial Health Check</a>
+        <a href="/webinar">Cashflow Girlies Webinar</a>
+      </div>
+
+      <div class="footer-col">
+        <span class="footer-col-title">Connect</span>
+        <a href="https://wa.me/60186617981" target="_blank" rel="noopener">
+          WhatsApp
+        </a>
+        <a
+          href="https://www.instagram.com/imanabdulrahim"
+          target="_blank"
+          rel="noopener"
+        >
+          Instagram
+        </a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; {year} Iman Abdul Rahim. All rights reserved.</p>
+      <p class="footer-fineprint">
+        Licensed by Securities Commission Malaysia & Bank Negara Malaysia.
+      </p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: var(--ink);
+    color: rgba(236, 228, 214, 0.72);
+    padding: clamp(3.5rem, 6vw, 5rem) 0 2rem;
+  }
+
+  .footer-top {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: clamp(2rem, 5vw, 4rem);
+    padding-bottom: 3rem;
+    border-bottom: 1px solid rgba(236, 228, 214, 0.08);
+  }
+
+  .footer-brand {
+    max-width: 420px;
+  }
+  .footer-logo {
+    display: block;
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: var(--cream);
+    margin-bottom: 0.3rem;
+  }
+  .footer-tagline {
+    display: block;
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--rose-soft);
+    margin-bottom: 1.1rem;
+  }
+  .footer-desc {
+    font-size: 0.92rem;
+    line-height: 1.7;
+    color: rgba(236, 228, 214, 0.6);
+    margin-bottom: 1.25rem;
+  }
+  .footer-badges {
+    display: flex;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+  }
+  :global(.chip--on-dark) {
+    background: transparent;
+    color: rgba(236, 228, 214, 0.7);
+    border-color: rgba(236, 228, 214, 0.18);
+  }
+
+  .footer-col {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+  .footer-col-title {
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--rose-soft);
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+  }
+  .footer-col a {
+    font-size: 0.92rem;
+    color: rgba(236, 228, 214, 0.65);
+    transition: color 0.2s ease;
+  }
+  .footer-col a:hover {
+    color: var(--cream);
+  }
+
+  .footer-bottom {
+    padding-top: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+    font-size: 0.78rem;
+    color: rgba(236, 228, 214, 0.45);
+  }
+  .footer-fineprint {
+    color: rgba(236, 228, 214, 0.35);
+  }
+
+  @media (max-width: 768px) {
+    .footer-top {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+  }
+</style>

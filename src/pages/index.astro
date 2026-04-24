@@ -2,257 +2,634 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Iman Abdul Rahim — Licensed Financial Planner | CFP® | IFP">
-  <!-- Hero -->
+<Layout title="Iman Abdul Rahim · Licensed Financial Planner | CFP® | IFP">
+  <!-- =================== HERO =================== -->
   <section class="hero">
-    <div class="hero-bg"></div>
-    <div class="container hero-inner">
-      <div class="hero-content">
-        <p class="section-label">Licensed Financial Planner · CFP® · IFP</p>
-        <h1 class="hero-title">Nak rancang kewangan?<br /><em>Jom buat betul-betul.</em></h1>
-        <p class="hero-sub">I tolong Malaysians macam you untuk bina kekayaan, protect apa yang penting, dan plan for the future — dengan nasihat kewangan yang personalised dan tak bias.</p>
-        <div class="hero-actions">
-          <a href="/planning" class="btn btn--primary">Tengok Financial Planning</a>
-          <a href="/fhc" class="btn btn--outline">Financial Health Check — RM350</a>
-        </div>
-        <div class="hero-trust">
-          <span class="trust-badge">CFP® Certified</span>
-          <span class="trust-badge">Islamic Financial Planner</span>
-          <span class="trust-badge">SC Licensed</span>
-          <span class="trust-badge">BNM Licensed</span>
-        </div>
+    <div class="hero__grain" aria-hidden="true"></div>
+    <div class="container hero__inner">
+      <span class="eyebrow">Licensed Financial Planner · CFP® · IFP</span>
+      <h1 class="h-display hero__title">
+        Nak rancang kewangan?<br />
+        <em>Jom buat betul-betul.</em>
+      </h1>
+      <p class="lede hero__lede">
+        I tolong Malaysians macam you untuk bina kekayaan, protect apa yang
+        penting, dan plan for the future, dengan nasihat kewangan yang
+        personalised dan tak bias.
+      </p>
+      <div class="hero__actions">
+        <a href="/planning" class="btn btn--primary btn--lg">Explore Financial Planning</a>
+        <a href="/fhc" class="btn btn--ghost btn--lg btn--arrow">Health Check · RM350</a>
+      </div>
+      <ul class="hero__trust">
+        <li><span class="chip">CFP® Certified</span></li>
+        <li><span class="chip">Islamic Financial Planner</span></li>
+        <li><span class="chip">SC Licensed</span></li>
+        <li><span class="chip">BNM Licensed</span></li>
+      </ul>
+    </div>
+
+    <!-- Quiet decorative mark -->
+    <svg class="hero__mark" aria-hidden="true" viewBox="0 0 400 400">
+      <circle cx="200" cy="200" r="198" fill="none" stroke="currentColor" stroke-width="0.5" />
+      <circle cx="200" cy="200" r="160" fill="none" stroke="currentColor" stroke-width="0.5" />
+      <circle cx="200" cy="200" r="120" fill="none" stroke="currentColor" stroke-width="0.5" />
+    </svg>
+  </section>
+
+  <!-- =================== STATS / CRED STRIP =================== -->
+  <section class="strip">
+    <div class="container strip__grid">
+      <div class="strip__item">
+        <span class="strip__num">5<span class="strip__plus">+</span></span>
+        <span class="strip__label">Tahun pengalaman</span>
+      </div>
+      <div class="strip__item">
+        <span class="strip__num">2</span>
+        <span class="strip__label">Regulator licensed (SC · BNM)</span>
+      </div>
+      <div class="strip__item">
+        <span class="strip__num">3</span>
+        <span class="strip__label">Professional certifications</span>
+      </div>
+      <div class="strip__item">
+        <span class="strip__num">100%</span>
+        <span class="strip__label">Fiduciary, always your interest first</span>
       </div>
     </div>
   </section>
 
-  <!-- Services -->
-  <section class="section section--alt" id="services">
+  <!-- =================== SERVICES =================== -->
+  <section class="section section--paper" id="services">
     <div class="container">
-      <p class="section-label">Services</p>
-      <h2 class="section-heading">Macam mana I boleh <em>bantu you.</em></h2>
-      <p class="section-sub">Dua cara untuk start financial planning journey you — pilih yang sesuai dengan keperluan you.</p>
+      <div class="section__intro">
+        <span class="eyebrow">Services</span>
+        <h2 class="h-section">
+          Macam mana I boleh <em>bantu you.</em>
+        </h2>
+        <p class="lede">
+          Dua cara untuk start financial planning journey you, pilih yang
+          sesuai dengan keperluan you.
+        </p>
+      </div>
 
-      <div class="services-grid">
-        <a href="/planning" class="service-card card">
-          <div class="sc-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      <div class="services">
+        <a href="/planning" class="service">
+          <div class="service__body">
+            <span class="chip chip--rose">12-month engagement</span>
+            <h3 class="service__title">Full Financial Planning</h3>
+            <p class="service__desc">
+              Engagement setahun yang cover semua aspek kewangan you, cash
+              flow, investments, protection, estate, tax, dan goals-based
+              planning, semua tailored untuk hidup you.
+            </p>
+            <ul class="service__bullets">
+              <li>6 pillar planning framework</li>
+              <li>Implementation support & reviews</li>
+              <li>Shariah-compliant options available</li>
+            </ul>
           </div>
-          <div class="sc-tag">12-Month Engagement</div>
-          <h3>Full Financial Planning</h3>
-          <p>Engagement setahun yang cover semua aspek kewangan you — cash flow, investments, protection, estate, tax, dan goals-based planning — semua tailored untuk hidup you.</p>
-          <span class="sc-link">Baca lagi <span>→</span></span>
+          <div class="service__foot">
+            <span class="service__cta">
+              Baca lagi <span aria-hidden="true">→</span>
+            </span>
+          </div>
         </a>
 
-        <a href="/fhc" class="service-card card">
-          <div class="sc-icon sc-icon--gold">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+        <a href="/fhc" class="service service--featured">
+          <div class="service__body">
+            <span class="chip chip--ink">One-time review</span>
+            <h3 class="service__title">Financial Health Check</h3>
+            <p class="service__desc">
+              One-time review untuk check keadaan kewangan you. Dapat insights
+              yang jelas dan objective, takde product push, you akan tahu apa
+              yang okay, apa yang perlu improve, dan macam mana nak betulkan.
+            </p>
+            <ul class="service__bullets">
+              <li>2 × 1:1 sessions</li>
+              <li>Comprehensive PDF report</li>
+              <li>Clear action plan</li>
+            </ul>
           </div>
-          <div class="sc-tag">One-Time Review</div>
-          <h3>Financial Health Check</h3>
-          <p>One-time review untuk check keadaan kewangan you. Dapat insights yang jelas dan objective, takde product push — you akan tahu apa yang okay, apa yang perlu improve, dan macam mana nak betulkan.</p>
-          <div class="sc-price">RM 350</div>
-          <span class="sc-link">Book sekarang <span>→</span></span>
+          <div class="service__foot service__foot--price">
+            <span class="service__price">
+              <span class="service__price-amt">RM 350</span>
+              <span class="service__price-note">One-time</span>
+            </span>
+            <span class="service__cta">
+              Book now <span aria-hidden="true">→</span>
+            </span>
+          </div>
         </a>
       </div>
     </div>
   </section>
 
-  <!-- About -->
+  <!-- =================== ABOUT / PHILOSOPHY =================== -->
   <section class="section" id="about">
-    <div class="container about-grid">
-      <div class="about-content">
-        <p class="section-label">About</p>
-        <h2 class="section-heading">Kewangan you deserve<br /><em>nasihat yang betul.</em></h2>
-        <p class="about-text">I'm Iman Abdul Rahim — Licensed Financial Planner dengan pengalaman 5 tahun tolong Malaysians macam you take control of duit sendiri.</p>
-        <p class="about-text">I licensed dengan Securities Commission Malaysia dan Bank Negara Malaysia, dan I pegang CFP® dan Islamic Financial Planner (IFP) certifications. I terikat dengan ethical codes dan fiduciary standards — maknanya, I kena always act in YOUR best interest.</p>
-        <div class="about-creds">
+    <div class="container about">
+      <div class="about__content">
+        <span class="eyebrow">About</span>
+        <h2 class="h-section">
+          Kewangan you deserve<br />
+          <em>nasihat yang betul.</em>
+        </h2>
+        <p class="about__text">
+          I'm Iman Abdul Rahim, Licensed Financial Planner dengan pengalaman
+          5 tahun tolong Malaysians macam you take control of duit sendiri.
+        </p>
+        <p class="about__text">
+          I licensed dengan Securities Commission Malaysia dan Bank Negara
+          Malaysia, dan I pegang CFP® dan Islamic Financial Planner (IFP)
+          certifications. I terikat dengan ethical codes dan fiduciary
+          standards. Maknanya, I kena <em>always</em> act in your best interest.
+        </p>
+      </div>
+
+      <aside class="about__creds card">
+        <span class="footer-col-title" style="color:var(--rose-deep)">Credentials</span>
+        <dl class="creds">
           <div class="cred">
-            <span class="cred-title">CFP®</span>
-            <span class="cred-org">Certified Financial Planner, FPAM</span>
+            <dt>CFP<sup>®</sup></dt>
+            <dd>Certified Financial Planner · FPAM</dd>
           </div>
           <div class="cred">
-            <span class="cred-title">IFP</span>
-            <span class="cred-org">Islamic Financial Planner, IBFIM</span>
+            <dt>IFP</dt>
+            <dd>Islamic Financial Planner · IBFIM</dd>
           </div>
           <div class="cred">
-            <span class="cred-title">HRD Corp</span>
-            <span class="cred-org">Accredited Trainer</span>
+            <dt>HRD Corp</dt>
+            <dd>Certified Trainer</dd>
           </div>
-        </div>
+        </dl>
+      </aside>
+    </div>
+  </section>
+
+  <!-- =================== FAQ =================== -->
+  <section class="section section--cream-deep" id="faq">
+    <div class="container container--tight">
+      <div class="section__intro">
+        <span class="eyebrow">FAQ</span>
+        <h2 class="h-section">
+          Soalan <em>lazim.</em>
+        </h2>
+      </div>
+
+      <div class="faq">
+        <details>
+          <summary>Financial Planner ni buat apa sebenarnya?</summary>
+          <div class="faq__a">
+            <p>
+              Licensed Financial Planner tolong individuals dan families buat
+              keputusan kewangan yang informed supaya boleh capai life goals, melalui nasihat yang personalised dan structured.
+            </p>
+            <p>
+              Nasihat I always in your best interest, bukan nak push product. I
+              juga tolong dengan implementation dan buat regular reviews supaya
+              you stay on track.
+            </p>
+          </div>
+        </details>
+
+        <details>
+          <summary>Nasihat ni Shariah compliant ke?</summary>
+          <div class="faq__a">
+            <p>
+              Yes, memang. I offer Shariah-compliant financial planning,
+              termasuk Islamic investment portfolios, takaful, dan zakat
+              planning. You boleh request supaya seluruh financial plan you
+              Shariah-aligned.
+            </p>
+          </div>
+        </details>
+
+        <details>
+          <summary>Info I confidential ke?</summary>
+          <div class="faq__a">
+            <p>
+              Mestilah. I comply dengan PDPA regulations dan jaga
+              confidentiality you dengan ketat. Semua data yang you share
+              disimpan securely dan hanya digunakan untuk planning purposes
+              dengan consent you.
+            </p>
+          </div>
+        </details>
+
+        <details>
+          <summary>Berapa kos financial planning ni?</summary>
+          <div class="faq__a">
+            <p>
+              Financial Health Check tu one-time session je, RM 350. Full
+              Financial Planning pulak engagement 12 bulan, fees kita discuss
+              masa initial consultation based on complexity. Jom book free
+              discovery call dulu untuk tahu lebih lanjut.
+            </p>
+          </div>
+        </details>
+
+        <details>
+          <summary>I baru grad, sesuai ke untuk I?</summary>
+          <div class="faq__a">
+            <p>
+              Memang sesuai lah! Financial Health Check ni perfect untuk
+              sesiapa yang baru nak start financial journey. You akan dapat
+              clarity tentang where you stand sekarang dan actionable steps
+              untuk move forward dengan yakin.
+            </p>
+          </div>
+        </details>
       </div>
     </div>
   </section>
 
-  <!-- FAQ -->
-  <section class="section section--pink" id="faq">
-    <div class="container">
-      <p class="section-label">FAQ</p>
-      <h2 class="section-heading">Soalan <em>lazim.</em></h2>
-
-      <div class="faq-list">
-        <details class="faq-item">
-          <summary class="faq-q">Financial Planner ni buat apa sebenarnya?</summary>
-          <div class="faq-a">
-            <p>Licensed Financial Planner tolong individuals dan families buat keputusan kewangan yang informed supaya boleh capai life goals — melalui nasihat yang personalised dan structured.</p>
-            <p>Nasihat I always in your best interest, bukan nak push product. I juga tolong dengan implementation dan buat regular reviews supaya you stay on track.</p>
-          </div>
-        </details>
-
-        <details class="faq-item">
-          <summary class="faq-q">Nasihat ni Shariah compliant ke?</summary>
-          <div class="faq-a">
-            <p>Yes, memang. I offer Shariah-compliant financial planning, termasuk Islamic investment portfolios, takaful, dan zakat planning. You boleh request supaya seluruh financial plan you Shariah-aligned.</p>
-          </div>
-        </details>
-
-        <details class="faq-item">
-          <summary class="faq-q">Info I confidential ke?</summary>
-          <div class="faq-a">
-            <p>Mestilah. I comply dengan PDPA regulations dan jaga confidentiality you dengan ketat. Semua data yang you share disimpan securely dan hanya digunakan untuk planning purposes dengan consent you.</p>
-          </div>
-        </details>
-
-        <details class="faq-item">
-          <summary class="faq-q">Berapa kos financial planning ni?</summary>
-          <div class="faq-a">
-            <p>Financial Health Check tu one-time session je, RM 350. Full Financial Planning pulak engagement 12 bulan — fees kita discuss masa initial consultation based on complexity. Jom book free discovery call dulu untuk tahu lebih lanjut.</p>
-          </div>
-        </details>
-
-        <details class="faq-item">
-          <summary class="faq-q">I baru grad — sesuai ke untuk I?</summary>
-          <div class="faq-a">
-            <p>Memang sesuai lah! Financial Health Check ni perfect untuk sesiapa yang baru nak start financial journey. You akan dapat clarity tentang where you stand sekarang dan actionable steps untuk move forward dengan yakin.</p>
-          </div>
-        </details>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="section cta-section">
-    <div class="container cta-inner">
-      <h2 class="cta-heading">Jom start plan<br /><em>kewangan you.</em></h2>
-      <p class="cta-sub">Kita mula dengan borak-borak dulu. Takde obligation, takde product push — just honest guidance.</p>
-      <div class="cta-actions">
-        <a href="https://wa.me/60186617981?text=Hi%20Iman%2C%20I'd%20like%20to%20learn%20more%20about%20your%20financial%20planning%20services." target="_blank" class="btn btn--wa">Chat on WhatsApp</a>
-        <a href="/fhc" class="btn btn--outline">Book Financial Health Check</a>
+  <!-- =================== FINAL CTA =================== -->
+  <section class="section section--ink cta">
+    <div class="container container--narrow text-center">
+      <span class="eyebrow eyebrow--center eyebrow--on-dark">Start today</span>
+      <h2 class="h-section" style="color:var(--cream)">
+        Jom start plan<br /><em style="color:var(--rose-soft)">kewangan you.</em>
+      </h2>
+      <p class="cta__sub">
+        Kita mula dengan borak-borak dulu. Takde obligation, takde product
+        push, just honest guidance.
+      </p>
+      <div class="cta__actions">
+        <a
+          href="https://wa.me/60186617981?text=Hi%20Iman%2C%20I'd%20like%20to%20learn%20more%20about%20your%20financial%20planning%20services."
+          target="_blank"
+          rel="noopener"
+          class="btn btn--wa btn--lg"
+        >
+          Chat on WhatsApp
+        </a>
+        <a href="/fhc" class="btn btn--on-dark btn--lg">Book Health Check</a>
       </div>
     </div>
   </section>
 </Layout>
 
 <style>
-  /* Hero */
+  /* =================== HERO =================== */
   .hero {
-    padding: 10rem 0 6rem;
     position: relative;
-    overflow: hidden;
+    padding: clamp(8rem, 14vw, 12rem) 0 clamp(4.5rem, 8vw, 7rem);
     background: var(--cream);
+    overflow: hidden;
+    isolation: isolate;
   }
-
-  .hero-bg {
-    position: absolute; inset: 0;
-    background: radial-gradient(ellipse at 70% 20%, var(--pink-soft) 0%, transparent 50%),
-                radial-gradient(ellipse at 20% 80%, var(--blush) 0%, transparent 40%);
-    opacity: 0.6;
+  .hero__grain {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 85% 15%, var(--rose-tint) 0%, transparent 55%),
+      radial-gradient(ellipse at 15% 85%, var(--shell) 0%, transparent 50%);
+    opacity: 0.7;
+    z-index: -1;
   }
-
-  .hero-inner { position: relative; z-index: 1; max-width: 700px; }
-
-  .hero-title {
-    font-size: clamp(2.4rem, 5.5vw, 3.8rem);
-    margin-bottom: 1.2rem;
+  .hero__inner {
+    position: relative;
+    max-width: 820px;
   }
-
-  .hero-sub {
-    font-size: 1.05rem;
-    color: var(--text-secondary);
-    font-weight: 300;
-    line-height: 1.9;
+  .hero__title {
+    margin-bottom: 1.25rem;
+  }
+  .hero__lede {
     margin-bottom: 2rem;
-    max-width: 560px;
+    font-size: clamp(1.05rem, 1.4vw, 1.2rem);
   }
-
-  .hero-actions { display: flex; gap: 0.8rem; flex-wrap: wrap; margin-bottom: 2rem; }
-
-  .hero-trust { display: flex; gap: 0.5rem; flex-wrap: wrap; }
-  .trust-badge {
-    font-size: 0.68rem; padding: 0.3rem 0.8rem; border-radius: 100px;
-    border: 1px solid var(--border); color: var(--text-muted); font-weight: 500;
-    letter-spacing: 0.04em;
+  .hero__actions {
+    display: flex;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+    margin-bottom: 2.5rem;
   }
-
-  /* Services */
-  .services-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2.5rem; }
-  .service-card {
-    display: flex; flex-direction: column; gap: 1rem;
-    text-decoration: none; color: inherit;
+  .hero__trust {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0;
   }
-  .sc-icon {
-    width: 56px; height: 56px; border-radius: 16px;
-    background: var(--pink); display: flex; align-items: center; justify-content: center;
-    color: var(--rose-gold);
+  .hero__mark {
+    position: absolute;
+    right: -100px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 520px;
+    height: 520px;
+    color: var(--rose);
+    opacity: 0.18;
+    pointer-events: none;
+    z-index: -1;
   }
-  .sc-icon--gold { background: rgba(201,160,122,0.1); color: var(--gold); }
-  .sc-tag { font-size: 0.68rem; color: var(--rose-gold); font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; }
-  .service-card h3 { font-size: 1.3rem; }
-  .service-card p { font-size: 0.9rem; color: var(--text-secondary); font-weight: 300; line-height: 1.8; flex-grow: 1; }
-  .sc-price {
-    font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 600;
-    color: var(--gold); margin-top: -0.5rem;
-  }
-  .sc-link {
-    font-size: 0.82rem; color: var(--rose-gold); font-weight: 600;
-    display: flex; align-items: center; gap: 0.3rem; transition: gap 0.2s;
-  }
-  .service-card:hover .sc-link { gap: 0.6rem; }
-
-  /* About */
-  .about-grid { max-width: 700px; }
-  .about-text { font-size: 0.95rem; color: var(--text-secondary); line-height: 1.9; font-weight: 300; margin-bottom: 1rem; }
-  .about-creds { display: flex; gap: 1.5rem; margin-top: 1.5rem; flex-wrap: wrap; }
-  .cred {
-    padding: 1rem 1.5rem; background: var(--white); border: 1px solid var(--border-light);
-    border-radius: 14px; display: flex; flex-direction: column; gap: 0.2rem;
-  }
-  .cred-title { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 600; color: var(--rose-gold); }
-  .cred-org { font-size: 0.72rem; color: var(--text-muted); font-weight: 400; }
-
-  /* FAQ */
-  .faq-list { max-width: 700px; margin-top: 2rem; display: flex; flex-direction: column; gap: 0; }
-  .faq-item {
-    border-bottom: 1px solid var(--border);
-    padding: 1.2rem 0;
-  }
-  .faq-q {
-    font-family: 'DM Sans', sans-serif; font-size: 1rem; font-weight: 600;
-    color: var(--text); cursor: pointer; list-style: none; display: flex;
-    align-items: center; justify-content: space-between;
-  }
-  .faq-q::-webkit-details-marker { display: none; }
-  .faq-q::after { content: '+'; font-size: 1.2rem; color: var(--rose-gold); transition: transform 0.2s; }
-  details[open] .faq-q::after { content: '−'; }
-  .faq-a { padding-top: 0.8rem; }
-  .faq-a p { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.8; font-weight: 300; margin-bottom: 0.6rem; }
-
-  /* CTA */
-  .cta-section {
-    background: linear-gradient(135deg, var(--text) 0%, #5a333d 100%);
-    text-align: center;
-  }
-  .cta-inner { max-width: 600px; }
-  .cta-heading { font-size: clamp(1.8rem, 4vw, 2.4rem); color: var(--pink); margin-bottom: 1rem; }
-  .cta-heading em { color: var(--rose-gold-light); }
-  .cta-sub { font-size: 0.95rem; color: rgba(255,255,255,0.5); font-weight: 300; margin-bottom: 2rem; }
-  .cta-actions { display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap; }
 
   @media (max-width: 768px) {
-    .hero { padding: 8rem 0 4rem; }
-    .services-grid { grid-template-columns: 1fr; }
-    .hero-actions { flex-direction: column; }
-    .hero-actions .btn { text-align: center; }
-    .about-creds { flex-direction: column; }
-    .cta-actions { flex-direction: column; align-items: center; }
+    .hero__actions {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .hero__actions .btn {
+      width: 100%;
+    }
+    .hero__mark {
+      width: 340px;
+      height: 340px;
+      right: -140px;
+      opacity: 0.12;
+    }
+  }
+
+  /* =================== STRIP =================== */
+  .strip {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 2.2rem 0;
+  }
+  .strip__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    align-items: center;
+  }
+  .strip__item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    border-left: 1px solid rgba(236, 228, 214, 0.1);
+    padding-left: 1.25rem;
+  }
+  .strip__item:first-child {
+    border-left: 0;
+    padding-left: 0;
+  }
+  .strip__num {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    font-weight: 500;
+    color: var(--cream);
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+  .strip__plus {
+    color: var(--rose-soft);
+    font-size: 0.9em;
+  }
+  .strip__label {
+    font-size: 0.78rem;
+    color: rgba(236, 228, 214, 0.6);
+    letter-spacing: 0.02em;
+    line-height: 1.4;
+  }
+
+  @media (max-width: 860px) {
+    .strip__grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem 1rem;
+    }
+    .strip__item:nth-child(3) {
+      border-left: 0;
+      padding-left: 0;
+    }
+  }
+
+  /* =================== SERVICES =================== */
+  .services {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+  }
+  .service {
+    display: flex;
+    flex-direction: column;
+    background: var(--cream);
+    border: 1px solid var(--border);
+    border-radius: var(--r-xl);
+    padding: clamp(1.75rem, 3vw, 2.5rem);
+    transition:
+      transform 0.25s ease,
+      box-shadow 0.25s ease,
+      border-color 0.25s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .service::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(135deg, transparent 60%, var(--rose-tint) 140%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  .service:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--border-strong);
+  }
+  .service:hover::after {
+    opacity: 1;
+  }
+  .service--featured {
+    background: var(--ink);
+    color: var(--cream);
+    border-color: var(--ink);
+  }
+  .service--featured h3,
+  .service--featured .service__desc,
+  .service--featured .service__bullets,
+  .service--featured .service__price-amt {
+    color: var(--cream);
+  }
+  .service--featured .service__bullets li::before {
+    background: var(--rose-soft);
+  }
+  .service--featured .service__cta {
+    color: var(--rose-soft);
+  }
+  .service__body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+    flex-grow: 1;
+  }
+  .service__title {
+    font-size: clamp(1.4rem, 2.2vw, 1.75rem);
+    font-weight: 500;
+    margin-top: 0.2rem;
+  }
+  .service__desc {
+    font-size: 0.96rem;
+    color: var(--text-2);
+    line-height: 1.7;
+  }
+  .service--featured .service__desc {
+    color: rgba(236, 228, 214, 0.75);
+  }
+  .service__bullets {
+    list-style: none;
+    padding: 0;
+    margin: 0.3rem 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+  }
+  .service__bullets li {
+    position: relative;
+    padding-left: 1.25rem;
+    font-size: 0.9rem;
+    color: var(--text-2);
+  }
+  .service--featured .service__bullets li {
+    color: rgba(236, 228, 214, 0.72);
+  }
+  .service__bullets li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.55rem;
+    width: 12px;
+    height: 1px;
+    background: var(--rose-deep);
+  }
+  .service__foot {
+    margin-top: 1.75rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+  }
+  .service--featured .service__foot {
+    border-top-color: rgba(236, 228, 214, 0.1);
+  }
+  .service__price {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+    gap: 0.25rem;
+  }
+  .service__price-amt {
+    font-family: var(--font-serif);
+    font-size: 1.6rem;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+  .service__price-note {
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-3);
+  }
+  .service--featured .service__price-note {
+    color: rgba(236, 228, 214, 0.5);
+  }
+  .service__cta {
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--rose-deep);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    transition: gap 0.2s ease;
+  }
+  .service:hover .service__cta {
+    gap: 0.6rem;
+  }
+
+  @media (max-width: 860px) {
+    .services {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* =================== ABOUT =================== */
+  .about {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: start;
+  }
+  .about__content {
+    max-width: 620px;
+  }
+  .about__text {
+    font-size: 1rem;
+    color: var(--text-2);
+    line-height: 1.8;
+    margin-top: 1rem;
+  }
+  .about__text em {
+    font-style: italic;
+    color: var(--rose-deep);
+  }
+  .about__creds {
+    position: sticky;
+    top: 5rem;
+  }
+  .footer-col-title {
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 1rem;
+  }
+  .creds {
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+  }
+  .cred {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    padding-bottom: 1.1rem;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .cred:last-child {
+    border-bottom: 0;
+    padding-bottom: 0;
+  }
+  .cred dt {
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .cred dd {
+    font-size: 0.82rem;
+    color: var(--text-2);
+  }
+
+  @media (max-width: 860px) {
+    .about {
+      grid-template-columns: 1fr;
+    }
+    .about__creds {
+      position: static;
+    }
+  }
+
+  /* =================== CTA =================== */
+  .cta__sub {
+    color: rgba(236, 228, 214, 0.7);
+    font-size: 1rem;
+    line-height: 1.7;
+    margin: 1.25rem auto 2.25rem;
+    max-width: 48ch;
+  }
+  .cta__actions {
+    display: flex;
+    gap: 0.8rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  @media (max-width: 560px) {
+    .cta__actions {
+      flex-direction: column;
+      align-items: stretch;
+    }
   }
 </style>
