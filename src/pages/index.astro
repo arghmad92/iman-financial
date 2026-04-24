@@ -37,28 +37,6 @@ import Layout from '../layouts/Layout.astro';
     </svg>
   </section>
 
-  <!-- =================== STATS / CRED STRIP =================== -->
-  <section class="strip">
-    <div class="container strip__grid">
-      <div class="strip__item">
-        <span class="strip__num">5<span class="strip__plus">+</span></span>
-        <span class="strip__label">Tahun pengalaman</span>
-      </div>
-      <div class="strip__item">
-        <span class="strip__num">2</span>
-        <span class="strip__label">Regulator licensed (SC · BNM)</span>
-      </div>
-      <div class="strip__item">
-        <span class="strip__num">3</span>
-        <span class="strip__label">Professional certifications</span>
-      </div>
-      <div class="strip__item">
-        <span class="strip__num">100%</span>
-        <span class="strip__label">Fiduciary, always your interest first</span>
-      </div>
-    </div>
-  </section>
-
   <!-- =================== SERVICES =================== -->
   <section class="section section--paper" id="services">
     <div class="container">
@@ -337,59 +315,6 @@ import Layout from '../layouts/Layout.astro';
       height: 340px;
       right: -140px;
       opacity: 0.12;
-    }
-  }
-
-  /* =================== STRIP =================== */
-  .strip {
-    background: var(--ink);
-    color: var(--cream);
-    padding: 2.2rem 0;
-  }
-  .strip__grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
-    align-items: center;
-  }
-  .strip__item {
-    display: flex;
-    flex-direction: column;
-    gap: 0.2rem;
-    border-left: 1px solid rgba(236, 228, 214, 0.1);
-    padding-left: 1.25rem;
-  }
-  .strip__item:first-child {
-    border-left: 0;
-    padding-left: 0;
-  }
-  .strip__num {
-    font-family: var(--font-serif);
-    font-size: 2rem;
-    font-weight: 500;
-    color: var(--cream);
-    letter-spacing: -0.02em;
-    line-height: 1;
-  }
-  .strip__plus {
-    color: var(--rose-soft);
-    font-size: 0.9em;
-  }
-  .strip__label {
-    font-size: 0.78rem;
-    color: rgba(236, 228, 214, 0.6);
-    letter-spacing: 0.02em;
-    line-height: 1.4;
-  }
-
-  @media (max-width: 860px) {
-    .strip__grid {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.5rem 1rem;
-    }
-    .strip__item:nth-child(3) {
-      border-left: 0;
-      padding-left: 0;
     }
   }
 
