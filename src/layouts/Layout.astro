@@ -179,9 +179,7 @@ const {
 
       /* ========= Eyebrow (section label) ========= */
       .eyebrow {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.6rem;
+        display: inline-block;
         font-family: var(--font-sans);
         font-size: 0.72rem;
         letter-spacing: 0.22em;
@@ -190,27 +188,14 @@ const {
         font-weight: 600;
         margin-bottom: 1rem;
       }
-      .eyebrow::before {
-        content: '';
-        width: 24px;
-        height: 1px;
-        background: var(--rose-deep);
-        display: inline-block;
-      }
       .eyebrow--center {
-        justify-content: center;
+        text-align: center;
       }
       .eyebrow--ink {
         color: var(--ink);
       }
-      .eyebrow--ink::before {
-        background: var(--ink);
-      }
       .eyebrow--on-dark {
         color: var(--rose-soft);
-      }
-      .eyebrow--on-dark::before {
-        background: var(--rose-soft);
       }
 
       /* ========= Headings ========= */
