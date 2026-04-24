@@ -170,6 +170,35 @@ const outcomes = [
     </div>
   </section>
 
+  <!-- =================== SAMPLE REPORT =================== -->
+  <section class="section section--paper">
+    <div class="container container--tight">
+      <div class="section__intro section__intro--center">
+        <span class="eyebrow eyebrow--center">Sample report</span>
+        <h2 class="h-section">
+          Contoh report yang <em>you akan dapat.</em>
+        </h2>
+        <p class="lede lede--center">
+          Ni lah preview actual report yang akan you terima, lengkap
+          dengan Wealth Vantage Score&trade; yang scientific.
+        </p>
+      </div>
+
+      <figure class="sample">
+        <img
+          src="/wealth-vantage-score.png"
+          alt="Contoh Wealth Vantage Score report: gauge rated from Bad to Best"
+          loading="lazy"
+          width="1200"
+          height="700"
+        />
+        <figcaption>
+          Example&nbsp;&middot;&nbsp;Wealth Vantage Score&trade; rated 316/1000
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
   <!-- =================== OUTCOMES =================== -->
   <section class="section section--cream-deep">
     <div class="container container--tight">
@@ -409,6 +438,30 @@ const outcomes = [
       grid-template-columns: 1fr;
       gap: 0.5rem;
     }
+  }
+
+  /* =================== SAMPLE REPORT =================== */
+  .sample {
+    margin: 2.5rem auto 0;
+    max-width: 760px;
+  }
+  .sample img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 12 / 7;
+    object-fit: contain;
+    border-radius: var(--r-lg);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    background: var(--paper);
+    padding: clamp(1rem, 3vw, 2rem);
+  }
+  .sample figcaption {
+    margin-top: 1rem;
+    font-size: 0.82rem;
+    color: var(--text-2);
+    text-align: center;
+    letter-spacing: 0.02em;
   }
 
   /* =================== OUTCOMES =================== */
