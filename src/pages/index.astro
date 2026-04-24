@@ -17,16 +17,6 @@ import Layout from '../layouts/Layout.astro';
         nasihat yang personalised, tanpa bias, supaya you boleh buat keputusan
         kewangan dengan yakin, bijak, dan terancang.
       </p>
-      <div class="hero__actions">
-        <a href="/planning" class="btn btn--primary btn--lg">Explore Financial Planning</a>
-        <a href="/fhc" class="btn btn--ghost btn--lg btn--arrow">Health Check · RM350</a>
-      </div>
-      <ul class="hero__trust">
-        <li><span class="chip">CFP® Certified</span></li>
-        <li><span class="chip">Islamic Financial Planner</span></li>
-        <li><span class="chip">SC Licensed</span></li>
-        <li><span class="chip">BNM Licensed</span></li>
-      </ul>
     </div>
 
     <!-- Quiet decorative mark -->
@@ -273,21 +263,7 @@ import Layout from '../layouts/Layout.astro';
     margin-bottom: 1.25rem;
   }
   .hero__lede {
-    margin-bottom: 2rem;
     font-size: clamp(1.05rem, 1.4vw, 1.2rem);
-  }
-  .hero__actions {
-    display: flex;
-    gap: 0.8rem;
-    flex-wrap: wrap;
-    margin-bottom: 2.5rem;
-  }
-  .hero__trust {
-    display: flex;
-    gap: 0.5rem;
-    flex-wrap: wrap;
-    list-style: none;
-    padding: 0;
   }
   .hero__mark {
     position: absolute;
@@ -303,13 +279,6 @@ import Layout from '../layouts/Layout.astro';
   }
 
   @media (max-width: 768px) {
-    .hero__actions {
-      flex-direction: column;
-      align-items: stretch;
-    }
-    .hero__actions .btn {
-      width: 100%;
-    }
     .hero__mark {
       width: 340px;
       height: 340px;
