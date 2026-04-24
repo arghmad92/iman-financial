@@ -27,16 +27,12 @@ const audience = [
 
 const deliverables = [
   {
-    title: '2 × 1:1 sessions',
-    desc: 'Dua sesi one-on-one yang dedicated untuk deep dive into kewangan you. Semua personalised, bukan nasihat copy-paste dari internet.',
+    title: 'Dua kali sesi',
+    desc: 'Sesi pertama adalah untuk kumpul dan faham data kewangan you, manakala sesi kedua adalah untuk pembentangan report.',
   },
   {
     title: 'Comprehensive PDF report',
     desc: 'Analysis menyeluruh pasal financial health you, documented dalam satu report yang jelas, senang faham, boleh refer balik bila-bila.',
-  },
-  {
-    title: 'Clear action plan',
-    desc: 'Action plan step-by-step yang specific untuk situasi you. Takde lagi teka-teki, you akan tahu exactly apa next step you.',
   },
 ];
 
@@ -69,22 +65,6 @@ const outcomes = [
         Nak tahu betul-betul where you stand dari segi kewangan? Lepas ni you
         boleh buat keputusan dengan yakin, takde rasa was-was dah.
       </p>
-
-      <div class="hero__price-card">
-        <div class="price-card__left">
-          <span class="price-card__amt">RM350</span>
-          <span class="price-card__note">Bayar sekali je + 8% SST</span>
-        </div>
-        <a href={bookHref} target="_blank" rel="noopener" class="btn btn--primary btn--lg">
-          Isi borang booking
-        </a>
-      </div>
-
-      <ul class="hero__meta">
-        <li>2 × 1:1 sessions</li>
-        <li>Comprehensive PDF report</li>
-        <li>Personalised action plan</li>
-      </ul>
     </div>
   </section>
 
@@ -282,69 +262,6 @@ const outcomes = [
   .hero__lede {
     margin: 1.5rem 0 2.25rem;
   }
-  .hero__price-card {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1.5rem;
-    background: var(--paper);
-    border: 1px solid var(--border);
-    border-radius: var(--r-lg);
-    padding: 1.25rem 1.5rem;
-    box-shadow: var(--shadow-sm);
-    margin-bottom: 1.5rem;
-  }
-  .price-card__left {
-    display: flex;
-    flex-direction: column;
-    line-height: 1.1;
-  }
-  .price-card__amt {
-    font-family: var(--font-serif);
-    font-size: clamp(1.8rem, 3.5vw, 2.4rem);
-    font-weight: 500;
-    color: var(--ink);
-    letter-spacing: -0.02em;
-  }
-  .price-card__note {
-    font-size: 0.78rem;
-    color: var(--text-2);
-    margin-top: 0.25rem;
-    letter-spacing: 0.02em;
-  }
-  .hero__meta {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    gap: 1.2rem;
-    flex-wrap: wrap;
-    font-size: 0.84rem;
-    color: var(--text-2);
-  }
-  .hero__meta li {
-    position: relative;
-    padding-left: 1.2rem;
-  }
-  .hero__meta li::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0.55rem;
-    width: 8px;
-    height: 1px;
-    background: var(--rose-deep);
-  }
-  @media (max-width: 640px) {
-    .hero__price-card {
-      flex-direction: column;
-      align-items: stretch;
-      text-align: left;
-    }
-    .hero__price-card .btn {
-      width: 100%;
-    }
-  }
-
   /* =================== QUOTES =================== */
   .quotes {
     display: grid;
