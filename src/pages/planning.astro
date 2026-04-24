@@ -10,7 +10,7 @@ const pillars = [
   {
     num: '02',
     title: 'Investment Planning',
-    desc: 'Grow kekayaan you secara strategic dengan portfolio yang tailored ikut risk profile dan long-term goals you.',
+    desc: 'Grow your wealth secara strategic dengan portfolio yang tailored ikut risk profile dan long-term goals you.',
   },
   {
     num: '03',
@@ -30,40 +30,7 @@ const pillars = [
   {
     num: '06',
     title: 'Tax Planning',
-    desc: 'Maximize kekayaan you dengan strategi tax yang smart dan compliant, simpan lebih, bayar yang patut je.',
-  },
-];
-
-const details = [
-  {
-    num: '01',
-    title: 'Cash Flow Management',
-    body: 'Cash flow ni macam nadi financial plan you. Kita akan map out setiap ringgit yang masuk dan keluar, identify area yang boleh improve, dan create sistem yang sustainable, supaya you boleh save consistently, bayar hutang secara strategic, dan bina emergency fund yang bagi you ketenangan. Dari sinilah clarity kewangan bermula.',
-  },
-  {
-    num: '02',
-    title: 'Investment Planning',
-    body: 'Nak grow kekayaan bukan sekadar pilih product yang betul je, you perlukan strategy. Kita akan assess risk tolerance, time horizon, dan financial goals you untuk bina diversified portfolio yang sesuai. Dari unit trusts dan ETFs sampai EPF optimization dan Shariah-compliant options, investment plan you akan se-unique impian you sendiri.',
-  },
-  {
-    num: '03',
-    title: 'Wealth Protection',
-    body: 'Hidup ni tak boleh predict kan. Risk management melalui insurance dan takaful pastikan kalau ada apa-apa berlaku, financial progress you tak terjejas. Kita akan review coverage you sekarang, identify gaps, dan recommend solutions yang protect income, kesihatan, dan keluarga you, tanpa over-insure atau bazir premium.',
-  },
-  {
-    num: '04',
-    title: 'Estate Planning',
-    body: 'Estate planning bukan untuk orang kaya je tau, ini untuk sesiapa yang nak pastikan aset diagihkan ikut kehendak sendiri. Kita akan tolong you set up wasiat (Islamic will), faham implikasi faraid, dan bina plan yang protect orang tersayang dan jaga legacy you untuk generasi akan datang.',
-  },
-  {
-    num: '05',
-    title: 'Retirement Planning',
-    body: 'Bila you nak retire? Macam mana retirement impian you nampak? Kita akan kira the numbers, bina savings trajectory, dan create investment strategy untuk sampai ke situ. Sama ada you impikan early retirement umur 45 atau hidup selesa lepas 60, kita akan map out the path dan track progress you setiap langkah.',
-  },
-  {
-    num: '06',
-    title: 'Tax Planning',
-    body: 'Setiap ringgit yang you jimat dari tax boleh dihalakan ke goals you. Kita akan review situasi tax you, identify reliefs dan deductions yang eligible, dan implement strategies untuk minimize tax burden secara legal dan ethical. Dari PRS contributions sampai education deductions, kita pastikan you simpan lebih dari apa yang you earn.',
+    desc: 'Strategi tax yang smart, compliant dan selari dengan keperluan you.',
   },
 ];
 
@@ -153,39 +120,6 @@ const timeline = [
           ))
         }
       </ul>
-    </div>
-  </section>
-
-  <!-- =================== DETAILS =================== -->
-  <section class="section details">
-    <div class="container container--tight">
-      <div class="section__intro">
-        <span class="eyebrow">Deep dive</span>
-        <h2 class="h-section">
-          Jom tengok setiap pillar<br /><em>dengan lebih dekat.</em>
-        </h2>
-        <p class="lede">
-          Tengok macam mana setiap area planning ni work together untuk bagi
-          you gambaran kewangan yang lengkap.
-        </p>
-      </div>
-
-      <div class="details__list">
-        {
-          details.map((d) => (
-            <article class="detail">
-              <div class="detail__meta">
-                <span class="detail__num">{d.num}</span>
-                <span class="detail__rule" aria-hidden="true" />
-              </div>
-              <div class="detail__body">
-                <h3 class="detail__title">{d.title}</h3>
-                <p class="detail__text">{d.body}</p>
-              </div>
-            </article>
-          ))
-        }
-      </div>
     </div>
   </section>
 
@@ -332,65 +266,6 @@ const timeline = [
   @media (max-width: 580px) {
     .pillars {
       grid-template-columns: 1fr;
-    }
-  }
-
-  /* =================== DETAILS =================== */
-  .details__list {
-    display: flex;
-    flex-direction: column;
-    gap: 2.5rem;
-  }
-  .detail {
-    display: grid;
-    grid-template-columns: 100px 1fr;
-    gap: 2rem;
-    padding-bottom: 2.5rem;
-    border-bottom: 1px solid var(--hairline);
-  }
-  .detail:last-child {
-    border-bottom: 0;
-    padding-bottom: 0;
-  }
-  .detail__meta {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.8rem;
-  }
-  .detail__num {
-    font-family: var(--font-serif);
-    font-size: 2.4rem;
-    font-weight: 400;
-    color: var(--rose-deep);
-    font-style: italic;
-    line-height: 1;
-  }
-  .detail__rule {
-    width: 40px;
-    height: 1px;
-    background: var(--rose);
-  }
-  .detail__title {
-    font-family: var(--font-serif);
-    font-size: clamp(1.4rem, 2.4vw, 1.75rem);
-    font-weight: 500;
-    color: var(--ink);
-    margin-bottom: 0.75rem;
-    letter-spacing: -0.01em;
-  }
-  .detail__text {
-    font-size: 1rem;
-    color: var(--text-2);
-    line-height: 1.8;
-  }
-  @media (max-width: 640px) {
-    .detail {
-      grid-template-columns: 1fr;
-      gap: 1rem;
-    }
-    .detail__num {
-      font-size: 1.8rem;
     }
   }
 
