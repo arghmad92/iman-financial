@@ -73,7 +73,7 @@ const outcomes = [
       <div class="hero__price-card">
         <div class="price-card__left">
           <span class="price-card__amt">RM350</span>
-          <span class="price-card__note">Bayar sekali je · Tak termasuk implementation</span>
+          <span class="price-card__note">Bayar sekali je + 8% SST</span>
         </div>
         <a href={bookHref} target="_blank" rel="noopener" class="btn btn--primary btn--lg">
           Isi borang booking
@@ -229,76 +229,30 @@ const outcomes = [
     </div>
   </section>
 
-  <!-- =================== ABOUT =================== -->
-  <section class="section section--paper">
-    <div class="container container--tight about">
-      <div>
-        <span class="eyebrow">About your planner</span>
-        <h2 class="h-section">
-          Iman Abdul Rahim<em>.</em>
-        </h2>
-        <p class="about__intro">
-          Licensed Financial Planner dengan <strong>5 tahun pengalaman</strong>,
-          start CFP journey dari 2021. Passion? Tolong Malaysians take control
-          of kewangan sendiri.
-        </p>
-      </div>
-
-      <div class="about__creds card card--cream">
-        <div class="cred-block">
-          <h4>Licensed by</h4>
-          <ul>
-            <li>Securities Commission Malaysia</li>
-            <li>Bank Negara Malaysia</li>
-          </ul>
-        </div>
-        <div class="cred-block">
-          <h4>Professional certifications</h4>
-          <ul>
-            <li>CFP<sup>®</sup> · Certified Financial Planner (FPAM)</li>
-            <li>IFP · Islamic Financial Planner (IBFIM)</li>
-            <li>HRD Corp Certified Trainer</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- =================== PRICING =================== -->
   <section class="section section--ink pricing">
     <div class="container container--narrow text-center">
       <span class="eyebrow eyebrow--center eyebrow--on-dark">Pricing</span>
-      <h2 class="h-section" style="color:var(--cream)">
-        Harga jelas, <em style="color:var(--rose-soft)">takde hidden cost.</em>
-      </h2>
 
       <div class="pricing__card">
         <span class="pricing__tag">Financial Health Check</span>
         <div class="pricing__amt">RM 350</div>
-        <span class="pricing__note">Bayar sekali je · Tak termasuk implementation fee</span>
+        <span class="pricing__note">Bayar sekali je + 8% SST</span>
 
         <ul class="pricing__features">
           <li>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-            2 × 1:1 sessions dengan I
+            Dua kali sesi
           </li>
           <li>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
             Comprehensive PDF report
           </li>
-          <li>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-            Action plan khas untuk you
-          </li>
         </ul>
 
         <a href={bookHref} target="_blank" rel="noopener" class="btn btn--primary btn--lg pricing__cta">
-          Isi borang untuk book
+          Book your slot
         </a>
-
-        <p class="pricing__fineprint">
-          Slots limited je setiap bulan. Book awal elak kecewa.
-        </p>
       </div>
     </div>
   </section>
@@ -580,65 +534,6 @@ const outcomes = [
     font-size: 0.92rem;
     color: var(--text-2);
     line-height: 1.65;
-  }
-
-  /* =================== ABOUT =================== */
-  .about {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: clamp(2rem, 4vw, 3.5rem);
-    align-items: start;
-  }
-  .about__intro {
-    font-size: 1.02rem;
-    color: var(--text-2);
-    line-height: 1.75;
-    margin-top: 1.25rem;
-  }
-  .about__intro strong {
-    color: var(--ink);
-    font-weight: 600;
-  }
-  .about__creds {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-  .cred-block h4 {
-    font-size: 0.72rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--rose-deep);
-    font-weight: 600;
-    margin-bottom: 0.7rem;
-  }
-  .cred-block ul {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
-  }
-  .cred-block li {
-    font-size: 0.92rem;
-    color: var(--text-2);
-    padding-left: 1rem;
-    position: relative;
-  }
-  .cred-block li::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0.55rem;
-    width: 6px;
-    height: 6px;
-    background: var(--rose-deep);
-    border-radius: 50%;
-  }
-  @media (max-width: 860px) {
-    .about {
-      grid-template-columns: 1fr;
-    }
   }
 
   /* =================== PRICING =================== */
