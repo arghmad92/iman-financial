@@ -340,9 +340,6 @@ import Layout from '../layouts/Layout.astro';
   .service--featured .service__price-amt {
     color: var(--cream);
   }
-  .service--featured .service__bullets li::before {
-    background: var(--rose-soft);
-  }
   .service--featured .service__cta {
     color: var(--rose-soft);
   }
@@ -374,22 +371,11 @@ import Layout from '../layouts/Layout.astro';
     gap: 0.45rem;
   }
   .service__bullets li {
-    position: relative;
-    padding-left: 1.25rem;
     font-size: 0.9rem;
     color: var(--text-2);
   }
   .service--featured .service__bullets li {
     color: rgba(236, 228, 214, 0.72);
-  }
-  .service__bullets li::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0.55rem;
-    width: 12px;
-    height: 1px;
-    background: var(--rose-deep);
   }
   .service__foot {
     margin-top: 1.75rem;
