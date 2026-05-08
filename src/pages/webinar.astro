@@ -68,13 +68,16 @@ const faqs = [
 >
   <!-- =================== HERO =================== -->
   <section class="hero">
-    <div class="hero__grain" aria-hidden="true"></div>
-    <div class="container hero__inner text-center">
+    <div class="glow glow--a" aria-hidden="true"></div>
+    <div class="glow glow--b" aria-hidden="true"></div>
+    <div class="glow glow--c" aria-hidden="true"></div>
+
+    <div class="container-x hero__inner text-center">
       <span class="chip chip--rose hero__chip">● Live Webinar</span>
       <h1 class="h-display hero__title">
         Cashflow <em>Girlies.</em>
       </h1>
-      <p class="lede hero__lede">
+      <p class="lede lede--center hero__lede">
         Cara uruskan cukai untuk freelancers &amp; content creators. Tax rules,
         demystified, in plain language.
       </p>
@@ -95,7 +98,7 @@ const faqs = [
       </ul>
 
       <!-- Countdown -->
-      <div class="countdown" id="countdown" aria-live="polite">
+      <div class="countdown glass" id="countdown" aria-live="polite">
         <div class="cd-item">
           <span class="cd-num" id="cdDays">--</span>
           <span class="cd-label">Days</span>
@@ -123,21 +126,21 @@ const faqs = [
           <span class="tier__amt">RM29</span>
           <span class="tier__note">First 20 seats only</span>
         </div>
-        <div class="tier">
+        <div class="tier glass">
           <span class="tier__label">Regular</span>
           <span class="tier__amt"><s>RM39</s></span>
           <span class="tier__note">After first 20</span>
         </div>
       </div>
 
-      <a href="#register" class="btn btn--primary btn--lg">Secure my spot</a>
+      <a href="#register" class="btn btn--rose btn--lg">Secure my spot</a>
       <p class="hero__small">Limited seats available · Secure payment via FPX</p>
     </div>
   </section>
 
   <!-- =================== LEARN =================== -->
-  <section class="section section--paper" id="learn">
-    <div class="container">
+  <section class="section" id="learn">
+    <div class="container-x">
       <div class="section__intro">
         <span class="eyebrow">What you'll learn</span>
         <h2 class="h-section">
@@ -151,7 +154,7 @@ const faqs = [
       <ul class="learn">
         {
           learn.map((l) => (
-            <li class="lcard">
+            <li class="lcard glass">
               <span class="lcard__num">{l.num}</span>
               <h3 class="lcard__title">{l.title}</h3>
               <p class="lcard__desc">{l.desc}</p>
@@ -164,37 +167,39 @@ const faqs = [
 
   <!-- =================== FOR WHO =================== -->
   <section class="section">
-    <div class="container container--tight text-center">
+    <div class="container-tight text-center">
       <span class="eyebrow eyebrow--center">Who it's for</span>
-      <h2 class="h-section">
+      <h2 class="h-section" style="margin-top:1rem">
         Webinar ni untuk korang <em>kalau…</em>
       </h2>
 
       <ul class="whogrid">
-        {forWho.map((w) => <li>{w}</li>)}
+        {forWho.map((w) => <li class="glass">{w}</li>)}
       </ul>
     </div>
   </section>
 
   <!-- =================== SPEAKER =================== -->
-  <section class="section section--ink speaker">
-    <div class="container container--tight">
-      <div class="speaker__grid">
-        <div>
-          <span class="eyebrow eyebrow--on-dark">Your host</span>
-          <h2 class="h-section" style="color:var(--cream)">
-            Iman <em style="color:var(--rose-soft)">Abdul Rahim.</em>
-          </h2>
-          <p class="speaker__desc">
-            Licensed Financial Planner (CFP, IFP) yang dah bantu ramai
-            Malaysians uruskan kewangan. From budgeting basics to full
-            financial planning, I simplify the complicated stuff so korang
-            boleh focus on buat duit.
-          </p>
-          <div class="speaker__chips">
-            <span class="chip chip--on-dark">CFP® Certified</span>
-            <span class="chip chip--on-dark">SC Licensed</span>
-            <span class="chip chip--on-dark">BNM Licensed</span>
+  <section class="section">
+    <div class="container-tight">
+      <div class="speaker glass-ink">
+        <div class="speaker__grid">
+          <div>
+            <span class="eyebrow eyebrow--light">Your host</span>
+            <h2 class="h-section speaker__title">
+              Iman <em>Abdul Rahim.</em>
+            </h2>
+            <p class="speaker__desc">
+              Licensed Financial Planner (CFP, IFP) yang dah bantu ramai
+              Malaysians uruskan kewangan. From budgeting basics to full
+              financial planning, I simplify the complicated stuff so korang
+              boleh focus on buat duit.
+            </p>
+            <div class="speaker__chips">
+              <span class="chip chip--on-dark">CFP® Certified</span>
+              <span class="chip chip--on-dark">SC Licensed</span>
+              <span class="chip chip--on-dark">BNM Licensed</span>
+            </div>
           </div>
         </div>
       </div>
@@ -202,8 +207,8 @@ const faqs = [
   </section>
 
   <!-- =================== REGISTRATION =================== -->
-  <section class="section section--paper" id="register">
-    <div class="container container--narrow">
+  <section class="section" id="register">
+    <div class="container-narrow">
       <div class="section__intro section__intro--center">
         <span class="eyebrow eyebrow--center">Register</span>
         <h2 class="h-section">
@@ -214,7 +219,7 @@ const faqs = [
         </p>
       </div>
 
-      <form class="reg" id="regForm">
+      <form class="reg glass" id="regForm">
         <div class="reg__group">
           <label for="regName" class="reg__label">Full name</label>
           <input
@@ -250,7 +255,7 @@ const faqs = [
 
         <div id="regError" class="reg__error" style="display:none"></div>
 
-        <button type="submit" class="btn btn--primary btn--lg reg__btn" id="regBtn">
+        <button type="submit" class="btn btn--rose btn--lg reg__btn" id="regBtn">
           Register &amp; Pay · RM29
         </button>
         <p class="reg__note">
@@ -262,40 +267,44 @@ const faqs = [
   </section>
 
   <!-- =================== FAQ =================== -->
-  <section class="section section--cream-deep">
-    <div class="container container--tight">
-      <div class="section__intro">
-        <span class="eyebrow">FAQ</span>
-        <h2 class="h-section">
-          Soalan <em>lazim.</em>
-        </h2>
-      </div>
-      <div class="faq">
-        {
-          faqs.map((f) => (
-            <details>
-              <summary>{f.q}</summary>
-              <div class="faq__a">
-                <p>{f.a}</p>
-              </div>
-            </details>
-          ))
-        }
+  <section class="section">
+    <div class="container-tight">
+      <div class="faq-card glass">
+        <div class="section__intro">
+          <span class="eyebrow">FAQ</span>
+          <h2 class="h-section">
+            Soalan <em>lazim.</em>
+          </h2>
+        </div>
+        <div class="faq">
+          {
+            faqs.map((f) => (
+              <details>
+                <summary>{f.q}</summary>
+                <div class="faq__a">
+                  <p>{f.a}</p>
+                </div>
+              </details>
+            ))
+          }
+        </div>
       </div>
     </div>
   </section>
 
   <!-- =================== FINAL CTA =================== -->
-  <section class="section section--ink">
-    <div class="container container--narrow text-center">
-      <span class="eyebrow eyebrow--center eyebrow--on-dark">Don't miss out</span>
-      <h2 class="h-section" style="color:var(--cream)">
-        Jangan tunggu sampai<br /><em style="color:var(--rose-soft)">kena penalty.</em>
-      </h2>
-      <p class="cta__sub">
-        RM29 je untuk ilmu yang boleh save korang thousands. Limited seats.
-      </p>
-      <a href="#register" class="btn btn--on-dark btn--lg">Secure my spot</a>
+  <section class="section">
+    <div class="container-narrow">
+      <div class="finalcta glass-ink text-center">
+        <span class="eyebrow eyebrow--center eyebrow--light">Don't miss out</span>
+        <h2 class="h-section finalcta__title">
+          Jangan tunggu sampai<br /><em>kena penalty.</em>
+        </h2>
+        <p class="finalcta__sub">
+          RM29 je untuk ilmu yang boleh save korang thousands. Limited seats.
+        </p>
+        <a href="#register" class="btn btn--on-dark btn--lg">Secure my spot</a>
+      </div>
     </div>
   </section>
 </Layout>
@@ -309,7 +318,7 @@ const faqs = [
     if (!el) return;
     if (diff <= 0) {
       el.innerHTML =
-        '<p style="color:var(--rose-deep);font-weight:500;font-family:var(--font-serif);font-size:1.2rem">Webinar has started!</p>';
+        '<p style="color:var(--color-deep);font-weight:500;font-family:var(--font-serif);font-size:1.2rem;padding:0.5rem 1rem">Webinar has started!</p>';
       return;
     }
     const d = Math.floor(diff / (1000 * 60 * 60 * 24));
@@ -373,28 +382,43 @@ const faqs = [
   .hero {
     position: relative;
     padding: clamp(8rem, 14vw, 12rem) 0 clamp(4rem, 7vw, 6rem);
-    background: var(--cream);
     overflow: hidden;
     isolation: isolate;
   }
-  .hero__grain {
+  .glow {
     position: absolute;
-    inset: 0;
-    background:
-      radial-gradient(circle at 50% -10%, var(--rose-tint) 0%, transparent 55%),
-      radial-gradient(circle at 90% 90%, var(--shell) 0%, transparent 40%);
-    opacity: 0.65;
+    border-radius: 50%;
+    filter: blur(90px);
+    pointer-events: none;
     z-index: -1;
+  }
+  .glow--a {
+    width: 480px;
+    height: 480px;
+    top: -100px;
+    right: -100px;
+    background: radial-gradient(circle, rgba(236, 108, 135, 0.18), transparent 70%);
+  }
+  .glow--b {
+    width: 420px;
+    height: 420px;
+    bottom: -100px;
+    left: -120px;
+    background: radial-gradient(circle, rgba(244, 163, 179, 0.14), transparent 70%);
+  }
+  .glow--c {
+    width: 360px;
+    height: 360px;
+    top: 30%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: radial-gradient(circle, rgba(249, 212, 220, 0.14), transparent 70%);
   }
   .hero__inner {
     max-width: 760px;
   }
-  .hero__chip {
-    margin-bottom: 1.5rem;
-  }
-  .hero__title {
-    margin-bottom: 1rem;
-  }
+  .hero__chip { margin-bottom: 1.5rem; }
+  .hero__title { margin-bottom: 1rem; }
   .hero__lede {
     margin: 0 auto 2rem;
   }
@@ -405,27 +429,25 @@ const faqs = [
     justify-content: center;
     gap: 1.5rem;
     flex-wrap: wrap;
-    color: var(--text-2);
+    color: var(--color-ink-2);
     font-size: 0.9rem;
-    margin-bottom: 2rem;
+    margin: 0 0 2rem;
   }
   .hero__meta li {
     display: inline-flex;
     align-items: center;
-    gap: 0.4rem;
+    gap: 0.45rem;
   }
   .hero__meta svg {
-    color: var(--rose-deep);
+    color: var(--color-deep);
   }
 
   .countdown {
     display: inline-flex;
     align-items: center;
-    gap: 0.6rem;
+    gap: 0.7rem;
     padding: 1rem 1.5rem;
-    background: var(--paper);
-    border: 1px solid var(--border);
-    border-radius: var(--r);
+    border-radius: 20px;
     margin-bottom: 2rem;
   }
   .cd-item {
@@ -437,23 +459,23 @@ const faqs = [
   }
   .cd-num {
     font-family: var(--font-serif);
-    font-size: 1.75rem;
-    font-weight: 500;
-    color: var(--ink);
-    letter-spacing: -0.01em;
+    font-size: 1.85rem;
+    font-weight: 400;
+    color: var(--color-ink);
+    letter-spacing: -0.02em;
     font-variant-numeric: tabular-nums;
   }
   .cd-label {
     font-size: 0.66rem;
     letter-spacing: 0.16em;
     text-transform: uppercase;
-    color: var(--text-3);
+    color: var(--color-ink-3);
     margin-top: 0.4rem;
     font-weight: 500;
   }
   .cd-sep {
-    color: var(--border-strong);
-    font-size: 1rem;
+    color: var(--color-rose);
+    font-size: 1.1rem;
     margin-top: -0.3rem;
   }
 
@@ -465,19 +487,17 @@ const faqs = [
     justify-content: center;
   }
   .tier {
-    background: var(--paper);
-    border: 1px solid var(--border);
-    border-radius: var(--r);
-    padding: 0.9rem 1.2rem;
+    border-radius: 16px;
+    padding: 0.95rem 1.3rem;
     text-align: left;
-    min-width: 140px;
-    opacity: 0.6;
+    min-width: 150px;
+    opacity: 0.7;
   }
   .tier--featured {
     opacity: 1;
-    border-color: var(--ink);
-    background: var(--ink);
-    color: var(--cream);
+    background: var(--color-ink);
+    color: var(--color-paper);
+    border: 1px solid var(--color-ink);
   }
   .tier__label {
     display: block;
@@ -485,32 +505,32 @@ const faqs = [
     letter-spacing: 0.18em;
     text-transform: uppercase;
     font-weight: 600;
-    color: var(--rose-deep);
+    color: var(--color-deep);
     margin-bottom: 0.3rem;
   }
   .tier--featured .tier__label {
-    color: var(--rose-soft);
+    color: var(--color-rose);
   }
   .tier__amt {
     display: block;
     font-family: var(--font-serif);
-    font-size: 1.5rem;
-    font-weight: 500;
+    font-size: 1.55rem;
+    font-weight: 400;
     line-height: 1;
-    letter-spacing: -0.01em;
+    letter-spacing: -0.02em;
   }
   .tier__note {
     display: block;
     font-size: 0.72rem;
-    color: var(--text-3);
-    margin-top: 0.3rem;
+    color: var(--color-ink-3);
+    margin-top: 0.35rem;
   }
   .tier--featured .tier__note {
-    color: rgba(250, 234, 237, 0.6);
+    color: rgba(255, 250, 251, 0.6);
   }
   .hero__small {
     font-size: 0.78rem;
-    color: var(--text-3);
+    color: var(--color-ink-3);
     margin-top: 1rem;
     font-style: italic;
   }
@@ -525,48 +545,42 @@ const faqs = [
     gap: 1.25rem;
   }
   .lcard {
-    background: var(--cream);
-    border: 1px solid var(--border);
-    border-radius: var(--r-lg);
-    padding: 1.75rem;
-    transition:
-      transform 0.25s ease,
-      border-color 0.25s ease,
-      background 0.25s ease;
+    border-radius: 24px;
+    padding: 1.85rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
   .lcard:hover {
     transform: translateY(-3px);
-    border-color: var(--border-strong);
-    background: var(--paper);
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.6) inset,
+      0 24px 56px -16px rgba(200, 70, 104, 0.24);
   }
   .lcard__num {
     font-family: var(--font-serif);
     font-style: italic;
-    font-size: 1.6rem;
-    color: var(--rose-deep);
-    font-weight: 400;
+    font-size: 1.7rem;
+    color: var(--color-deep);
+    font-weight: 300;
     display: block;
-    margin-bottom: 0.8rem;
+    margin-bottom: 0.85rem;
     line-height: 1;
   }
   .lcard__title {
     font-family: var(--font-serif);
-    font-size: 1.1rem;
-    font-weight: 500;
-    color: var(--ink);
+    font-size: 1.15rem;
+    font-weight: 400;
+    color: var(--color-ink);
     margin-bottom: 0.5rem;
-    letter-spacing: -0.01em;
+    letter-spacing: -0.015em;
     line-height: 1.3;
   }
   .lcard__desc {
     font-size: 0.9rem;
-    color: var(--text-2);
+    color: var(--color-ink-2);
     line-height: 1.7;
   }
   @media (max-width: 860px) {
-    .learn {
-      grid-template-columns: 1fr;
-    }
+    .learn { grid-template-columns: 1fr; }
   }
 
   /* =================== WHO =================== */
@@ -577,51 +591,53 @@ const faqs = [
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 0.5rem;
+    gap: 0.6rem;
   }
   .whogrid li {
-    padding: 0.7rem 1.3rem;
-    background: var(--paper);
-    border: 1px solid var(--border);
-    border-radius: var(--r-full);
+    padding: 0.75rem 1.4rem;
+    border-radius: 999px;
     font-size: 0.88rem;
-    color: var(--text-2);
-    transition:
-      color 0.2s ease,
-      border-color 0.2s ease;
+    color: var(--color-ink-2);
+    transition: color 0.2s ease, transform 0.2s ease;
   }
   .whogrid li:hover {
-    color: var(--ink);
-    border-color: var(--ink);
+    color: var(--color-deep);
+    transform: translateY(-1px);
   }
 
   /* =================== SPEAKER =================== */
   .speaker {
-    background: var(--ink);
+    border-radius: 32px;
+    padding: clamp(2.5rem, 5vw, 4rem) clamp(1.75rem, 4vw, 3rem);
   }
   .speaker__grid {
-    max-width: 620px;
+    max-width: 640px;
+  }
+  .speaker__title {
+    color: var(--color-paper);
+    margin-top: 1rem;
+  }
+  .speaker__title em {
+    color: var(--color-rose);
   }
   .speaker__desc {
     margin-top: 1.25rem;
     font-size: 1rem;
-    color: rgba(250, 234, 237, 0.72);
+    color: rgba(255, 250, 251, 0.78);
     line-height: 1.75;
     margin-bottom: 1.5rem;
     max-width: 58ch;
   }
   .speaker__chips {
     display: flex;
-    gap: 0.4rem;
+    gap: 0.45rem;
     flex-wrap: wrap;
   }
 
   /* =================== REGISTRATION =================== */
   .reg {
-    background: var(--cream);
-    border: 1px solid var(--border);
-    border-radius: var(--r-lg);
-    padding: clamp(1.5rem, 3vw, 2.25rem);
+    border-radius: 28px;
+    padding: clamp(1.75rem, 3.5vw, 2.5rem);
   }
   .reg__group {
     margin-bottom: 1rem;
@@ -630,37 +646,38 @@ const faqs = [
     display: block;
     font-size: 0.78rem;
     font-weight: 500;
-    color: var(--text);
-    margin-bottom: 0.4rem;
+    color: var(--color-ink);
+    margin-bottom: 0.45rem;
     letter-spacing: 0.02em;
   }
   .reg__input {
     width: 100%;
-    padding: 0.85rem 1rem;
-    border: 1px solid var(--border-strong);
-    border-radius: var(--r-sm);
+    padding: 0.9rem 1.1rem;
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    border-radius: 12px;
     font-family: var(--font-sans);
     font-size: 0.95rem;
-    color: var(--ink);
-    background: var(--paper);
+    color: var(--color-ink);
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     outline: none;
-    transition:
-      border-color 0.2s ease,
-      box-shadow 0.2s ease;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
   }
   .reg__input:focus {
-    border-color: var(--ink);
-    box-shadow: 0 0 0 3px var(--rose-tint);
+    border-color: var(--color-deep);
+    background: rgba(255, 255, 255, 0.85);
+    box-shadow: 0 0 0 4px rgba(236, 108, 135, 0.18);
   }
   .reg__input::placeholder {
-    color: var(--text-3);
+    color: var(--color-ink-3);
   }
   .reg__error {
-    color: var(--rose-deep);
+    color: var(--color-deep);
     font-size: 0.86rem;
-    background: var(--rose-tint);
-    padding: 0.7rem 1rem;
-    border-radius: var(--r-sm);
+    background: rgba(252, 231, 235, 0.7);
+    padding: 0.75rem 1rem;
+    border-radius: 12px;
     margin-bottom: 1rem;
   }
   .reg__btn {
@@ -669,15 +686,32 @@ const faqs = [
   }
   .reg__note {
     font-size: 0.78rem;
-    color: var(--text-2);
+    color: var(--color-ink-2);
     text-align: center;
     margin-top: 1rem;
     line-height: 1.6;
   }
 
-  /* =================== CTA =================== */
-  .cta__sub {
-    color: rgba(250, 234, 237, 0.7);
+  /* =================== FAQ =================== */
+  .faq-card {
+    border-radius: 32px;
+    padding: clamp(2rem, 4vw, 3.5rem);
+  }
+
+  /* =================== FINAL CTA =================== */
+  .finalcta {
+    border-radius: 32px;
+    padding: clamp(2.5rem, 5vw, 4rem) clamp(1.75rem, 4vw, 3rem);
+  }
+  .finalcta__title {
+    color: var(--color-paper);
+    margin-top: 1rem;
+  }
+  .finalcta__title em {
+    color: var(--color-rose);
+  }
+  .finalcta__sub {
+    color: rgba(255, 250, 251, 0.78);
     font-size: 1rem;
     line-height: 1.7;
     margin: 1.25rem auto 2.25rem;
