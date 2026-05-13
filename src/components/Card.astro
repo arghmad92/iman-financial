@@ -1,0 +1,32 @@
+---
+interface Props {
+  variant?: 'default' | 'ink' | 'cream' | 'ghost';
+  as?: string;
+  padded?: boolean;
+  class?: string;
+  href?: string;
+}
+
+const {
+  variant = 'default',
+  as = 'div',
+  padded = true,
+  class: extraClass = '',
+  href,
+} = Astro.props;
+
+const Tag = href ? 'a' : as;
+const classes = [
+  'card',
+  variant !== 'default' && `card--${variant}`,
+  extraClass,
+]
+  .filter(Boolean)
+  .join(' ');
+
+const restProps = href ? { href } : {};
+---
+
+<Tag class={classes} {...restProps}>
+  {padded ? <div class="card__body"><slot /></div> : <slot />}
+</Tag>

@@ -41,7 +41,7 @@ export async function onRequest(context) {
               body: JSON.stringify({
                 from: 'Iman Abdul Rahim <onboarding@resend.dev>',
                 to: email,
-                subject: 'Confirmed! Cashflow Girlies Webinar — 10 April 2026',
+                subject: 'Confirmed! Cashflow Girlies Webinar — 22 May 2026',
                 html: `
                   <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;padding:2rem">
                     <h1 style="color:#3d2027;font-size:1.5rem">You're in, ${name}!</h1>
@@ -50,7 +50,7 @@ export async function onRequest(context) {
                     <div style="background:#fef0f3;border-radius:12px;padding:1.5rem;margin:1.5rem 0">
                       <p style="margin:0;color:#3d2027"><strong>Cashflow Girlies</strong></p>
                       <p style="margin:0.3rem 0;color:#7a5660">Cara uruskan cukai for freelancers / content creator</p>
-                      <p style="margin:0.3rem 0;color:#7a5660">📅 10 April 2026, 8:00 PM (MYT)</p>
+                      <p style="margin:0.3rem 0;color:#7a5660">📅 22 May 2026, 8:00 PM (MYT)</p>
                       <p style="margin:0.3rem 0;color:#7a5660">💻 Via Zoom</p>
                       <p style="margin:0.3rem 0;color:#7a5660">🔖 Ref: ${orderId}</p>
                     </div>

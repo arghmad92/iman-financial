@@ -7,32 +7,34 @@ import Layout from '../layouts/Layout.astro';
   description="Your registration is confirmed!"
 >
   <section class="success">
-    <div class="glow glow--a" aria-hidden="true"></div>
-    <div class="glow glow--b" aria-hidden="true"></div>
+    <div class="glow success__glow-a" aria-hidden="true"></div>
+    <div class="glow success__glow-b" aria-hidden="true"></div>
 
-    <div class="container-narrow text-center">
-      <span class="success__icon glass-pink" aria-hidden="true">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <div class="container-narrow success__inner">
+      <span class="success__icon glass-strong" aria-hidden="true">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
           <polyline points="20 6 9 17 4 12" />
         </svg>
       </span>
 
-      <span class="eyebrow eyebrow--center">Registration confirmed</span>
-      <h1 class="h-display success__title">
-        You're <em>in.</em>
+      <span class="eyebrow eyebrow--center" style="margin: 0 auto; display: inline-flex;">Registration confirmed</span>
+      <h1 class="h-display success__title text-balance">
+        You're <span class="pink">in.</span>
       </h1>
-      <p class="lede lede--center success__sub">
-        Payment confirmed. Check your email for confirmation details, Zoom
-        link goes out 1 day before the webinar.
+      <p class="lede lede--xl lede--center success__sub text-balance">
+        Payment confirmed. Check your email for confirmation details, Zoom link
+        goes out 1 day before the webinar.
       </p>
 
-      <div class="success__card glass">
-        <span class="chip chip--rose">Cashflow Girlies</span>
-        <h3>Cara uruskan cukai for freelancers &amp; content creators</h3>
+      <div class="success__card glass-strong">
+        <span class="badge badge--pink">Cashflow Girlies</span>
+        <h2 class="success__card-title">
+          Cara uruskan cukai for freelancers &amp; content creators
+        </h2>
         <dl class="success__meta">
           <div>
             <dt>Date</dt>
-            <dd>10 April 2026</dd>
+            <dd>22 May 2026</dd>
           </div>
           <div>
             <dt>Time</dt>
@@ -46,12 +48,12 @@ import Layout from '../layouts/Layout.astro';
       </div>
 
       <div class="success__actions">
-        <a href="/webinar" class="btn btn--ghost">Back to webinar</a>
+        <a href="/webinar" class="btn btn--glass btn--lg">Back to webinar</a>
         <a
           href="https://wa.me/60186617981?text=Hi%20Iman!%20I%20just%20registered%20for%20Cashflow%20Girlies%20webinar"
           target="_blank"
           rel="noopener"
-          class="btn btn--wa"
+          class="btn btn--primary btn--lg"
         >
           Say hi on WhatsApp
         </a>
@@ -62,100 +64,91 @@ import Layout from '../layouts/Layout.astro';
 
 <style>
   .success {
-    position: relative;
-    min-height: calc(100vh - 120px);
+    min-height: calc(100svh - 200px);
     display: flex;
     align-items: center;
-    padding: clamp(7rem, 12vw, 10rem) 0 clamp(4rem, 7vw, 6rem);
-    overflow: hidden;
-    isolation: isolate;
+    padding: clamp(3rem, 7vw, 6rem) 0 clamp(4rem, 7vw, 6rem);
+    position: relative; overflow: hidden; isolation: isolate;
   }
-  .glow {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(100px);
-    pointer-events: none;
+  .success__glow-a {
+    width: 640px; height: 640px;
+    top: -200px; right: -180px;
+    background: radial-gradient(circle, rgba(196, 69, 105, 0.08), transparent 65%);
     z-index: -1;
   }
-  .glow--a {
-    width: 540px;
-    height: 540px;
-    top: -160px;
-    right: -120px;
-    background: radial-gradient(circle, rgba(236, 108, 135, 0.16), transparent 70%);
+  .success__glow-b {
+    width: 520px; height: 520px;
+    bottom: -160px; left: -160px;
+    background: radial-gradient(circle, rgba(249, 212, 220, 0.25), transparent 65%);
+    z-index: -1;
   }
-  .glow--b {
-    width: 460px;
-    height: 460px;
-    bottom: -120px;
-    left: -120px;
-    background: radial-gradient(circle, rgba(244, 163, 179, 0.14), transparent 70%);
+  .success__inner {
+    text-align: center;
+    position: relative; z-index: 1;
   }
   .success__icon {
     display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 72px;
-    height: 72px;
+    align-items: center; justify-content: center;
+    width: 80px; height: 80px;
     border-radius: 50%;
-    color: var(--color-deep);
+    color: var(--color-primary);
     margin-bottom: 1.75rem;
   }
   .success__title {
-    margin-bottom: 1.25rem;
+    margin: 1rem 0 1.25rem;
   }
   .success__sub {
-    margin-bottom: 2.5rem;
+    margin: 0 auto 2.5rem;
   }
   .success__card {
     text-align: left;
     max-width: 480px;
     margin: 0 auto 2rem;
+    padding: clamp(1.75rem, 3vw, 2.25rem);
+    border-radius: var(--radius-3xl);
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-    padding: clamp(1.5rem, 3vw, 2rem);
-    border-radius: 24px;
+    gap: 1.1rem;
+    align-items: flex-start;
   }
-  .success__card h3 {
-    font-family: var(--font-serif);
-    font-size: 1.2rem;
-    font-weight: 400;
-    color: var(--color-ink);
-    letter-spacing: -0.02em;
-    line-height: 1.3;
+  .success__card-title {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--color-foreground);
+    letter-spacing: -0.025em;
+    line-height: 1.25;
+    margin: 0;
   }
   .success__meta {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
     padding-top: 1rem;
-    border-top: 1px solid var(--color-hairline);
+    border-top: 1px solid var(--glass-border-pink);
     margin: 0;
+    width: 100%;
   }
   .success__meta div {
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
+    display: flex; flex-direction: column;
+    gap: 0.3rem;
   }
   .success__meta dt {
-    font-size: 0.66rem;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--color-deep);
-    font-weight: 600;
+    font-size: 0.68rem;
+    color: var(--color-muted-foreground);
+    font-weight: 500;
   }
   .success__meta dd {
-    font-family: var(--font-serif);
-    font-size: 1rem;
-    color: var(--color-ink);
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--color-foreground);
     margin: 0;
+    letter-spacing: -0.02em;
   }
   .success__actions {
-    display: flex;
-    gap: 0.8rem;
-    justify-content: center;
-    flex-wrap: wrap;
+    display: flex; gap: 0.75rem;
+    justify-content: center; flex-wrap: wrap;
   }
 
   @media (max-width: 480px) {

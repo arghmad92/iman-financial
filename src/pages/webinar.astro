@@ -1,32 +1,13 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Accordion from '../components/Accordion.astro';
 
 const learn = [
-  {
-    num: '01',
-    title: 'Kenapa freelancer kena declare cukai',
-    desc: 'Dan apa jadi kalau tak declare. Spoiler: LHDN boleh track income korang.',
-  },
-  {
-    num: '02',
-    title: 'Cara kira income & expenses',
-    desc: 'Apa yang boleh claim sebagai business expense, phone bill, internet, equipment, travel, dan banyak lagi.',
-  },
-  {
-    num: '03',
-    title: 'Step-by-step isi e-Filing LHDN',
-    desc: 'Dari register sampai submit. Live demo so korang boleh follow along.',
-  },
-  {
-    num: '04',
-    title: 'Cukai vs SSM vs PCB',
-    desc: 'Beza semua ni dan mana yang wajib untuk korang sebagai freelancer atau content creator.',
-  },
-  {
-    num: '05',
-    title: 'Tips simpan duit untuk cukai',
-    desc: 'Supaya tak panik bila musim tax. Simple system yang korang boleh start hari ni.',
-  },
+  { num: '01', title: 'Kenapa freelancer kena declare cukai', desc: 'Dan apa jadi kalau tak declare. Spoiler: LHDN boleh track income korang.' },
+  { num: '02', title: 'Cara kira income & expenses', desc: 'Apa yang boleh claim sebagai business expense, phone bill, internet, equipment, travel, dan banyak lagi.' },
+  { num: '03', title: 'Step-by-step isi e-Filing LHDN', desc: 'Dari register sampai submit. Live demo so korang boleh follow along.' },
+  { num: '04', title: 'Cukai vs SSM vs PCB', desc: 'Beza semua ni dan mana yang wajib untuk korang sebagai freelancer atau content creator.' },
+  { num: '05', title: 'Tips simpan duit untuk cukai', desc: 'Supaya tak panik bila musim tax. Simple system yang korang boleh start hari ni.' },
 ];
 
 const forWho = [
@@ -39,230 +20,304 @@ const forWho = [
 ];
 
 const faqs = [
-  {
-    q: 'Akan ada recording tak?',
-    a: 'Ya! Semua yang dah bayar akan dapat recording link via email dalam masa 48 jam selepas webinar. Link tu valid untuk 7 hari.',
-  },
-  {
-    q: 'Boleh refund tak kalau tak boleh join?',
-    a: 'Refund boleh dibuat sehingga 24 jam sebelum webinar. Lepas tu, korang akan dapat recording sebagai pengganti.',
-  },
-  {
-    q: 'Kena ada background accounting ke?',
-    a: 'Langsung tak perlu! Webinar ni memang untuk beginners. Kami explain semua dari basic.',
-  },
-  {
-    q: 'Macam mana nak join on the day?',
-    a: 'Korang akan dapat Zoom link via email selepas bayar. On the day, just click the link 5 minit sebelum start.',
-  },
-  {
-    q: 'Ada Q&A session tak?',
-    a: 'Yes! Last 15–20 minit will be open for Q&A. Korang boleh tanya apa-apa pasal cukai dan kewangan.',
-  },
+  { q: 'Akan ada recording tak?', a: 'Ya! Semua yang dah bayar akan dapat recording link via email dalam masa 48 jam selepas webinar. Link tu valid untuk 7 hari.' },
+  { q: 'Boleh refund tak kalau tak boleh join?', a: 'Refund boleh dibuat sehingga 24 jam sebelum webinar. Lepas tu, korang akan dapat recording sebagai pengganti.' },
+  { q: 'Kena ada background accounting ke?', a: 'Langsung tak perlu! Webinar ni memang untuk beginners. Kami explain semua dari basic.' },
+  { q: 'Macam mana nak join on the day?', a: 'Korang akan dapat Zoom link via email selepas bayar. On the day, just click the link 5 minit sebelum start.' },
+  { q: 'Ada Q&A session tak?', a: 'Yes! Last 15–20 minit will be open for Q&A. Korang boleh tanya apa-apa pasal cukai dan kewangan.' },
 ];
 ---
 
 <Layout
   title="Cashflow Girlies · Webinar | Iman Abdul Rahim"
-  description="Cara uruskan cukai for freelancers & content creators. Live webinar on 10 April 2026, 8PM."
+  description="Cara uruskan cukai for freelancers & content creators. Live webinar on 22 May 2026, 8PM."
 >
   <!-- =================== HERO =================== -->
   <section class="hero">
-    <div class="glow glow--a" aria-hidden="true"></div>
-    <div class="glow glow--b" aria-hidden="true"></div>
-    <div class="glow glow--c" aria-hidden="true"></div>
+    <div class="glow hero__glow-a" aria-hidden="true"></div>
+    <div class="glow hero__glow-b" aria-hidden="true"></div>
 
-    <div class="container-x hero__inner text-center">
-      <span class="chip chip--rose hero__chip">● Live Webinar</span>
-      <h1 class="h-display hero__title">
-        Cashflow <em>Girlies.</em>
+    <div class="container-x hero__inner">
+      <span class="hero__eyebrow">
+        <span class="dot" aria-hidden="true"></span> Live Webinar
+      </span>
+      <h1 class="h-display h-display--xl hero__title text-balance">
+        Cashflow <span class="pink">Girlies.</span>
       </h1>
-      <p class="lede lede--center hero__lede">
+      <p class="lede lede--xl lede--center hero__lede text-balance">
         Cara uruskan cukai untuk freelancers &amp; content creators. Tax rules,
         demystified, in plain language.
       </p>
 
-      <ul class="hero__meta">
+      <p class="sr-only" id="webinar-meta">
+        Webinar starts 22 May 2026 at 8 PM Malaysia time, hosted on Zoom.
+      </p>
+
+      <ul class="meta" aria-describedby="webinar-meta">
         <li>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-          10 April 2026
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="4" width="18" height="18" rx="2" />
+            <line x1="16" y1="2" x2="16" y2="6" />
+            <line x1="8" y1="2" x2="8" y2="6" />
+            <line x1="3" y1="10" x2="21" y2="10" />
+          </svg>
+          22 May 2026
         </li>
         <li>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="10" />
+            <polyline points="12 6 12 12 16 14" />
+          </svg>
           8:00 PM (MYT)
         </li>
         <li>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15 10l5 5-5 5"/><path d="M4 4v7a4 4 0 0 0 4 4h12"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="2" y="6" width="14" height="12" rx="2" />
+            <polyline points="22 8 16 12 22 16 22 8" />
+          </svg>
           Via Zoom
         </li>
       </ul>
 
-      <!-- Countdown -->
-      <div class="countdown glass" id="countdown" aria-live="polite">
-        <div class="cd-item">
-          <span class="cd-num" id="cdDays">--</span>
-          <span class="cd-label">Days</span>
-        </div>
-        <div class="cd-sep" aria-hidden="true">·</div>
-        <div class="cd-item">
-          <span class="cd-num" id="cdHours">--</span>
-          <span class="cd-label">Hrs</span>
-        </div>
-        <div class="cd-sep" aria-hidden="true">·</div>
-        <div class="cd-item">
-          <span class="cd-num" id="cdMins">--</span>
-          <span class="cd-label">Min</span>
-        </div>
-        <div class="cd-sep" aria-hidden="true">·</div>
-        <div class="cd-item">
-          <span class="cd-num" id="cdSecs">--</span>
-          <span class="cd-label">Sec</span>
-        </div>
+      <div class="hero__actions">
+        <a href="#register" class="btn btn--primary btn--lg">Secure my spot</a>
+        <a href="#learn" class="btn btn--glass btn--lg btn--arrow">
+          What you'll learn
+        </a>
       </div>
-
-      <div class="tiers">
-        <div class="tier tier--featured">
-          <span class="tier__label">Early bird</span>
-          <span class="tier__amt">RM29</span>
-          <span class="tier__note">First 20 seats only</span>
-        </div>
-        <div class="tier glass">
-          <span class="tier__label">Regular</span>
-          <span class="tier__amt"><s>RM39</s></span>
-          <span class="tier__note">After first 20</span>
-        </div>
-      </div>
-
-      <a href="#register" class="btn btn--rose btn--lg">Secure my spot</a>
-      <p class="hero__small">Limited seats available · Secure payment via FPX</p>
     </div>
   </section>
 
-  <!-- =================== LEARN =================== -->
-  <section class="section" id="learn">
+  <!-- =================== COUNTDOWN — dramatic =================== -->
+  <section class="section section--sm" id="countdown-section">
+    <div class="container-tight">
+      <div class="sec-head text-center sec-head--tight">
+        <span class="eyebrow eyebrow--center">Event begins in</span>
+      </div>
+
+      <div class="countdown" id="countdown" aria-hidden="true">
+        <div class="cd-cell">
+          <span class="cd-num tabular" id="cdDays">--</span>
+          <span class="cd-label">Days</span>
+        </div>
+        <span class="cd-sep" aria-hidden="true">:</span>
+        <div class="cd-cell">
+          <span class="cd-num tabular" id="cdHours">--</span>
+          <span class="cd-label">Hours</span>
+        </div>
+        <span class="cd-sep" aria-hidden="true">:</span>
+        <div class="cd-cell">
+          <span class="cd-num tabular" id="cdMins">--</span>
+          <span class="cd-label">Minutes</span>
+        </div>
+        <span class="cd-sep" aria-hidden="true">:</span>
+        <div class="cd-cell">
+          <span class="cd-num tabular" id="cdSecs">--</span>
+          <span class="cd-label">Seconds</span>
+        </div>
+      </div>
+
+      <p class="cd-footnote text-center">
+        Early bird seats go fast &middot;
+        <a href="#pricing" class="cd-link">See pricing</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- =================== PRICING =================== -->
+  <section class="section" id="pricing">
     <div class="container-x">
-      <div class="section__intro">
-        <span class="eyebrow">What you'll learn</span>
-        <h2 class="h-section">
-          Benda yang <em>korang kena tahu.</em>
+      <div class="sec-head text-center">
+        <span class="eyebrow eyebrow--center">Pricing</span>
+        <h2 class="h-section text-balance">
+          Pilih seat <span class="pink">korang.</span>
         </h2>
-        <p class="lede">
-          Tak kisah korang baru start freelance atau dah lama buat content, cukai ni benda yang ramai ignore sampai kena penalty.
+        <p class="lede lede--center text-balance">
+          Early bird RM29 for the first 20 seats. After that, regular pricing
+          applies.
         </p>
       </div>
 
-      <ul class="learn">
-        {
-          learn.map((l) => (
-            <li class="lcard glass">
-              <span class="lcard__num">{l.num}</span>
-              <h3 class="lcard__title">{l.title}</h3>
-              <p class="lcard__desc">{l.desc}</p>
+      <div class="pricing-grid">
+        <div class="pricing-card pricing-card--featured">
+          <div class="pricing-card__head">
+            <span class="badge badge--pink">Early bird</span>
+            <span class="pricing-card__note">First 20 seats only</span>
+          </div>
+          <div class="pricing-card__amt">
+            <span class="pricing-card__currency">RM</span>
+            <span class="pricing-card__num tabular">29</span>
+          </div>
+          <ul class="pricing-card__features">
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              Live 90-min webinar
             </li>
-          ))
-        }
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              Recording for 7 days
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              Live Q&amp;A session
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              e-Filing checklist (PDF)
+            </li>
+          </ul>
+          <a href="#register" class="btn btn--primary btn--full btn--arrow">
+            Secure my spot
+          </a>
+        </div>
+
+        <div class="pricing-card">
+          <div class="pricing-card__head">
+            <span class="badge">Regular</span>
+            <span class="pricing-card__note">After first 20 seats</span>
+          </div>
+          <div class="pricing-card__amt">
+            <span class="pricing-card__currency">RM</span>
+            <span class="pricing-card__num tabular">39</span>
+          </div>
+          <ul class="pricing-card__features">
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              Live 90-min webinar
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              Recording for 7 days
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              Live Q&amp;A session
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              e-Filing checklist (PDF)
+            </li>
+          </ul>
+          <a href="#register" class="btn btn--outline btn--full">
+            Register
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== LEARN — bento (first card wide) =================== -->
+  <section class="section" id="learn">
+    <div class="container-x">
+      <div class="sec-head text-center">
+        <span class="eyebrow eyebrow--center">What you'll learn</span>
+        <h2 class="h-section text-balance">
+          Benda yang <span class="pink">korang kena tahu.</span>
+        </h2>
+        <p class="lede lede--center text-balance">
+          Tak kisah korang baru start freelance atau dah lama buat content,
+          cukai ni benda yang ramai ignore sampai kena penalty.
+        </p>
+      </div>
+
+      <ul class="bento-feat">
+        {learn.map((l, idx) => (
+          <li class:list={['bento-feat__card', idx === 0 && 'bento-feat__card--wide']}>
+            <span class="bento-feat__num">{l.num}</span>
+            <h3 class="bento-feat__title">{l.title}</h3>
+            <p class="bento-feat__desc">{l.desc}</p>
+          </li>
+        ))}
       </ul>
     </div>
   </section>
 
-  <!-- =================== FOR WHO =================== -->
+  <!-- =================== WHO — checklist card =================== -->
   <section class="section">
-    <div class="container-tight text-center">
-      <span class="eyebrow eyebrow--center">Who it's for</span>
-      <h2 class="h-section" style="margin-top:1rem">
-        Webinar ni untuk korang <em>kalau…</em>
-      </h2>
+    <div class="container-tight">
+      <div class="sec-head text-center">
+        <span class="eyebrow eyebrow--center">Who it's for</span>
+        <h2 class="h-section text-balance">
+          Webinar ni untuk korang <span class="pink">kalau…</span>
+        </h2>
+      </div>
 
-      <ul class="whogrid">
-        {forWho.map((w) => <li class="glass">{w}</li>)}
-      </ul>
+      <div class="who-card glass-strong">
+        <ul class="who-list">
+          {forWho.map((w) => (
+            <li class="who-item">
+              <span class="who-item__tick" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+              </span>
+              <span>{w}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   </section>
 
   <!-- =================== SPEAKER =================== -->
   <section class="section">
     <div class="container-tight">
-      <div class="speaker glass-ink">
-        <div class="speaker__grid">
-          <div>
-            <span class="eyebrow eyebrow--light">Your host</span>
-            <h2 class="h-section speaker__title">
-              Iman <em>Abdul Rahim.</em>
-            </h2>
-            <p class="speaker__desc">
-              Licensed Financial Planner (CFP, IFP) yang dah bantu ramai
-              Malaysians uruskan kewangan. From budgeting basics to full
-              financial planning, I simplify the complicated stuff so korang
-              boleh focus on buat duit.
-            </p>
-            <div class="speaker__chips">
-              <span class="chip chip--on-dark">CFP® Certified</span>
-              <span class="chip chip--on-dark">SC Licensed</span>
-              <span class="chip chip--on-dark">BNM Licensed</span>
-            </div>
-          </div>
+      <div class="speaker">
+        <span class="eyebrow" style="color:#f0a8bc">Your host</span>
+        <h2 class="h-section speaker__title text-balance">
+          Iman <span class="cta-pink">Abdul Rahim.</span>
+        </h2>
+        <p class="speaker__desc">
+          Licensed Financial Planner (CFP, IFP) yang dah bantu ramai Malaysians
+          uruskan kewangan. From budgeting basics to full financial planning, I
+          simplify the complicated stuff so korang boleh focus on buat duit.
+        </p>
+        <div class="speaker__chips">
+          <span class="badge badge--on-ink">CFP® Certified</span>
+          <span class="badge badge--on-ink">SC Licensed</span>
+          <span class="badge badge--on-ink">BNM Licensed</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- =================== REGISTRATION =================== -->
+  <!-- =================== REGISTER =================== -->
   <section class="section" id="register">
     <div class="container-narrow">
-      <div class="section__intro section__intro--center">
+      <div class="sec-head text-center">
         <span class="eyebrow eyebrow--center">Register</span>
-        <h2 class="h-section">
-          Secure your <em>spot.</em>
+        <h2 class="h-section text-balance">
+          Secure your <span class="pink">spot.</span>
         </h2>
         <p class="lede lede--center">
           Early bird RM29 for the first 20. After that, it's RM39.
         </p>
       </div>
 
-      <form class="reg glass" id="regForm">
-        <div class="reg__group">
-          <label for="regName" class="reg__label">Full name</label>
-          <input
-            type="text"
-            class="reg__input"
-            id="regName"
-            placeholder="e.g. Siti Nurhaliza"
-            required
-            style="text-transform:capitalize"
-            autocapitalize="words"
-          />
+      <form class="reg glass-strong" id="regForm" novalidate>
+        <div class="field">
+          <label for="regName" class="field__label">Full name</label>
+          <input type="text" class="input" id="regName" name="name" placeholder="e.g. Siti Nurhaliza" required autocomplete="name" autocapitalize="words" />
         </div>
-        <div class="reg__group">
-          <label for="regEmail" class="reg__label">Email</label>
-          <input
-            type="email"
-            class="reg__input"
-            id="regEmail"
-            placeholder="siti@gmail.com"
-            required
-          />
+        <div class="field">
+          <label for="regEmail" class="field__label">Email</label>
+          <input type="email" class="input" id="regEmail" name="email" placeholder="siti@gmail.com" required autocomplete="email" inputmode="email" />
         </div>
-        <div class="reg__group">
-          <label for="regPhone" class="reg__label">Phone (WhatsApp)</label>
-          <input
-            type="tel"
-            class="reg__input"
-            id="regPhone"
-            placeholder="0123456789"
-            required
-          />
+        <div class="field">
+          <label for="regPhone" class="field__label">Phone (WhatsApp)</label>
+          <input type="tel" class="input" id="regPhone" name="phone" placeholder="0123456789" required autocomplete="tel" inputmode="tel" />
         </div>
 
-        <div id="regError" class="reg__error" role="alert" aria-live="polite" style="display:none">
-          <svg class="reg__error-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <circle cx="12" cy="12" r="10"/>
-            <line x1="12" y1="8" x2="12" y2="12"/>
-            <line x1="12" y1="16" x2="12.01" y2="16"/>
+        <div id="regError" class="alert alert--error" role="alert" aria-live="polite" hidden>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="8" x2="12" y2="12"></line>
+            <line x1="12" y1="16" x2="12.01" y2="16"></line>
           </svg>
           <span id="regErrorText"></span>
         </div>
 
-        <button type="submit" class="btn btn--rose btn--lg reg__btn" id="regBtn">
+        <button type="submit" class="btn btn--primary btn--lg btn--full" id="regBtn">
           Register &amp; Pay · RM29
         </button>
         <p class="reg__note">
@@ -276,25 +331,14 @@ const faqs = [
   <!-- =================== FAQ =================== -->
   <section class="section">
     <div class="container-tight">
-      <div class="faq-card glass">
-        <div class="section__intro">
-          <span class="eyebrow">FAQ</span>
-          <h2 class="h-section">
-            Soalan <em>lazim.</em>
-          </h2>
-        </div>
-        <div class="faq">
-          {
-            faqs.map((f) => (
-              <details>
-                <summary>{f.q}</summary>
-                <div class="faq__a">
-                  <p>{f.a}</p>
-                </div>
-              </details>
-            ))
-          }
-        </div>
+      <div class="sec-head">
+        <span class="eyebrow">FAQ</span>
+        <h2 class="h-section text-balance">
+          Soalan <span class="pink">lazim.</span>
+        </h2>
+      </div>
+      <div class="faq-card glass-strong">
+        <Accordion items={faqs} />
       </div>
     </div>
   </section>
@@ -302,60 +346,63 @@ const faqs = [
   <!-- =================== FINAL CTA =================== -->
   <section class="section">
     <div class="container-narrow">
-      <div class="finalcta glass-ink text-center">
-        <span class="eyebrow eyebrow--center eyebrow--light">Don't miss out</span>
-        <h2 class="h-section finalcta__title">
-          Jangan tunggu sampai<br /><em>kena penalty.</em>
+      <div class="finalcta">
+        <span class="eyebrow" style="color:#f0a8bc">Don't miss out</span>
+        <h2 class="h-section finalcta__title text-balance">
+          Jangan tunggu sampai <span class="cta-pink">kena penalty.</span>
         </h2>
         <p class="finalcta__sub">
           RM29 je untuk ilmu yang boleh save korang thousands. Limited seats.
         </p>
-        <a href="#register" class="btn btn--on-dark btn--lg">Secure my spot</a>
+        <a href="#register" class="btn btn--on-ink btn--lg btn--arrow">Secure my spot</a>
       </div>
     </div>
   </section>
 </Layout>
 
 <script>
-  const target = new Date('2026-04-10T20:00:00+08:00').getTime();
-  function updateCountdown() {
-    const now = Date.now();
-    const diff = target - now;
-    const el = document.getElementById('countdown');
+  const target = new Date('2026-05-22T20:00:00+08:00').getTime();
+  const el = document.getElementById('countdown');
+  const $d = document.getElementById('cdDays');
+  const $h = document.getElementById('cdHours');
+  const $m = document.getElementById('cdMins');
+  const $s = document.getElementById('cdSecs');
+  function tick() {
     if (!el) return;
+    const diff = target - Date.now();
     if (diff <= 0) {
-      el.innerHTML =
-        '<p style="color:var(--color-deep);font-weight:500;font-family:var(--font-serif);font-size:1.2rem;padding:0.5rem 1rem">Webinar has started!</p>';
+      el.innerHTML = '<p class="cd-done">Webinar has started!</p>';
       return;
     }
-    const d = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-    const s = Math.floor((diff % (1000 * 60)) / 1000);
-    document.getElementById('cdDays')!.textContent = String(d).padStart(2, '0');
-    document.getElementById('cdHours')!.textContent = String(h).padStart(2, '0');
-    document.getElementById('cdMins')!.textContent = String(m).padStart(2, '0');
-    document.getElementById('cdSecs')!.textContent = String(s).padStart(2, '0');
+    const d = Math.floor(diff / 86400000);
+    const h = Math.floor((diff % 86400000) / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+    if ($d) $d.textContent = String(d).padStart(2, '0');
+    if ($h) $h.textContent = String(h).padStart(2, '0');
+    if ($m) $m.textContent = String(m).padStart(2, '0');
+    if ($s) $s.textContent = String(s).padStart(2, '0');
   }
-  updateCountdown();
-  setInterval(updateCountdown, 1000);
+  tick();
+  setInterval(tick, 1000);
 
-  document.getElementById('regForm')!.addEventListener('submit', async (e) => {
+  const form = document.getElementById('regForm') as HTMLFormElement | null;
+  form?.addEventListener('submit', async (e) => {
     e.preventDefault();
     const btn = document.getElementById('regBtn') as HTMLButtonElement;
-    const errEl = document.getElementById('regError')!;
-    errEl.style.display = 'none';
+    const errEl = document.getElementById('regError') as HTMLElement;
+    const errText = document.getElementById('regErrorText') as HTMLElement;
+    errEl.hidden = true;
 
     const name = (document.getElementById('regName') as HTMLInputElement).value.trim();
     const email = (document.getElementById('regEmail') as HTMLInputElement).value.trim();
     const phone = (document.getElementById('regPhone') as HTMLInputElement).value.trim();
 
     if (!name || !email || !phone) {
-      errEl.style.display = '';
-      document.getElementById('regErrorText')!.textContent = 'Please fill in all fields.';
+      errEl.hidden = false;
+      errText.textContent = 'Please fill in all fields.';
       return;
     }
-
     btn.disabled = true;
     btn.textContent = 'Processing…';
 
@@ -366,18 +413,17 @@ const faqs = [
         body: JSON.stringify({ name, email, phone }),
       });
       const data = await res.json();
-
       if (data.paymentUrl) {
         window.location.href = data.paymentUrl;
       } else {
-        errEl.style.display = '';
-        document.getElementById('regErrorText')!.textContent = data.error || 'Something went wrong. Please try again.';
+        errEl.hidden = false;
+        errText.textContent = data.error || 'Something went wrong. Please try again.';
         btn.disabled = false;
         btn.textContent = 'Register & Pay · RM29';
       }
     } catch {
-      errEl.style.display = '';
-      document.getElementById('regErrorText')!.textContent = 'Connection error. Please try again.';
+      errEl.hidden = false;
+      errText.textContent = 'Connection error. Please try again.';
       btn.disabled = false;
       btn.textContent = 'Register & Pay · RM29';
     }
@@ -385,354 +431,413 @@ const faqs = [
 </script>
 
 <style>
-  /* =================== HERO =================== */
+  /* ---------- Hero ---------- */
   .hero {
+    padding: clamp(3rem, 6vw, 6rem) 0 clamp(2rem, 4vw, 3rem);
     position: relative;
-    padding: clamp(8rem, 14vw, 12rem) 0 clamp(4rem, 7vw, 6rem);
     overflow: hidden;
     isolation: isolate;
   }
-  .glow {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(90px);
-    pointer-events: none;
+  .hero__glow-a {
+    width: 640px; height: 640px; top: -180px; right: -160px;
+    background: radial-gradient(circle, rgba(196, 69, 105, 0.08), transparent 65%);
     z-index: -1;
   }
-  .glow--a {
-    width: 480px;
-    height: 480px;
-    top: -100px;
-    right: -100px;
-    background: radial-gradient(circle, rgba(236, 108, 135, 0.18), transparent 70%);
-  }
-  .glow--b {
-    width: 420px;
-    height: 420px;
-    bottom: -100px;
-    left: -120px;
-    background: radial-gradient(circle, rgba(244, 163, 179, 0.14), transparent 70%);
-  }
-  .glow--c {
-    width: 360px;
-    height: 360px;
-    top: 30%;
-    left: 50%;
-    transform: translateX(-50%);
-    background: radial-gradient(circle, rgba(249, 212, 220, 0.14), transparent 70%);
+  .hero__glow-b {
+    width: 520px; height: 520px; bottom: -160px; left: -160px;
+    background: radial-gradient(circle, rgba(249, 212, 220, 0.25), transparent 65%);
+    z-index: -1;
   }
   .hero__inner {
-    max-width: 760px;
+    text-align: center;
+    position: relative; z-index: 1;
   }
-  .hero__chip { margin-bottom: 1.5rem; }
-  .hero__title { margin-bottom: 1rem; }
-  .hero__lede {
-    margin: 0 auto 2rem;
+  .hero__eyebrow {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.45rem 1rem;
+    background: var(--glass-strong);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border);
+    border-radius: 999px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--color-primary);
+    margin-bottom: 1.75rem;
+    box-shadow: var(--shadow-glass);
   }
-  .hero__meta {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    gap: 1.5rem;
-    flex-wrap: wrap;
-    color: var(--color-ink-2);
-    font-size: 0.9rem;
-    margin: 0 0 2rem;
+  .dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--color-primary);
+    box-shadow: 0 0 0 4px rgba(196, 69, 105, 0.16);
   }
-  .hero__meta li {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.45rem;
-  }
-  .hero__meta svg {
-    color: var(--color-deep);
-  }
+  .hero__title { margin: 0 auto; }
+  .hero__lede { margin: 1.75rem auto 2rem; }
 
-  .countdown {
+  .meta {
+    list-style: none; padding: 0;
+    margin: 0 auto 2.5rem;
     display: inline-flex;
-    align-items: center;
-    gap: 0.7rem;
-    padding: 1rem 1.5rem;
-    border-radius: 20px;
-    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    justify-content: center;
+    align-items: stretch;
+    padding: 0.4rem;
+    background: var(--glass-strong);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border);
+    border-radius: 999px;
+    box-shadow: var(--shadow-glass);
   }
-  .cd-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    line-height: 1;
-    min-width: 48px;
-  }
-  .cd-num {
-    font-family: var(--font-serif);
-    font-size: 1.85rem;
-    font-weight: 400;
-    color: var(--color-ink);
-    letter-spacing: -0.02em;
-    font-variant-numeric: tabular-nums;
-  }
-  .cd-label {
-    font-size: 0.66rem;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--color-ink-3);
-    margin-top: 0.4rem;
+  .meta li {
+    display: inline-flex; align-items: center;
+    gap: 0.45rem;
+    padding: 0.4rem 0.9rem;
+    color: var(--color-foreground);
+    font-size: 0.88rem;
     font-weight: 500;
   }
-  .cd-sep {
-    color: var(--color-rose);
-    font-size: 1.1rem;
-    margin-top: -0.3rem;
+  .meta svg {
+    color: var(--color-primary);
+    flex-shrink: 0;
   }
 
-  .tiers {
-    display: inline-flex;
-    gap: 0.7rem;
-    margin-bottom: 2rem;
-    flex-wrap: wrap;
+  .hero__actions {
+    display: flex; gap: 0.75rem; flex-wrap: wrap;
     justify-content: center;
   }
-  .tier {
-    border-radius: 16px;
-    padding: 0.95rem 1.3rem;
-    text-align: left;
-    min-width: 150px;
-    opacity: 0.7;
+
+  /* ---------- Countdown (dramatic) ---------- */
+  .sec-head--tight {
+    margin-bottom: 1.75rem !important;
   }
-  .tier--featured {
-    opacity: 1;
-    background: var(--color-ink);
-    color: var(--color-paper);
-    border: 1px solid var(--color-ink);
+  .countdown {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
+    align-items: center;
+    gap: clamp(0.5rem, 1.5vw, 1.25rem);
+    padding: clamp(1.5rem, 3.5vw, 2.5rem) clamp(1.5rem, 3vw, 2.5rem);
+    background: var(--glass-strong);
+    backdrop-filter: var(--glass-blur-strong);
+    -webkit-backdrop-filter: var(--glass-blur-strong);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-3xl);
+    box-shadow: var(--shadow-glass-lg);
+    max-width: 720px;
+    margin: 0 auto;
   }
-  .tier__label {
-    display: block;
-    font-size: 0.65rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
+  .cd-cell {
+    display: flex; flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    text-align: center;
+  }
+  .cd-num {
+    font-family: var(--font-display);
+    font-size: clamp(2.6rem, 7vw, 4.6rem);
     font-weight: 600;
-    color: var(--color-deep);
-    margin-bottom: 0.3rem;
+    color: var(--color-foreground);
+    letter-spacing: -0.05em;
+    line-height: 0.9;
   }
-  .tier--featured .tier__label {
-    color: var(--color-rose);
+  .cd-label {
+    font-size: clamp(0.62rem, 1.1vw, 0.74rem);
+    color: var(--color-muted-foreground);
+    font-weight: 500;
+    letter-spacing: 0.04em;
   }
-  .tier__amt {
-    display: block;
-    font-family: var(--font-serif);
-    font-size: 1.55rem;
-    font-weight: 400;
-    line-height: 1;
-    letter-spacing: -0.02em;
+  .cd-sep {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 5vw, 3.4rem);
+    color: var(--color-primary);
+    font-weight: 300;
+    line-height: 0.9;
+    transform: translateY(-0.2em);
+    opacity: 0.6;
   }
-  .tier__note {
-    display: block;
-    font-size: 0.72rem;
-    color: var(--color-ink-3);
-    margin-top: 0.35rem;
+  .cd-footnote {
+    margin-top: 1.25rem;
+    font-size: 0.88rem;
+    color: var(--color-muted-foreground);
   }
-  .tier--featured .tier__note {
-    color: rgba(255, 250, 251, 0.6);
+  .cd-link {
+    color: var(--color-primary);
+    font-weight: 500;
+    transition: color 0.18s ease;
   }
-  .hero__small {
-    font-size: 0.78rem;
-    color: var(--color-ink-3);
-    margin-top: 1rem;
-    font-style: italic;
+  .cd-link:hover {
+    color: var(--color-rose-deep);
+  }
+  .cd-done {
+    grid-column: 1 / -1;
+    color: var(--color-primary);
+    font-weight: 600;
+    font-size: clamp(1.3rem, 2.4vw, 1.7rem);
+    margin: 0; padding: 0.5rem 0;
+  }
+  @media (max-width: 560px) {
+    .countdown {
+      grid-template-columns: repeat(4, 1fr);
+    }
+    .cd-sep {
+      display: none;
+    }
   }
 
-  /* =================== LEARN =================== */
-  .learn {
+  /* ---------- Pricing ---------- */
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(1rem, 2vw, 1.5rem);
+    max-width: 880px;
+    margin: 0 auto;
+  }
+  .pricing-card {
+    background: var(--glass-strong);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-3xl);
+    padding: clamp(2rem, 3.5vw, 2.75rem);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    box-shadow: var(--shadow-glass);
+    transition: box-shadow 0.25s ease, transform 0.25s ease;
+  }
+  .pricing-card:hover {
+    box-shadow: var(--shadow-glass-lg);
+    transform: translateY(-2px);
+  }
+  .pricing-card--featured {
+    background: linear-gradient(180deg, rgba(252, 231, 236, 0.65), rgba(255, 255, 255, 0.78));
+    border-color: rgba(196, 69, 105, 0.2);
+  }
+  .pricing-card__head {
+    display: flex; flex-direction: column;
+    gap: 0.5rem;
+  }
+  .pricing-card__note {
+    font-size: 0.86rem;
+    color: var(--color-muted-foreground);
+  }
+  .pricing-card__amt {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.25rem;
+    line-height: 1;
+    font-family: var(--font-display);
+  }
+  .pricing-card__currency {
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: var(--color-muted-foreground);
+  }
+  .pricing-card__num {
+    font-size: clamp(3.5rem, 7vw, 4.6rem);
+    font-weight: 600;
+    letter-spacing: -0.045em;
+    color: var(--color-foreground);
+  }
+  .pricing-card__features {
     list-style: none;
-    padding: 0;
+    padding: 1.5rem 0;
     margin: 0;
+    border-top: 1px solid var(--glass-border-pink);
+    border-bottom: 1px solid var(--glass-border-pink);
+    display: flex; flex-direction: column;
+    gap: 0.85rem;
+  }
+  .pricing-card__features li {
+    display: flex; align-items: center;
+    gap: 0.7rem;
+    font-size: 0.95rem;
+    color: var(--color-foreground);
+  }
+  .pricing-card__features svg {
+    color: var(--color-primary);
+    flex-shrink: 0;
+  }
+  @media (max-width: 720px) {
+    .pricing-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* ---------- Sec head ---------- */
+  .sec-head {
+    max-width: 760px;
+    margin-bottom: clamp(3rem, 5vw, 4.5rem);
+  }
+  .sec-head.text-center { margin-left: auto; margin-right: auto; }
+  .sec-head .h-section { margin-top: 1rem; }
+  .sec-head .lede { margin-top: 1.25rem; }
+  .sec-head.text-center .lede { margin-left: auto; margin-right: auto; }
+
+  /* ---------- Learn — bento with featured first card ---------- */
+  .bento-feat {
+    list-style: none; padding: 0; margin: 0;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 1.25rem;
+    gap: clamp(1rem, 2vw, 1.4rem);
   }
-  .lcard {
-    border-radius: 24px;
-    padding: 1.85rem;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  .lcard:hover {
-    transform: translateY(-3px);
-    box-shadow:
-      0 1px 0 rgba(255, 255, 255, 0.6) inset,
-      0 24px 56px -16px rgba(200, 70, 104, 0.24);
-  }
-  .lcard__num {
-    font-family: var(--font-serif);
-    font-style: italic;
-    font-size: 1.7rem;
-    color: var(--color-deep);
-    font-weight: 300;
-    display: block;
-    margin-bottom: 0.85rem;
-    line-height: 1;
-  }
-  .lcard__title {
-    font-family: var(--font-serif);
-    font-size: 1.15rem;
-    font-weight: 400;
-    color: var(--color-ink);
-    margin-bottom: 0.5rem;
-    letter-spacing: -0.015em;
-    line-height: 1.3;
-  }
-  .lcard__desc {
-    font-size: 0.9rem;
-    color: var(--color-ink-2);
-    line-height: 1.7;
-  }
-  @media (max-width: 860px) {
-    .learn { grid-template-columns: 1fr; }
-  }
-
-  /* =================== WHO =================== */
-  .whogrid {
-    list-style: none;
-    padding: 0;
-    margin: 2rem 0 0;
+  .bento-feat__card {
+    background: var(--glass-strong);
+    backdrop-filter: var(--glass-blur-strong);
+    -webkit-backdrop-filter: var(--glass-blur-strong);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-2xl);
+    padding: clamp(1.75rem, 3vw, 2.25rem);
+    box-shadow: var(--shadow-glass);
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    flex-direction: column;
     gap: 0.6rem;
   }
-  .whogrid li {
-    padding: 0.75rem 1.4rem;
-    border-radius: 999px;
-    font-size: 0.88rem;
-    color: var(--color-ink-2);
-    transition: color 0.2s ease, transform 0.2s ease;
+  .bento-feat__card--wide {
+    grid-column: span 2;
+    background: linear-gradient(135deg, rgba(252, 231, 236, 0.6), rgba(255, 255, 255, 0.78));
+    border-color: rgba(196, 69, 105, 0.18);
   }
-  .whogrid li:hover {
-    color: var(--color-deep);
-    transform: translateY(-1px);
+  .bento-feat__num {
+    display: inline-block;
+    padding: 0.32rem 0.7rem;
+    background: var(--color-primary);
+    color: var(--color-paper);
+    font-size: 0.78rem;
+    font-weight: 600;
+    border-radius: 999px;
+    font-variant-numeric: tabular-nums;
+    margin-bottom: 0.85rem;
+    width: fit-content;
+  }
+  .bento-feat__title {
+    font-family: var(--font-display);
+    font-size: clamp(1.25rem, 2vw, 1.55rem);
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    color: var(--color-foreground);
+    margin: 0;
+    line-height: 1.15;
+  }
+  .bento-feat__card--wide .bento-feat__title {
+    font-size: clamp(1.6rem, 2.6vw, 2rem);
+  }
+  .bento-feat__desc {
+    font-size: 0.95rem;
+    color: var(--color-ink-2);
+    line-height: 1.65;
+    margin: 0;
+    max-width: 52ch;
+  }
+  @media (max-width: 900px) {
+    .bento-feat { grid-template-columns: 1fr 1fr; }
+    .bento-feat__card--wide { grid-column: span 2; }
+  }
+  @media (max-width: 600px) {
+    .bento-feat { grid-template-columns: 1fr; }
+    .bento-feat__card--wide { grid-column: auto; }
   }
 
-  /* =================== SPEAKER =================== */
-  .speaker {
-    border-radius: 32px;
-    padding: clamp(2.5rem, 5vw, 4rem) clamp(1.75rem, 4vw, 3rem);
+  /* ---------- Who — checklist card ---------- */
+  .who-card {
+    border-radius: var(--radius-3xl);
+    padding: clamp(2rem, 4vw, 3rem);
   }
-  .speaker__grid {
-    max-width: 640px;
+  .who-list {
+    list-style: none; padding: 0; margin: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.1rem 2rem;
+  }
+  .who-item {
+    display: grid;
+    grid-template-columns: 24px 1fr;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.97rem;
+    color: var(--color-foreground);
+  }
+  .who-item__tick {
+    width: 24px; height: 24px;
+    border-radius: 50%;
+    background: var(--color-blush);
+    color: var(--color-primary);
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+  }
+  @media (max-width: 640px) {
+    .who-list { grid-template-columns: 1fr; }
+  }
+
+  /* ---------- Speaker ---------- */
+  .speaker {
+    background: var(--color-foreground);
+    color: var(--color-paper);
+    border-radius: var(--radius-3xl);
+    padding: clamp(2.5rem, 5vw, 4rem) clamp(2rem, 4vw, 3rem);
+    box-shadow: var(--shadow-ink);
   }
   .speaker__title {
     color: var(--color-paper);
-    margin-top: 1rem;
+    margin: 1rem 0 1.5rem;
   }
-  .speaker__title em {
-    color: var(--color-rose);
+  .cta-pink {
+    color: #f0a8bc;
   }
   .speaker__desc {
-    margin-top: 1.25rem;
-    font-size: 1rem;
-    color: rgba(255, 250, 251, 0.78);
-    line-height: 1.75;
-    margin-bottom: 1.5rem;
-    max-width: 58ch;
+    margin: 0 0 1.5rem;
+    font-size: 1.05rem;
+    color: rgba(255, 255, 255, 0.78);
+    line-height: 1.7;
+    max-width: 60ch;
   }
   .speaker__chips {
-    display: flex;
-    gap: 0.45rem;
-    flex-wrap: wrap;
+    display: flex; gap: 0.5rem; flex-wrap: wrap;
   }
 
-  /* =================== REGISTRATION =================== */
+  /* ---------- Form ---------- */
   .reg {
-    border-radius: 28px;
+    border-radius: var(--radius-3xl);
     padding: clamp(1.75rem, 3.5vw, 2.5rem);
-  }
-  .reg__group {
-    margin-bottom: 1rem;
-  }
-  .reg__label {
-    display: block;
-    font-size: 0.78rem;
-    font-weight: 500;
-    color: var(--color-ink);
-    margin-bottom: 0.45rem;
-    letter-spacing: 0.02em;
-  }
-  .reg__input {
-    width: 100%;
-    padding: 0.9rem 1.1rem;
-    border: 1px solid rgba(255, 255, 255, 0.7);
-    border-radius: 12px;
-    font-family: var(--font-sans);
-    font-size: 0.95rem;
-    color: var(--color-ink);
-    background: rgba(255, 255, 255, 0.6);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    outline: none;
-    transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
-  }
-  .reg__input:focus {
-    border-color: var(--color-deep);
-    background: rgba(255, 255, 255, 0.85);
-    box-shadow: 0 0 0 4px rgba(236, 108, 135, 0.18);
-  }
-  .reg__input::placeholder {
-    color: var(--color-ink-3);
-  }
-  .reg__error {
-    color: var(--color-deep);
-    font-size: 0.86rem;
-    background: rgba(252, 231, 235, 0.7);
-    padding: 0.75rem 1rem;
-    border-radius: 12px;
-    margin-bottom: 1rem;
-    display: flex !important;
-    align-items: center;
-    gap: 0.55rem;
-  }
-  .reg__error[style*="display:none"],
-  .reg__error[style*="display: none"] {
-    display: none !important;
-  }
-  .reg__error-icon {
-    flex-shrink: 0;
-    color: var(--color-deep);
-  }
-  .reg__btn {
-    width: 100%;
-    margin-top: 0.5rem;
+    display: flex; flex-direction: column;
+    gap: 1.1rem;
   }
   .reg__note {
-    font-size: 0.78rem;
-    color: var(--color-ink-2);
+    font-size: 0.84rem;
+    color: var(--color-muted-foreground);
     text-align: center;
-    margin-top: 1rem;
+    margin: 0.25rem 0 0;
     line-height: 1.6;
   }
 
-  /* =================== FAQ =================== */
+  /* ---------- FAQ ---------- */
   .faq-card {
-    border-radius: 32px;
-    padding: clamp(2rem, 4vw, 3.5rem);
+    border-radius: var(--radius-3xl);
+    padding: clamp(1.5rem, 3vw, 2.5rem) clamp(2rem, 4vw, 3rem);
   }
 
-  /* =================== FINAL CTA =================== */
+  /* ---------- Final CTA ---------- */
   .finalcta {
-    border-radius: 32px;
-    padding: clamp(2.5rem, 5vw, 4rem) clamp(1.75rem, 4vw, 3rem);
+    background: var(--color-foreground);
+    color: var(--color-paper);
+    border-radius: var(--radius-3xl);
+    padding: clamp(2.5rem, 5vw, 4rem) clamp(2rem, 4vw, 3rem);
+    text-align: center;
+    box-shadow: var(--shadow-ink);
   }
+  .finalcta .eyebrow { justify-content: center; }
   .finalcta__title {
     color: var(--color-paper);
-    margin-top: 1rem;
-  }
-  .finalcta__title em {
-    color: var(--color-rose);
+    margin: 1rem 0 1.5rem;
   }
   .finalcta__sub {
-    color: rgba(255, 250, 251, 0.78);
-    font-size: 1rem;
-    line-height: 1.7;
-    margin: 1.25rem auto 2.25rem;
+    color: rgba(255, 255, 255, 0.78);
+    font-size: 1.05rem;
+    line-height: 1.6;
+    margin: 0 auto 2rem;
     max-width: 48ch;
   }
 </style>

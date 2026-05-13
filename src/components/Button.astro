@@ -1,0 +1,53 @@
+---
+interface Props {
+  href?: string;
+  type?: 'button' | 'submit' | 'reset';
+  variant?: 'primary' | 'ink' | 'outline' | 'ghost' | 'on-ink';
+  size?: 'sm' | 'md' | 'lg';
+  arrow?: boolean;
+  full?: boolean;
+  target?: string;
+  rel?: string;
+  id?: string;
+  class?: string;
+  'aria-label'?: string;
+}
+
+const {
+  href,
+  type = 'button',
+  variant = 'primary',
+  size = 'md',
+  arrow = false,
+  full = false,
+  target,
+  rel,
+  id,
+  class: extraClass = '',
+  ...rest
+} = Astro.props;
+
+const classes = [
+  'btn',
+  `btn--${variant}`,
+  size === 'lg' && 'btn--lg',
+  size === 'sm' && 'btn--sm',
+  arrow && 'btn--arrow',
+  full && 'btn--full',
+  extraClass,
+]
+  .filter(Boolean)
+  .join(' ');
+---
+
+{
+  href ? (
+    <a href={href} class={classes} target={target} rel={rel} id={id} {...rest}>
+      <slot />
+    </a>
+  ) : (
+    <button type={type} class={classes} id={id} {...rest}>
+      <slot />
+    </button>
+  )
+}

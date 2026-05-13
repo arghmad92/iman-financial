@@ -1,0 +1,22 @@
+---
+interface Props {
+  center?: boolean;
+  onInk?: boolean;
+  class?: string;
+}
+
+const { center = false, onInk = false, class: extraClass = '' } = Astro.props;
+
+const classes = [
+  'eyebrow',
+  center && 'eyebrow--center',
+  onInk && 'eyebrow--on-ink',
+  extraClass,
+]
+  .filter(Boolean)
+  .join(' ');
+---
+
+<span class={classes}>
+  <slot />
+</span>

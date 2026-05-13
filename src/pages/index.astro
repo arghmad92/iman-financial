@@ -1,32 +1,85 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Accordion from '../components/Accordion.astro';
+
+const faqs = [
+  {
+    q: 'Financial Planner ni buat apa sebenarnya?',
+    a: [
+      'Licensed Financial Planner tolong individuals dan families buat keputusan kewangan yang informed supaya boleh capai life goals, melalui nasihat yang personalised dan structured.',
+      'Nasihat I always in your best interest, bukan nak push product. I juga tolong dengan implementation dan buat regular reviews supaya you stay on track.',
+    ],
+  },
+  {
+    q: 'Nasihat ni Shariah compliant ke?',
+    a: 'Yes, memang. I offer Shariah-compliant financial planning, termasuk Islamic investment portfolios, takaful, dan zakat planning. You boleh request supaya seluruh financial plan you Shariah-aligned.',
+  },
+  {
+    q: 'Info I confidential ke?',
+    a: 'Mestilah. I comply dengan PDPA regulations dan jaga confidentiality you dengan ketat. Semua data yang you share disimpan securely dan hanya digunakan untuk planning purposes dengan consent you.',
+  },
+  {
+    q: 'Berapa kos financial planning ni?',
+    a: 'Financial Health Check tu one-time session je, RM 350. Full Financial Planning pulak engagement 12 bulan, fees kita discuss masa initial consultation based on complexity. Jom book free discovery call dulu untuk tahu lebih lanjut.',
+  },
+  {
+    q: 'I baru grad, sesuai ke untuk I?',
+    a: 'Memang sesuai lah! Financial Health Check ni perfect untuk sesiapa yang baru nak start financial journey. You akan dapat clarity tentang where you stand sekarang dan actionable steps untuk move forward dengan yakin.',
+  },
+];
 ---
 
 <Layout title="Iman Abdul Rahim · Licensed Financial Planner | CFP® | IFP">
   <!-- =================== HERO =================== -->
   <section class="hero">
-    <div class="glow glow--a" aria-hidden="true"></div>
-    <div class="glow glow--b" aria-hidden="true"></div>
+    <div class="glow hero__glow-a" aria-hidden="true"></div>
+    <div class="glow hero__glow-b" aria-hidden="true"></div>
 
     <div class="container-x hero__inner">
-      <span class="eyebrow">Licensed Financial Planner · CFP® · IFP</span>
-      <h1 class="h-display hero__title">
+      <span class="hero__eyebrow">Licensed Financial Planner · CFP® · IFP</span>
+      <h1 class="h-display h-display--xl hero__title text-balance">
         Nak rancang kewangan?<br />
-        <em>Jom buat betul-betul.</em>
+        <span class="pink">Jom buat betul-betul.</span>
       </h1>
-      <p class="lede hero__lede">
+      <p class="lede lede--xl lede--center hero__lede text-balance">
         I bantu ladies macam you urus kewangan dengan strategi yang jelas dan
         nasihat yang personalised, tanpa bias, supaya you boleh buat keputusan
         kewangan dengan yakin, bijak, dan terancang.
       </p>
+      <div class="hero__actions">
+        <a
+          href="https://wa.me/60186617981"
+          target="_blank"
+          rel="noopener"
+          class="btn btn--primary btn--lg"
+        >
+          Book a call
+        </a>
+        <a href="#services" class="btn btn--glass btn--lg btn--arrow">
+          See services
+        </a>
+      </div>
+    </div>
 
-      <div class="hero__orb glass-pink" aria-hidden="true">
-        <svg viewBox="0 0 200 200" width="100%" height="100%">
-          <circle cx="100" cy="100" r="92" fill="none" stroke="currentColor" stroke-width="0.5" />
-          <circle cx="100" cy="100" r="68" fill="none" stroke="currentColor" stroke-width="0.5" />
-          <circle cx="100" cy="100" r="44" fill="none" stroke="currentColor" stroke-width="0.5" />
-          <circle cx="100" cy="100" r="20" fill="none" stroke="currentColor" stroke-width="0.5" />
-        </svg>
+    <!-- Trust card — Apple-style "specs strip" -->
+    <div class="container-x">
+      <div class="trust">
+        <div class="trust__item">
+          <span class="trust__label">Licensed by</span>
+          <span class="trust__val">SC &amp; BNM</span>
+        </div>
+        <div class="trust__item">
+          <span class="trust__label">Certifications</span>
+          <span class="trust__val">CFP® &middot; IFP</span>
+        </div>
+        <div class="trust__item">
+          <span class="trust__label">Experience</span>
+          <span class="trust__val">5 years</span>
+        </div>
+        <div class="trust__item">
+          <span class="trust__label">Approach</span>
+          <span class="trust__val">Fiduciary</span>
+        </div>
       </div>
     </div>
   </section>
@@ -34,348 +87,369 @@ import Layout from '../layouts/Layout.astro';
   <!-- =================== SERVICES =================== -->
   <section class="section" id="services">
     <div class="container-x">
-      <div class="section__intro">
-        <span class="eyebrow">Services</span>
-        <h2 class="h-section">
-          Macam mana I boleh <em>bantu you.</em>
+      <div class="sec-head text-center">
+        <span class="eyebrow eyebrow--center">Services</span>
+        <h2 class="h-section text-balance">
+          Macam mana I boleh <span class="pink">bantu you.</span>
         </h2>
-        <p class="lede">
+        <p class="lede lede--center text-balance">
           Dua cara untuk start financial planning journey you, pilih yang
           sesuai dengan keperluan you.
         </p>
       </div>
 
-      <div class="services">
-        <a href="/planning" class="service glass">
-          <div class="service__body">
-            <span class="chip chip--rose">12-month engagement</span>
-            <h3 class="service__title">Full Financial Planning</h3>
-            <p class="service__desc">
-              Engagement setahun yang cover semua aspek kewangan you secara
-              menyeluruh, daripada A to Z. Semua strategi dan solusi akan
-              di-customise ikut goals you, supaya kewangan you lebih tersusun,
-              jelas, dan on track untuk jangka masa panjang.
-            </p>
+      <div class="svc-grid">
+        <a href="/planning" class="svc">
+          <div class="svc__head">
+            <span class="badge badge--soft-pink">12-month engagement</span>
+            <span class="svc__price-amt tabular">RM 3,500</span>
           </div>
-          <div class="service__foot">
-            <span class="service__price">
-              <span class="service__price-amt">RM 3,500</span>
-              <span class="service__price-note">12-month</span>
-            </span>
-            <span class="service__cta">
-              Baca lagi <span aria-hidden="true">→</span>
-            </span>
-          </div>
+          <h3 class="svc__title">
+            Full Financial<br />Planning
+          </h3>
+          <p class="svc__desc">
+            Engagement setahun yang cover semua aspek kewangan you secara
+            menyeluruh, daripada A to Z. Semua strategi dan solusi akan
+            di-customise ikut goals you, supaya kewangan you lebih tersusun,
+            jelas, dan on track untuk jangka masa panjang.
+          </p>
+          <span class="svc__cta">
+            Baca lagi
+            <svg width="20" height="14" viewBox="0 0 20 14" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+              <line x1="0" y1="7" x2="18" y2="7" />
+              <polyline points="12 1 18 7 12 13" />
+            </svg>
+          </span>
         </a>
 
-        <a href="/fhc" class="service service--featured glass-ink">
-          <div class="service__body">
-            <span class="chip chip--on-dark">One-time review</span>
-            <h3 class="service__title">Financial Health Check</h3>
-            <p class="service__desc">
-              One-time financial review untuk check keadaan kewangan you secara
-              menyeluruh. You akan dapat insights yang jelas, objective, dan
-              tanpa product push, supaya you tahu apa yang dah okay, apa yang
-              perlu diperbaiki, dan macam mana nak betulkan.
-            </p>
+        <a href="/fhc" class="svc svc--featured">
+          <div class="svc__head">
+            <span class="badge badge--on-ink">One-time review</span>
+            <span class="svc__price-amt tabular">RM 350</span>
           </div>
-          <div class="service__foot">
-            <span class="service__price">
-              <span class="service__price-amt">RM 350</span>
-              <span class="service__price-note">One-time</span>
-            </span>
-            <span class="service__cta">
-              Book now <span aria-hidden="true">→</span>
-            </span>
-          </div>
+          <h3 class="svc__title">
+            Financial<br />Health Check
+          </h3>
+          <p class="svc__desc">
+            One-time financial review untuk check keadaan kewangan you secara
+            menyeluruh. You akan dapat insights yang jelas, objective, dan
+            tanpa product push, supaya you tahu apa yang dah okay, apa yang
+            perlu diperbaiki, dan macam mana nak betulkan.
+          </p>
+          <span class="svc__cta svc__cta--ink">
+            Book now
+            <svg width="20" height="14" viewBox="0 0 20 14" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+              <line x1="0" y1="7" x2="18" y2="7" />
+              <polyline points="12 1 18 7 12 13" />
+            </svg>
+          </span>
         </a>
       </div>
     </div>
   </section>
 
-  <!-- =================== ABOUT / PHILOSOPHY =================== -->
-  <section class="section" id="about">
-    <div class="container-x about">
-      <div class="about__content">
+  <!-- =================== ABOUT =================== -->
+  <section class="section">
+    <div class="container-tight">
+      <div class="about-card glass-strong">
         <span class="eyebrow">About</span>
-        <h2 class="h-section">
-          Kewangan you deserve<br />
-          <em>nasihat yang betul.</em>
+        <h2 class="h-section about__title text-balance">
+          Kewangan you deserve <span class="pink">nasihat yang betul.</span>
         </h2>
-        <p class="about__text">
-          I'm Iman Abdul Rahim, Licensed Financial Planner dengan pengalaman
-          5 tahun tolong Malaysians macam you take control of duit sendiri.
-        </p>
-        <p class="about__text">
-          I licensed dengan Securities Commission Malaysia dan Bank Negara
-          Malaysia, dan I pegang CFP® dan Islamic Financial Planner (IFP)
-          certifications. I terikat dengan ethical codes dan fiduciary
-          standards. Maknanya, I kena <em>always</em> act in your best interest.
-        </p>
+        <div class="about__body">
+          <p>
+            I'm Iman Abdul Rahim, Licensed Financial Planner dengan pengalaman
+            5 tahun tolong Malaysians macam you take control of duit sendiri.
+          </p>
+          <p>
+            I licensed dengan Securities Commission Malaysia dan Bank Negara
+            Malaysia, dan I pegang CFP® dan Islamic Financial Planner (IFP)
+            certifications. I terikat dengan ethical codes dan fiduciary
+            standards. Maknanya, I kena <em>always</em> act in your best interest.
+          </p>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- =================== FAQ =================== -->
-  <section class="section" id="faq">
+  <section class="section">
     <div class="container-tight">
-      <div class="faq-card glass">
-        <div class="section__intro">
-          <span class="eyebrow">FAQ</span>
-          <h2 class="h-section">
-            Soalan <em>lazim.</em>
-          </h2>
-        </div>
-
-        <div class="faq">
-          <details>
-            <summary>Financial Planner ni buat apa sebenarnya?</summary>
-            <div class="faq__a">
-              <p>
-                Licensed Financial Planner tolong individuals dan families buat
-                keputusan kewangan yang informed supaya boleh capai life goals, melalui nasihat yang personalised dan structured.
-              </p>
-              <p>
-                Nasihat I always in your best interest, bukan nak push product. I
-                juga tolong dengan implementation dan buat regular reviews supaya
-                you stay on track.
-              </p>
-            </div>
-          </details>
-
-          <details>
-            <summary>Nasihat ni Shariah compliant ke?</summary>
-            <div class="faq__a">
-              <p>
-                Yes, memang. I offer Shariah-compliant financial planning,
-                termasuk Islamic investment portfolios, takaful, dan zakat
-                planning. You boleh request supaya seluruh financial plan you
-                Shariah-aligned.
-              </p>
-            </div>
-          </details>
-
-          <details>
-            <summary>Info I confidential ke?</summary>
-            <div class="faq__a">
-              <p>
-                Mestilah. I comply dengan PDPA regulations dan jaga
-                confidentiality you dengan ketat. Semua data yang you share
-                disimpan securely dan hanya digunakan untuk planning purposes
-                dengan consent you.
-              </p>
-            </div>
-          </details>
-
-          <details>
-            <summary>Berapa kos financial planning ni?</summary>
-            <div class="faq__a">
-              <p>
-                Financial Health Check tu one-time session je, RM 350. Full
-                Financial Planning pulak engagement 12 bulan, fees kita discuss
-                masa initial consultation based on complexity. Jom book free
-                discovery call dulu untuk tahu lebih lanjut.
-              </p>
-            </div>
-          </details>
-
-          <details>
-            <summary>I baru grad, sesuai ke untuk I?</summary>
-            <div class="faq__a">
-              <p>
-                Memang sesuai lah! Financial Health Check ni perfect untuk
-                sesiapa yang baru nak start financial journey. You akan dapat
-                clarity tentang where you stand sekarang dan actionable steps
-                untuk move forward dengan yakin.
-              </p>
-            </div>
-          </details>
-        </div>
+      <div class="sec-head">
+        <span class="eyebrow">FAQ</span>
+        <h2 class="h-section text-balance">
+          Soalan <span class="pink">lazim.</span>
+        </h2>
+      </div>
+      <div class="faq-card glass-strong">
+        <Accordion items={faqs} />
       </div>
     </div>
   </section>
 </Layout>
 
 <style>
-  /* =================== HERO =================== */
+  /* ---------- Hero ---------- */
   .hero {
+    padding: clamp(3rem, 6vw, 6rem) 0 clamp(4rem, 7vw, 6rem);
     position: relative;
-    padding: clamp(8rem, 14vw, 12rem) 0 clamp(4.5rem, 8vw, 7rem);
     overflow: hidden;
     isolation: isolate;
   }
-  .glow {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(90px);
-    pointer-events: none;
+  .hero__glow-a {
+    width: 720px;
+    height: 720px;
+    top: -200px;
+    right: -200px;
+    background: radial-gradient(circle, rgba(196, 69, 105, 0.08), transparent 65%);
     z-index: -1;
   }
-  .glow--a {
-    width: 520px;
-    height: 520px;
-    top: -120px;
-    right: -100px;
-    background: radial-gradient(circle, rgba(236, 108, 135, 0.16), transparent 70%);
-  }
-  .glow--b {
-    width: 420px;
-    height: 420px;
-    bottom: -120px;
-    left: -100px;
-    background: radial-gradient(circle, rgba(244, 163, 179, 0.14), transparent 70%);
+  .hero__glow-b {
+    width: 560px;
+    height: 560px;
+    bottom: -180px;
+    left: -160px;
+    background: radial-gradient(circle, rgba(249, 212, 220, 0.25), transparent 65%);
+    z-index: -1;
   }
   .hero__inner {
+    text-align: center;
+    padding-top: clamp(2rem, 4vw, 3rem);
+    padding-bottom: clamp(2.5rem, 5vw, 4rem);
     position: relative;
-    max-width: 1180px;
-    display: grid;
-    grid-template-columns: 1fr;
+    z-index: 1;
   }
-  .hero__title { margin: 1.25rem 0 1.5rem; max-width: 18ch; }
-  .hero__lede { font-size: clamp(1.05rem, 1.4vw, 1.2rem); }
-  .hero__orb {
+  .hero__eyebrow {
+    display: inline-block;
+    padding: 0.45rem 1rem;
+    background: var(--glass-strong);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border);
+    border-radius: 999px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--color-primary);
+    margin-bottom: 1.75rem;
+    box-shadow: var(--shadow-glass);
+  }
+  .hero__title {
+    margin: 0 auto;
+    max-width: 18ch;
+  }
+  .hero__lede {
+    margin: 1.75rem auto 0;
+  }
+  .hero__actions {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 2.5rem;
+  }
+
+  /* Trust strip */
+  .trust {
+    margin-top: clamp(3rem, 6vw, 5rem);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    padding: clamp(1.5rem, 3vw, 2rem) clamp(1.5rem, 3vw, 2.5rem);
+    background: var(--glass-strong);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-2xl);
+    box-shadow: var(--shadow-glass);
+  }
+  .trust__item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    padding: 0 1rem;
+    position: relative;
+    text-align: left;
+  }
+  .trust__item + .trust__item::before {
+    content: '';
     position: absolute;
-    right: clamp(-3rem, -2vw, -1rem);
+    left: 0;
     top: 50%;
     transform: translateY(-50%);
-    width: clamp(280px, 40vw, 460px);
-    aspect-ratio: 1;
-    border-radius: 50%;
-    color: var(--color-rose);
-    z-index: -1;
-    display: grid;
-    place-items: center;
-    padding: clamp(1.25rem, 3vw, 2.5rem);
+    width: 1px;
+    height: 70%;
+    background: var(--glass-border-pink);
   }
-  @media (max-width: 980px) {
-    .hero__orb {
-      right: -10rem;
-      opacity: 0.55;
+  .trust__label {
+    font-size: 0.76rem;
+    color: var(--color-muted-foreground);
+    font-weight: 500;
+    letter-spacing: -0.005em;
+  }
+  .trust__val {
+    font-size: 1.18rem;
+    color: var(--color-foreground);
+    font-weight: 700;
+    letter-spacing: -0.022em;
+  }
+
+  @media (max-width: 760px) {
+    .trust {
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      padding: 1.5rem;
     }
-  }
-  @media (max-width: 640px) {
-    .hero__orb {
-      right: -14rem;
-      width: 280px;
-      opacity: 0.4;
+    .trust__item {
+      padding: 0;
+    }
+    .trust__item + .trust__item::before {
+      display: none;
     }
   }
 
-  /* =================== SERVICES =================== */
-  .services {
+  /* ---------- Section head ---------- */
+  .sec-head {
+    max-width: 760px;
+    margin-bottom: clamp(3rem, 5vw, 4.5rem);
+  }
+  .sec-head.text-center {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .sec-head .h-section {
+    margin-top: 1rem;
+  }
+  .sec-head .lede {
+    margin-top: 1.25rem;
+  }
+  .sec-head.text-center .lede {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* ---------- Services ---------- */
+  .svc-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 1.25rem;
+    gap: clamp(1rem, 2vw, 1.5rem);
   }
-  .service {
+  .svc {
     display: flex;
     flex-direction: column;
-    border-radius: 28px;
-    padding: clamp(1.75rem, 3vw, 2.5rem);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    position: relative;
-    overflow: hidden;
+    gap: 1.5rem;
+    padding: clamp(2rem, 3.5vw, 2.75rem);
+    border-radius: var(--radius-3xl);
+    background: var(--glass-strong);
+    backdrop-filter: var(--glass-blur-strong);
+    -webkit-backdrop-filter: var(--glass-blur-strong);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-glass);
+    transition: box-shadow 0.25s ease, transform 0.25s ease;
+    color: var(--color-foreground);
   }
-  .service:hover {
+  .svc:hover {
+    box-shadow: var(--shadow-glass-lg);
     transform: translateY(-4px);
-    box-shadow:
-      0 1px 0 rgba(255, 255, 255, 0.6) inset,
-      0 24px 56px -16px rgba(200, 70, 104, 0.28);
   }
-  .service--featured {
+  .svc--featured {
+    background: var(--color-foreground);
     color: var(--color-paper);
+    border-color: var(--color-foreground);
+    box-shadow: var(--shadow-ink);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
   }
-  .service__body {
-    display: flex;
-    flex-direction: column;
-    gap: 0.95rem;
-    flex-grow: 1;
+  .svc--featured:hover {
+    box-shadow:
+      0 1px 2px rgba(21, 5, 16, 0.2),
+      0 28px 64px -14px rgba(21, 5, 16, 0.5);
   }
-  .service__title {
-    font-size: clamp(1.45rem, 2.2vw, 1.8rem);
-    font-weight: 400;
-    margin-top: 0.2rem;
-    color: inherit;
-  }
-  .service__desc {
-    font-size: 0.96rem;
-    color: var(--color-ink-2);
-    line-height: 1.7;
-  }
-  .service--featured .service__desc {
-    color: rgba(255, 250, 251, 0.78);
-  }
-  .service__foot {
-    margin-top: 2rem;
-    padding-top: 1.4rem;
-    border-top: 1px solid var(--color-hairline);
+  .svc__head {
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 1rem;
+    flex-wrap: wrap;
   }
-  .service--featured .service__foot {
-    border-top-color: rgba(255, 250, 251, 0.12);
-  }
-  .service__price {
-    display: flex;
-    flex-direction: column;
-    line-height: 1;
-    gap: 0.3rem;
-  }
-  .service__price-amt {
-    font-family: var(--font-serif);
-    font-size: 1.7rem;
-    font-weight: 400;
-    letter-spacing: -0.02em;
+  .svc__price-amt {
+    font-family: var(--font-display);
+    font-size: clamp(1.6rem, 2.2vw, 1.85rem);
+    font-weight: 700;
+    letter-spacing: -0.025em;
     color: inherit;
   }
-  .service__price-note {
-    font-size: 0.7rem;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--color-ink-3);
+  .svc__title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 3vw, 2.6rem);
+    font-weight: 700;
+    letter-spacing: -0.035em;
+    color: inherit;
+    line-height: 1;
+    margin: 0;
   }
-  .service--featured .service__price-note {
-    color: rgba(255, 250, 251, 0.55);
+  .svc__desc {
+    font-size: 0.98rem;
+    line-height: 1.65;
+    color: var(--color-ink-2);
+    margin: 0;
+    flex-grow: 1;
   }
-  .service__cta {
-    font-size: 0.88rem;
-    font-weight: 500;
-    color: var(--color-deep);
+  .svc--featured .svc__desc {
+    color: rgba(255, 255, 255, 0.78);
+  }
+  .svc__cta {
     display: inline-flex;
     align-items: center;
-    gap: 0.4rem;
-    transition: gap 0.2s ease;
+    gap: 0.6rem;
+    color: var(--color-primary);
+    font-weight: 500;
+    font-size: 0.96rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--glass-border-pink);
   }
-  .service--featured .service__cta {
-    color: var(--color-rose);
+  .svc--featured .svc__cta {
+    color: var(--color-accent);
+    border-top-color: rgba(255, 255, 255, 0.12);
   }
-  .service:hover .service__cta {
-    gap: 0.7rem;
+  .svc__cta svg {
+    transition: transform 0.2s ease;
   }
-  @media (max-width: 860px) {
-    .services { grid-template-columns: 1fr; }
+  .svc:hover .svc__cta svg {
+    transform: translateX(4px);
   }
 
-  /* =================== ABOUT =================== */
-  .about__content {
-    max-width: 640px;
+  @media (max-width: 800px) {
+    .svc-grid {
+      grid-template-columns: 1fr;
+    }
   }
-  .about__text {
-    font-size: 1rem;
+
+  /* ---------- About ---------- */
+  .about-card {
+    border-radius: var(--radius-3xl);
+    padding: clamp(2.5rem, 5vw, 4rem);
+  }
+  .about__title {
+    margin: 1rem 0 1.75rem;
+    max-width: 18ch;
+  }
+  .about__body {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    font-size: clamp(1.06rem, 1.2vw, 1.18rem);
     color: var(--color-ink-2);
-    line-height: 1.8;
-    margin-top: 1rem;
+    line-height: 1.65;
+    max-width: 62ch;
   }
-  .about__text em {
+  .about__body em {
     font-style: italic;
-    color: var(--color-deep);
+    color: var(--color-primary);
   }
 
-  /* =================== FAQ =================== */
+  /* ---------- FAQ ---------- */
   .faq-card {
-    border-radius: 32px;
-    padding: clamp(2rem, 4vw, 3.5rem);
+    border-radius: var(--radius-3xl);
+    padding: clamp(1.5rem, 3vw, 2.5rem) clamp(2rem, 4vw, 3rem);
   }
 </style>

@@ -2,166 +2,167 @@
 const pathname = Astro.url.pathname;
 const isActive = (href: string) =>
   href === '/' ? pathname === '/' : pathname.startsWith(href);
+
+const links = [
+  { href: '/', label: 'Home' },
+  { href: '/planning', label: 'Financial Planning' },
+  { href: '/fhc', label: 'Health Check' },
+  { href: '/webinar', label: 'Webinar' },
+];
 ---
 
 <header class="header" id="header">
-  <nav class="nav container-x" aria-label="Primary">
+  <div class="header__inner">
     <a href="/" class="logo" aria-label="Iman Abdul Rahim · Home">
-      <span class="logo-mark" aria-hidden="true">
-        <svg viewBox="0 0 32 32" width="30" height="30" fill="none">
-          <circle cx="16" cy="16" r="14.5" stroke="currentColor" stroke-width="1" opacity="0.5"></circle>
-          <path d="M10.5 10v12M16 10v12M21.5 10v12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"></path>
-        </svg>
-      </span>
-      <span class="logo-text">
-        <span class="logo-name">Iman Abdul Rahim</span>
-        <span class="logo-title">Licensed Financial Planner · CFP® · IFP</span>
-      </span>
+      <span class="logo__name">Iman <span class="logo__dot">.</span></span>
     </a>
 
-    <ul class="nav-links" id="navLinks">
-      <li><a href="/" class:list={['nav-link', isActive('/') && 'is-active']}>Home</a></li>
-      <li><a href="/planning" class:list={['nav-link', isActive('/planning') && 'is-active']}>Financial Planning</a></li>
-      <li><a href="/fhc" class:list={['nav-link', isActive('/fhc') && 'is-active']}>Health Check</a></li>
-      <li><a href="/webinar" class:list={['nav-link', isActive('/webinar') && 'is-active']}>Webinar</a></li>
-      <li class="nav-cta-wrap">
-        <a href="https://wa.me/60186617981" target="_blank" rel="noopener" class="btn btn--rose btn--sm">Book a call</a>
-      </li>
-    </ul>
+    <nav aria-label="Primary" class="nav">
+      <ul class="nav__links" id="navLinks">
+        {
+          links.map((l) => (
+            <li>
+              <a
+                href={l.href}
+                class:list={['nav__link', isActive(l.href) && 'is-active']}
+              >
+                {l.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <a
+      href="https://wa.me/60186617981"
+      target="_blank"
+      rel="noopener"
+      class="btn btn--primary btn--sm nav__cta"
+    >
+      Book a call
+    </a>
 
     <button
       class="menu-toggle"
       id="menuToggle"
+      type="button"
       aria-label="Toggle menu"
       aria-expanded="false"
       aria-controls="navLinks"
     >
-      <span></span>
-      <span></span>
+      <span class="menu-toggle__bar"></span>
+      <span class="menu-toggle__bar"></span>
+      <span class="menu-toggle__bar"></span>
     </button>
-  </nav>
+  </div>
 </header>
 
 <style>
   .header {
     position: fixed;
-    top: clamp(0.5rem, 1.4vw, 1rem);
+    top: clamp(0.75rem, 1.5vw, 1.25rem);
     left: 50%;
     transform: translateX(-50%);
-    z-index: 100;
+    z-index: var(--z-nav);
     width: min(1180px, calc(100% - 1.5rem));
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.55);
-    backdrop-filter: saturate(170%) blur(22px);
-    -webkit-backdrop-filter: saturate(170%) blur(22px);
+    background: rgba(255, 255, 255, 0.62);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.7);
-    box-shadow:
-      0 1px 0 rgba(255, 255, 255, 0.5) inset,
-      0 8px 32px -8px rgba(138, 46, 74, 0.12);
-    transition: background 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-  }
-  .header.scrolled {
-    background: rgba(255, 255, 255, 0.72);
+    border-radius: 999px;
     box-shadow:
       0 1px 0 rgba(255, 255, 255, 0.6) inset,
-      0 16px 48px -10px rgba(138, 46, 74, 0.18);
+      0 12px 32px -10px rgba(184, 21, 74, 0.18);
+    transition: background 0.25s ease, box-shadow 0.25s ease;
+  }
+  .header.is-scrolled {
+    background: rgba(255, 255, 255, 0.82);
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.7) inset,
+      0 20px 48px -12px rgba(184, 21, 74, 0.26);
   }
 
-  .nav {
+  .header__inner {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 1.5rem;
-    padding: 0.7rem 0.85rem 0.7rem 1.4rem;
-    max-width: none;
+    padding: 0.55rem 0.55rem 0.55rem 1.5rem;
   }
 
   .logo {
     display: inline-flex;
     align-items: center;
-    gap: 0.7rem;
-    color: var(--color-ink);
+    color: var(--color-foreground);
     flex-shrink: 0;
   }
-  .logo-mark {
-    color: var(--color-deep);
-    display: inline-flex;
-    align-items: center;
+  .logo__name {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1;
   }
-  .logo-text {
-    display: flex;
-    flex-direction: column;
-    line-height: 1.1;
-  }
-  .logo-name {
-    font-family: var(--font-serif);
-    font-size: 1.05rem;
-    font-weight: 400;
-    letter-spacing: -0.015em;
-    color: var(--color-ink);
-  }
-  .logo-title {
-    font-family: var(--font-sans);
-    font-size: 0.64rem;
-    color: var(--color-ink-2);
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    font-weight: 500;
-    margin-top: 2px;
+  .logo__dot {
+    color: var(--color-primary);
   }
 
-  .nav-links {
+  .nav__links {
     list-style: none;
     display: flex;
     align-items: center;
-    gap: 1.6rem;
+    gap: 0.4rem;
     padding: 0;
     margin: 0;
   }
-  .nav-link {
-    position: relative;
-    font-size: 0.88rem;
-    font-weight: 450;
+  .nav__link {
+    font-size: 0.9rem;
+    font-weight: 500;
     color: var(--color-ink-2);
-    transition: color 0.2s ease;
-    padding: 0.3rem 0;
+    transition: background 0.18s ease, color 0.18s ease;
+    padding: 0.55rem 1rem;
+    border-radius: 999px;
+    letter-spacing: -0.005em;
+    display: inline-block;
   }
-  .nav-link:hover { color: var(--color-deep); }
-  .nav-link.is-active {
-    color: var(--color-ink);
+  .nav__link:hover {
+    background: rgba(255, 255, 255, 0.5);
+    color: var(--color-foreground);
   }
-  .nav-link.is-active::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: -3px;
-    height: 1.5px;
-    background: var(--color-deep);
-    border-radius: 1px;
+  .nav__link.is-active {
+    color: var(--color-primary);
+    background: rgba(255, 214, 224, 0.5);
+  }
+
+  .nav__cta {
+    flex-shrink: 0;
   }
 
   .menu-toggle {
     display: none;
     flex-direction: column;
-    gap: 5px;
-    background: none;
-    border: none;
+    gap: 4px;
+    background: transparent;
+    border: 1px solid var(--color-border-strong);
     cursor: pointer;
-    padding: 8px 10px;
-    color: var(--color-ink);
+    padding: 0;
+    color: var(--color-foreground);
+    width: 44px;
+    height: 44px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
   }
-  .menu-toggle span {
+  .menu-toggle__bar {
     display: block;
-    width: 22px;
-    height: 1.5px;
+    width: 18px;
+    height: 1.6px;
     background: currentColor;
-    transition: transform 0.2s ease;
   }
 
-  @media (max-width: 860px) {
-    .logo-title { display: none; }
-    .nav-links {
+  @media (max-width: 960px) {
+    .nav__links {
       display: none;
       position: absolute;
       top: calc(100% + 0.5rem);
@@ -169,24 +170,28 @@ const isActive = (href: string) =>
       right: 0;
       flex-direction: column;
       align-items: stretch;
-      background: rgba(255, 255, 255, 0.85);
-      backdrop-filter: saturate(170%) blur(22px);
-      -webkit-backdrop-filter: saturate(170%) blur(22px);
-      border: 1px solid rgba(255, 255, 255, 0.7);
+      background: var(--glass-strong);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      border: 1px solid var(--glass-border);
       border-radius: 24px;
-      box-shadow: 0 16px 48px -10px rgba(138, 46, 74, 0.18);
-      padding: 0.75rem 1rem 1rem;
-      gap: 0;
+      box-shadow: var(--shadow-glass-lg);
+      padding: 0.6rem;
     }
-    .nav-links.open { display: flex; }
-    .nav-link {
-      padding: 0.85rem 0.5rem;
-      font-size: 0.98rem;
-      border-bottom: 1px solid var(--color-hairline);
+    .nav__links.is-open {
+      display: flex;
     }
-    .nav-link.is-active::after { display: none; }
-    .nav-cta-wrap { padding-top: 0.75rem; }
-    .nav-cta-wrap .btn { width: 100%; }
-    .menu-toggle { display: flex; }
+    .nav__link {
+      padding: 0.95rem 1rem;
+      font-size: 1rem;
+      border-radius: 14px;
+      min-height: 44px;
+    }
+    .nav__cta {
+      display: none;
+    }
+    .menu-toggle {
+      display: inline-flex;
+    }
   }
 </style>

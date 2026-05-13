@@ -1,0 +1,108 @@
+---
+interface Props {
+  size?: number;
+  class?: string;
+  label?: string;
+}
+
+const { size = 72, class: extraClass = '', label = 'Iman Abdul Rahim monogram' } =
+  Astro.props;
+---
+
+<svg
+  class={`monogram ${extraClass}`}
+  viewBox="0 0 100 100"
+  width={size}
+  height={size}
+  role="img"
+  aria-label={label}
+  fill="none"
+>
+  <defs>
+    <path
+      id="m-top-curve"
+      d="M 14 50 A 36 36 0 0 1 86 50"
+      fill="none"
+    />
+    <path
+      id="m-bot-curve"
+      d="M 16 54 A 34 34 0 0 0 84 54"
+      fill="none"
+    />
+  </defs>
+
+  <!-- Outer dashed circle (notary feel) -->
+  <circle
+    cx="50"
+    cy="50"
+    r="46"
+    stroke="currentColor"
+    stroke-width="0.9"
+    stroke-dasharray="1.6 2.4"
+  />
+
+  <!-- Tick marks at 12 / 3 / 6 / 9 -->
+  <line x1="50" y1="2" x2="50" y2="7" stroke="currentColor" stroke-width="0.9" />
+  <line x1="50" y1="93" x2="50" y2="98" stroke="currentColor" stroke-width="0.9" />
+  <line x1="2" y1="50" x2="7" y2="50" stroke="currentColor" stroke-width="0.9" />
+  <line x1="93" y1="50" x2="98" y2="50" stroke="currentColor" stroke-width="0.9" />
+
+  <!-- Inner solid circle -->
+  <circle cx="50" cy="50" r="38" stroke="currentColor" stroke-width="0.7" />
+
+  <!-- Top curved label -->
+  <text
+    font-family="Instrument Sans, system-ui, sans-serif"
+    font-size="6.2"
+    font-weight="600"
+    fill="currentColor"
+    letter-spacing="0.32em"
+  >
+    <textPath href="#m-top-curve" startOffset="50%" text-anchor="middle"
+      >CFP · IFP</textPath
+    >
+  </text>
+
+  <!-- Bottom curved label -->
+  <text
+    font-family="Instrument Sans, system-ui, sans-serif"
+    font-size="5.6"
+    font-weight="500"
+    fill="currentColor"
+    letter-spacing="0.36em"
+  >
+    <textPath href="#m-bot-curve" startOffset="50%" text-anchor="middle"
+      >EST · 2020</textPath
+    >
+  </text>
+
+  <!-- IAR italic centerpiece -->
+  <text
+    x="50"
+    y="58"
+    text-anchor="middle"
+    font-family="Instrument Serif, Georgia, serif"
+    font-style="italic"
+    font-size="28"
+    font-weight="400"
+    fill="currentColor"
+    letter-spacing="-0.02em"
+  >
+    IAR
+  </text>
+
+  <!-- Small star/asterisk above IAR -->
+  <g stroke="currentColor" stroke-width="0.7" stroke-linecap="round">
+    <line x1="50" y1="20" x2="50" y2="26" />
+    <line x1="46.5" y1="23" x2="53.5" y2="23" />
+    <line x1="47.5" y1="20.5" x2="52.5" y2="25.5" />
+    <line x1="52.5" y1="20.5" x2="47.5" y2="25.5" />
+  </g>
+</svg>
+
+<style>
+  .monogram {
+    color: var(--color-primary);
+    display: inline-block;
+  }
+</style>

@@ -27,7 +27,9 @@ export async function onRequest(context) {
     // ToyyibPay config
     const TOYYIBPAY_SECRET = context.env.TOYYIBPAY_SECRET || 'n2iltwy6-pmio-xjh9-6wia-u76b5pz5hanz';
     const TOYYIBPAY_CATEGORY = context.env.TOYYIBPAY_CATEGORY || 'uul5ivz0';
-    const SITE_URL = 'https://iman-financial.pages.dev';
+    // Derive site URL from the incoming request, with optional env override.
+    // Local dev → http://localhost:8788, prod → custom domain or .pages.dev.
+    const SITE_URL = context.env.SITE_URL || new URL(context.request.url).origin;
 
     // Amount in cents (RM29 = 2900 cents for early bird, RM39 = 3900 for regular)
     // TODO: Check registration count for early bird vs regular pricing
@@ -38,7 +40,7 @@ export async function onRequest(context) {
     formData.append('userSecretKey', TOYYIBPAY_SECRET);
     formData.append('categoryCode', TOYYIBPAY_CATEGORY);
     formData.append('billName', 'Cashflow Girlies Webinar');
-    formData.append('billDescription', 'Cara uruskan cukai for freelancers / content creator - 10 April 2026, 8PM');
+    formData.append('billDescription', 'Cara uruskan cukai for freelancers / content creator - 22 May 2026, 8PM');
     formData.append('billPriceSetting', '1'); // Fixed price
     formData.append('billPayorInfo', '1'); // Required
     formData.append('billAmount', String(amount * 100)); // In cents
