@@ -52,7 +52,8 @@ export function getTierAndAmount(seatsTaken, env) {
 }
 
 /**
- * Call the Google Apps Script webhook.
+ * Call the Google Apps Script webhook with shared-secret auth.
+ * The Apps Script side rejects requests without a matching SHEETS_SHARED_SECRET.
  * Falls through silently if SHEETS_WEBHOOK_URL isn't set (local dev).
  */
 export async function sheetsCall(env, payload) {
@@ -64,7 +65,10 @@ export async function sheetsCall(env, payload) {
     const res = await fetch(env.SHEETS_WEBHOOK_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
+      body: JSON.stringify({
+        ...payload,
+        secret: env.SHEETS_SHARED_SECRET || '',
+      }),
       // Apps Script redirects 302 → handle by following
       redirect: 'follow',
     });
@@ -73,6 +77,53 @@ export async function sheetsCall(env, payload) {
     console.error('Sheets webhook failed:', e);
     return null;
   }
+}
+
+/**
+ * Resolve the visitor's IP from Cloudflare's headers.
+ * Returns null in local dev when neither header is set.
+ */
+export function getClientIP(request) {
+  return (
+    request.headers.get('CF-Connecting-IP') ||
+    request.headers.get('X-Forwarded-For')?.split(',')[0].trim() ||
+    null
+  );
+}
+
+/**
+ * Simple KV-based rate limiter (sliding window of size `windowSeconds`).
+ * Returns { ok: true } if allowed, { ok: false, retryAfter } if rate-limited.
+ * Fails open if KV isn't bound or IP can't be determined (local dev).
+ */
+export async function checkRateLimit(
+  env,
+  ip,
+  { maxAttempts = 5, windowSeconds = 3600, scope = 'register' } = {},
+) {
+  if (!env.REGISTRATIONS_KV || !ip) return { ok: true };
+  const key = `rate:${scope}:${ip}`;
+  const raw = await env.REGISTRATIONS_KV.get(key);
+  const count = parseInt(raw || '0', 10);
+  if (count >= maxAttempts) {
+    return { ok: false, retryAfter: windowSeconds };
+  }
+  await env.REGISTRATIONS_KV.put(key, String(count + 1), {
+    expirationTtl: windowSeconds,
+  });
+  return { ok: true };
+}
+
+/**
+ * Idempotency marker — record that we've already processed an event.
+ * Returns true if this is the first time we've seen `key`.
+ */
+export async function markOnce(env, key, ttlSeconds = 86400 * 30) {
+  if (!env.REGISTRATIONS_KV) return true; // fail open in local dev
+  const existing = await env.REGISTRATIONS_KV.get(key);
+  if (existing) return false;
+  await env.REGISTRATIONS_KV.put(key, '1', { expirationTtl: ttlSeconds });
+  return true;
 }
 
 export function json(data, status = 200) {

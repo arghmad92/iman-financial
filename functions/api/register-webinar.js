@@ -7,7 +7,13 @@ import {
   titleCase,
   cleanPhone,
   isEmail,
+  getClientIP,
+  checkRateLimit,
 } from '../_lib.js';
+
+const MAX_NAME = 120;
+const MAX_EMAIL = 200;
+const MAX_PHONE = 30;
 
 export async function onRequest(context) {
   if (context.request.method !== 'POST') {
@@ -15,10 +21,47 @@ export async function onRequest(context) {
   }
 
   try {
-    const { name, email, phone } = await context.request.json();
+    const env = context.env;
+
+    // Rate limit: 5 registration attempts per IP per hour.
+    const ip = getClientIP(context.request);
+    const rl = await checkRateLimit(env, ip, {
+      maxAttempts: 5,
+      windowSeconds: 3600,
+      scope: 'register',
+    });
+    if (!rl.ok) {
+      return json(
+        { error: 'Too many attempts. Please try again in an hour.' },
+        429,
+      );
+    }
+
+    const body = await context.request.json();
+    const { name, email, phone, consent } = body;
 
     if (!name || !email || !phone) {
       return json({ error: 'Please fill in all fields.' }, 400);
+    }
+    if (consent !== true) {
+      return json(
+        { error: 'You must agree to the privacy policy to register.' },
+        400,
+      );
+    }
+    if (
+      typeof name !== 'string' ||
+      typeof email !== 'string' ||
+      typeof phone !== 'string'
+    ) {
+      return json({ error: 'Invalid input.' }, 400);
+    }
+    if (
+      name.length > MAX_NAME ||
+      email.length > MAX_EMAIL ||
+      phone.length > MAX_PHONE
+    ) {
+      return json({ error: 'One or more fields are too long.' }, 400);
     }
     if (!isEmail(email)) {
       return json({ error: 'Please enter a valid email address.' }, 400);
@@ -29,7 +72,6 @@ export async function onRequest(context) {
     }
 
     const cleanName = titleCase(name);
-    const env = context.env;
 
     // Duplicate check — uses Sheets as the source of truth.
     const dup = await sheetsCall(env, {

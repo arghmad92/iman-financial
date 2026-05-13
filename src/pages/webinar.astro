@@ -308,6 +308,14 @@ const faqs = [
           <input type="tel" class="input" id="regPhone" name="phone" placeholder="0123456789" required autocomplete="tel" inputmode="tel" />
         </div>
 
+        <label class="consent">
+          <input type="checkbox" id="regConsent" name="consent" required class="consent__box" />
+          <span class="consent__text">
+            I agree to the <a href="/privacy" target="_blank" rel="noopener">Privacy Policy</a>
+            and to receive emails about this webinar.
+          </span>
+        </label>
+
         <div id="regError" class="alert alert--error" role="alert" aria-live="polite" hidden>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <circle cx="12" cy="12" r="10"></circle>
@@ -437,10 +445,16 @@ const faqs = [
     const name = (document.getElementById('regName') as HTMLInputElement).value.trim();
     const email = (document.getElementById('regEmail') as HTMLInputElement).value.trim();
     const phone = (document.getElementById('regPhone') as HTMLInputElement).value.trim();
+    const consent = (document.getElementById('regConsent') as HTMLInputElement).checked;
 
     if (!name || !email || !phone) {
       errEl.hidden = false;
       errText.textContent = 'Please fill in all fields.';
+      return;
+    }
+    if (!consent) {
+      errEl.hidden = false;
+      errText.textContent = 'Please agree to the Privacy Policy to continue.';
       return;
     }
     btn.disabled = true;
@@ -450,7 +464,7 @@ const faqs = [
       const res = await fetch('/api/register-webinar', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, email, phone }),
+        body: JSON.stringify({ name, email, phone, consent: true }),
       });
       const data = await res.json();
       if (data.paymentUrl) {
@@ -859,6 +873,34 @@ const faqs = [
     text-align: center;
     margin: 0.25rem 0 0;
     line-height: 1.6;
+  }
+  .consent {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.65rem;
+    cursor: pointer;
+    margin: 0.25rem 0 0.5rem;
+  }
+  .consent__box {
+    width: 18px;
+    height: 18px;
+    margin: 0.18rem 0 0;
+    flex-shrink: 0;
+    accent-color: var(--color-primary);
+    cursor: pointer;
+  }
+  .consent__text {
+    font-size: 0.88rem;
+    color: var(--color-ink-2);
+    line-height: 1.55;
+  }
+  .consent__text a {
+    color: var(--color-primary);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .consent__text a:hover {
+    color: var(--color-rose-deep);
   }
 
   /* ---------- FAQ ---------- */

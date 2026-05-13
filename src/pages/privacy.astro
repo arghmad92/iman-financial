@@ -1,0 +1,194 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const lastUpdated = '2026-05-13';
+---
+
+<Layout
+  title="Privacy Policy · Iman Abdul Rahim"
+  description="How Iman Abdul Rahim handles personal data collected through this site."
+>
+  <section class="legal">
+    <div class="container-tight">
+      <span class="legal__eyebrow">Privacy Policy</span>
+      <h1 class="h-section legal__title">Your <span class="pink">privacy.</span></h1>
+      <p class="legal__updated">Last updated: {lastUpdated}</p>
+
+      <div class="legal__body">
+        <p>
+          This Privacy Policy describes how Iman Abdul Rahim ("we", "I", "us")
+          collects, uses, and protects personal data submitted through this
+          website. We comply with the Malaysian Personal Data Protection Act
+          2010 (PDPA).
+        </p>
+
+        <h2>1. Information we collect</h2>
+        <p>When you register for the webinar or book a consultation, we collect:</p>
+        <ul>
+          <li><strong>Name</strong> — to address you in communications and on payment records.</li>
+          <li><strong>Email address</strong> — to send registration confirmation, webinar details (including the Zoom link), and reminders.</li>
+          <li><strong>Phone number</strong> — for WhatsApp reminders and support before the webinar.</li>
+          <li><strong>Payment information</strong> — collected and processed by ToyyibPay; we never see your bank details or card number.</li>
+        </ul>
+
+        <h2>2. How we use your data</h2>
+        <p>We use the information you provide to:</p>
+        <ul>
+          <li>Process your webinar registration and confirm payment.</li>
+          <li>Send the Zoom join link and event reminders.</li>
+          <li>Reply to questions you ask via email or the form.</li>
+          <li>Comply with our legal and regulatory obligations as a Licensed Financial Planner.</li>
+        </ul>
+        <p>
+          We will not use your data for unrelated marketing or share it with
+          third parties for advertising.
+        </p>
+
+        <h2>3. Who we share your data with</h2>
+        <p>
+          We use the following service providers to operate this site. Each
+          processes a limited subset of your data:
+        </p>
+        <ul>
+          <li>
+            <strong>ToyyibPay</strong> (payment processing, Malaysia) — name,
+            email, phone, payment amount.
+          </li>
+          <li>
+            <strong>Resend</strong> (transactional email, EU/US) — name, email.
+          </li>
+          <li>
+            <strong>Google Workspace</strong> (registration record-keeping) —
+            name, email, phone, payment status.
+          </li>
+          <li>
+            <strong>Cloudflare</strong> (website hosting and security) — IP
+            address, request metadata.
+          </li>
+        </ul>
+
+        <h2>4. How long we keep your data</h2>
+        <p>
+          Registration records (name, email, phone, payment status) are kept
+          for up to 24 months after the webinar to support follow-up questions,
+          reissue receipts, and meet our record-keeping obligations as a
+          Licensed Financial Planner. After 24 months, records are deleted
+          unless we are required to keep them longer by law.
+        </p>
+        <p>
+          Payment records held by ToyyibPay are subject to ToyyibPay's own
+          retention policy.
+        </p>
+
+        <h2>5. Your rights</h2>
+        <p>Under PDPA, you have the right to:</p>
+        <ul>
+          <li>Request access to the personal data we hold about you.</li>
+          <li>Request correction of inaccurate or incomplete data.</li>
+          <li>Request deletion of your data (subject to legal retention requirements).</li>
+          <li>Withdraw consent for processing at any time.</li>
+        </ul>
+        <p>
+          To exercise any of these rights, contact us at
+          <a href="mailto:hello@imanabdulrahim.com">hello@imanabdulrahim.com</a>.
+          We will respond within 30 days.
+        </p>
+
+        <h2>6. Security</h2>
+        <p>
+          Personal data is transmitted over encrypted HTTPS connections and
+          stored in services that use industry-standard encryption at rest.
+          Access to registration records is restricted to Iman Abdul Rahim.
+        </p>
+
+        <h2>7. Cookies and analytics</h2>
+        <p>
+          This site does not currently use tracking cookies, advertising
+          pixels, or third-party analytics. If this changes in the future,
+          this policy will be updated.
+        </p>
+
+        <h2>8. Changes to this policy</h2>
+        <p>
+          We may update this policy from time to time. The "Last updated" date
+          at the top will reflect any changes. Material changes will be
+          communicated by email to registered participants where appropriate.
+        </p>
+
+        <h2>9. Contact</h2>
+        <p>
+          Questions about this policy or how your data is handled:
+          <br />
+          <strong>Iman Abdul Rahim</strong><br />
+          Licensed Financial Planner · CFP® · IFP<br />
+          <a href="mailto:hello@imanabdulrahim.com">hello@imanabdulrahim.com</a>
+        </p>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .legal {
+    padding: clamp(3rem, 6vw, 5rem) 0 clamp(4rem, 7vw, 6rem);
+  }
+  .legal__eyebrow {
+    display: inline-block;
+    padding: 0.45rem 1rem;
+    background: var(--glass-strong);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border);
+    border-radius: 999px;
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--color-primary);
+    margin-bottom: 1.5rem;
+    box-shadow: var(--shadow-glass);
+  }
+  .legal__title {
+    margin: 0 0 0.5rem;
+    max-width: 16ch;
+  }
+  .legal__updated {
+    color: var(--color-muted-foreground);
+    font-size: 0.9rem;
+    margin: 0 0 2.5rem;
+  }
+  .legal__body {
+    max-width: 64ch;
+    color: var(--color-ink-2);
+    line-height: 1.7;
+    font-size: 1rem;
+  }
+  .legal__body h2 {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--color-foreground);
+    margin: 2.2rem 0 0.85rem;
+    letter-spacing: -0.025em;
+  }
+  .legal__body p {
+    margin: 0 0 1rem;
+  }
+  .legal__body ul {
+    margin: 0 0 1rem;
+    padding-left: 1.25rem;
+  }
+  .legal__body li {
+    margin: 0 0 0.5rem;
+  }
+  .legal__body a {
+    color: var(--color-primary);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .legal__body a:hover {
+    color: var(--color-rose-deep);
+  }
+  .legal__body strong {
+    color: var(--color-foreground);
+    font-weight: 600;
+  }
+</style>
