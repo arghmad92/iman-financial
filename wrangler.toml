@@ -1,0 +1,16 @@
+name = "iman-financial"
+compatibility_date = "2026-05-13"
+pages_build_output_dir = "./dist"
+
+# KV: paid-seat counter for early-bird pricing
+[[kv_namespaces]]
+binding = "REGISTRATIONS_KV"
+id = "2ffc5fe7be384cb390eb3e982449e978"
+
+# Non-secret environment variables.
+# Secrets (RESEND_KEY, SHEETS_WEBHOOK_URL, ZOOM_JOIN_URL) are set separately via
+# `wrangler pages secret put …` so they don't land in git.
+[vars]
+RESEND_FROM = "Iman Abdul Rahim <hello@imanabdulrahim.com>"
+REPLY_TO = "hello@imanabdulrahim.com"
+EARLY_BIRD_LIMIT = "20"

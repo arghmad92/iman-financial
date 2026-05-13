@@ -1,6 +1,16 @@
+import {
+  getSeatsTaken,
+  getTierAndAmount,
+  sheetsCall,
+  json,
+  titleCase,
+  cleanPhone,
+  isEmail,
+} from '../_lib.js';
+
 export async function onRequest(context) {
   if (context.request.method !== 'POST') {
-    return new Response(JSON.stringify({ error: 'POST only' }), { status: 405, headers: { 'Content-Type': 'application/json' } });
+    return json({ error: 'POST only' }, 405);
   }
 
   try {
@@ -9,72 +19,109 @@ export async function onRequest(context) {
     if (!name || !email || !phone) {
       return json({ error: 'Please fill in all fields.' }, 400);
     }
-
-    // Validate email
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    if (!isEmail(email)) {
       return json({ error: 'Please enter a valid email address.' }, 400);
     }
-
-    // Validate phone
-    const cleanPhone = phone.replace(/[-\s+]/g, '');
-    if (cleanPhone.length < 10 || cleanPhone.length > 15) {
+    const phoneDigits = cleanPhone(phone);
+    if (phoneDigits.length < 10 || phoneDigits.length > 15) {
       return json({ error: 'Please enter a valid phone number.' }, 400);
     }
 
-    // Title case the name
-    const cleanName = name.trim().replace(/\s+/g, ' ').split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase()).join(' ');
+    const cleanName = titleCase(name);
+    const env = context.env;
+
+    // Duplicate check — uses Sheets as the source of truth.
+    const dup = await sheetsCall(env, {
+      action: 'check_email',
+      email: email.toLowerCase(),
+    });
+    if (dup?.exists) {
+      return json(
+        {
+          error:
+            'This email is already registered. Check your inbox for the confirmation email.',
+        },
+        409,
+      );
+    }
+
+    // Determine tier + amount based on paid seats so far.
+    const seatsTaken = await getSeatsTaken(env);
+    const { tier, amount } = getTierAndAmount(seatsTaken, env);
 
     // ToyyibPay config
-    const TOYYIBPAY_SECRET = context.env.TOYYIBPAY_SECRET || 'n2iltwy6-pmio-xjh9-6wia-u76b5pz5hanz';
-    const TOYYIBPAY_CATEGORY = context.env.TOYYIBPAY_CATEGORY || 'uul5ivz0';
-    // Derive site URL from the incoming request, with optional env override.
-    // Local dev → http://localhost:8788, prod → custom domain or .pages.dev.
-    const SITE_URL = context.env.SITE_URL || new URL(context.request.url).origin;
+    const TOYYIBPAY_SECRET =
+      env.TOYYIBPAY_SECRET || 'n2iltwy6-pmio-xjh9-6wia-u76b5pz5hanz';
+    const TOYYIBPAY_CATEGORY = env.TOYYIBPAY_CATEGORY || 'uul5ivz0';
+    const SITE_URL =
+      env.SITE_URL || new URL(context.request.url).origin;
 
-    // Amount in cents (RM29 = 2900 cents for early bird, RM39 = 3900 for regular)
-    // TODO: Check registration count for early bird vs regular pricing
-    const amount = 29; // RM29 early bird
+    const externalRef = `CG-${Date.now()}-${phoneDigits.slice(-4)}`;
 
     // Create ToyyibPay bill
     const formData = new URLSearchParams();
     formData.append('userSecretKey', TOYYIBPAY_SECRET);
     formData.append('categoryCode', TOYYIBPAY_CATEGORY);
     formData.append('billName', 'Cashflow Girlies Webinar');
-    formData.append('billDescription', 'Cara uruskan cukai for freelancers / content creator - 22 May 2026, 8PM');
-    formData.append('billPriceSetting', '1'); // Fixed price
-    formData.append('billPayorInfo', '1'); // Required
-    formData.append('billAmount', String(amount * 100)); // In cents
+    formData.append(
+      'billDescription',
+      `${tier} · Cara uruskan cukai for freelancers / content creators - 22 May 2026, 8PM`,
+    );
+    formData.append('billPriceSetting', '1');
+    formData.append('billPayorInfo', '1');
+    formData.append('billAmount', String(amount * 100)); // cents
     formData.append('billReturnUrl', `${SITE_URL}/webinar-success`);
     formData.append('billCallbackUrl', `${SITE_URL}/api/payment-callback`);
-    formData.append('billExternalReferenceNo', `CG-${Date.now()}-${cleanPhone.slice(-4)}`);
+    formData.append('billExternalReferenceNo', externalRef);
     formData.append('billTo', cleanName);
     formData.append('billEmail', email);
-    formData.append('billPhone', cleanPhone);
-    formData.append('billContentEmail', `Thank you for registering for Cashflow Girlies webinar! Your Zoom link will be sent to this email closer to the date.`);
+    formData.append('billPhone', phoneDigits);
+    formData.append(
+      'billContentEmail',
+      'Thank you for registering for Cashflow Girlies webinar! Your Zoom link will arrive after payment is confirmed.',
+    );
 
-    const res = await fetch('https://toyyibpay.com/index.php/api/createBill', {
-      method: 'POST',
-      body: formData,
-    });
-
+    const res = await fetch(
+      'https://toyyibpay.com/index.php/api/createBill',
+      {
+        method: 'POST',
+        body: formData,
+      },
+    );
     const result = await res.json();
 
-    if (result && result[0] && result[0].BillCode) {
-      const billCode = result[0].BillCode;
-      return json({ paymentUrl: `https://toyyibpay.com/${billCode}` });
-    } else {
+    if (!result?.[0]?.BillCode) {
       console.error('ToyyibPay error:', JSON.stringify(result));
-      return json({ error: 'Unable to create payment. Please try again.' }, 500);
+      return json(
+        { error: 'Unable to create payment. Please try again.' },
+        500,
+      );
     }
+
+    const billCode = result[0].BillCode;
+
+    // Log pending row to Sheets in the background — don't block the redirect.
+    // `waitUntil` keeps the promise alive after the response is sent.
+    context.waitUntil(
+      sheetsCall(env, {
+        action: 'insert',
+        name: cleanName,
+        email: email.toLowerCase(),
+        phone: phoneDigits,
+        tier,
+        amount,
+        billCode,
+        externalRef,
+      }),
+    );
+
+    return json({
+      paymentUrl: `https://toyyibpay.com/${billCode}`,
+      tier,
+      amount,
+    });
   } catch (e) {
     console.error('Registration error:', e);
     return json({ error: 'An error occurred. Please try again.' }, 500);
   }
-}
-
-function json(data, status = 200) {
-  return new Response(JSON.stringify(data), {
-    status,
-    headers: { 'Content-Type': 'application/json' },
-  });
 }

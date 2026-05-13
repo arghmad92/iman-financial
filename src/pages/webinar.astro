@@ -139,10 +139,10 @@ const faqs = [
       </div>
 
       <div class="pricing-grid">
-        <div class="pricing-card pricing-card--featured">
+        <div class="pricing-card pricing-card--featured" data-tier="early-bird">
           <div class="pricing-card__head">
             <span class="badge badge--pink">Early bird</span>
-            <span class="pricing-card__note">First 20 seats only</span>
+            <span class="pricing-card__note" data-eb-note>First 20 seats only</span>
           </div>
           <div class="pricing-card__amt">
             <span class="pricing-card__currency">RM</span>
@@ -317,8 +317,8 @@ const faqs = [
           <span id="regErrorText"></span>
         </div>
 
-        <button type="submit" class="btn btn--primary btn--lg btn--full" id="regBtn">
-          Register &amp; Pay · RM29
+        <button type="submit" class="btn btn--primary btn--lg btn--full" id="regBtn" data-default-price="29">
+          Register &amp; Pay · RM<span data-price>29</span>
         </button>
         <p class="reg__note">
           You'll be redirected to ToyyibPay for secure payment via FPX. Zoom
@@ -386,6 +386,46 @@ const faqs = [
   tick();
   setInterval(tick, 1000);
 
+  // --- Seat availability — update tier note + button price dynamically ---
+  let currentPrice = '29';
+  async function loadSeats() {
+    try {
+      const res = await fetch('/api/seats', { cache: 'no-store' });
+      if (!res.ok) return;
+      const { remaining, total, soldOut } = await res.json();
+
+      // Update early-bird tier copy
+      const note = document.querySelector('[data-eb-note]') as HTMLElement | null;
+      if (note) {
+        note.textContent = soldOut
+          ? 'Early bird sold out'
+          : `${remaining} of ${total} seats left`;
+      }
+
+      // Update featured tier visual + button price if sold out
+      const tier = document.querySelector('[data-tier="early-bird"]');
+      const priceEl = document.querySelector('[data-price]') as HTMLElement | null;
+      if (soldOut) {
+        tier?.classList.add('is-soldout');
+        currentPrice = '39';
+        if (priceEl) priceEl.textContent = '39';
+      } else {
+        currentPrice = '29';
+        if (priceEl) priceEl.textContent = '29';
+      }
+    } catch {
+      // Endpoint not available (e.g. local astro dev) — leave defaults.
+    }
+  }
+  loadSeats();
+
+  function resetBtn() {
+    const btn = document.getElementById('regBtn') as HTMLButtonElement | null;
+    if (!btn) return;
+    btn.disabled = false;
+    btn.innerHTML = `Register &amp; Pay · RM<span data-price>${currentPrice}</span>`;
+  }
+
   const form = document.getElementById('regForm') as HTMLFormElement | null;
   form?.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -418,14 +458,12 @@ const faqs = [
       } else {
         errEl.hidden = false;
         errText.textContent = data.error || 'Something went wrong. Please try again.';
-        btn.disabled = false;
-        btn.textContent = 'Register & Pay · RM29';
+        resetBtn();
       }
     } catch {
       errEl.hidden = false;
       errText.textContent = 'Connection error. Please try again.';
-      btn.disabled = false;
-      btn.textContent = 'Register & Pay · RM29';
+      resetBtn();
     }
   });
 </script>
@@ -614,6 +652,16 @@ const faqs = [
   .pricing-card--featured {
     background: linear-gradient(180deg, rgba(252, 231, 236, 0.65), rgba(255, 255, 255, 0.78));
     border-color: rgba(196, 69, 105, 0.2);
+  }
+  .pricing-card.is-soldout {
+    opacity: 0.55;
+    filter: grayscale(0.5);
+    pointer-events: none;
+  }
+  .pricing-card.is-soldout .pricing-card__num,
+  .pricing-card.is-soldout .pricing-card__currency {
+    text-decoration: line-through;
+    text-decoration-thickness: 1.5px;
   }
   .pricing-card__head {
     display: flex; flex-direction: column;
