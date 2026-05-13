@@ -52,30 +52,79 @@ export function getTierAndAmount(seatsTaken, env) {
 }
 
 /**
- * Call the Google Apps Script webhook with shared-secret auth.
- * The Apps Script side rejects requests without a matching SHEETS_SHARED_SECRET.
- * Falls through silently if SHEETS_WEBHOOK_URL isn't set (local dev).
+ * Check whether an email already has a registration row.
+ * Returns true if found, false if not. Fails open (returns false) if the
+ * DB isn't bound, so local dev without `wrangler pages dev` still works.
  */
-export async function sheetsCall(env, payload) {
-  if (!env.SHEETS_WEBHOOK_URL) {
-    console.warn('SHEETS_WEBHOOK_URL not set — skipping Sheets call', payload);
-    return null;
+export async function dbEmailExists(env, email) {
+  if (!env.REGISTRATIONS_DB) {
+    console.warn('REGISTRATIONS_DB not bound — skipping email check');
+    return false;
   }
   try {
-    const res = await fetch(env.SHEETS_WEBHOOK_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        ...payload,
-        secret: env.SHEETS_SHARED_SECRET || '',
-      }),
-      // Apps Script redirects 302 → handle by following
-      redirect: 'follow',
-    });
-    return await res.json();
+    const row = await env.REGISTRATIONS_DB
+      .prepare('SELECT 1 FROM registrations WHERE email = ?1 LIMIT 1')
+      .bind(email.toLowerCase())
+      .first();
+    return !!row;
   } catch (e) {
-    console.error('Sheets webhook failed:', e);
-    return null;
+    console.error('D1 email check failed:', e);
+    return false;
+  }
+}
+
+/**
+ * Insert a new pending registration row. Fire-and-forget from callers via
+ * context.waitUntil — we don't want DB latency to delay the redirect.
+ */
+export async function dbInsertRegistration(env, row) {
+  if (!env.REGISTRATIONS_DB) {
+    console.warn('REGISTRATIONS_DB not bound — skipping insert', row);
+    return;
+  }
+  try {
+    await env.REGISTRATIONS_DB
+      .prepare(
+        `INSERT INTO registrations
+         (name, email, phone, tier, amount, status, bill_code)
+         VALUES (?1, ?2, ?3, ?4, ?5, 'pending', ?6)`,
+      )
+      .bind(
+        row.name,
+        row.email.toLowerCase(),
+        row.phone,
+        row.tier,
+        row.amount,
+        row.billCode,
+      )
+      .run();
+  } catch (e) {
+    console.error('D1 insert failed:', e);
+  }
+}
+
+/**
+ * Mark an existing row paid (by billCode), record the paid timestamp and
+ * whether the Zoom confirmation email was sent.
+ */
+export async function dbMarkPaid(env, billCode, zoomSent) {
+  if (!env.REGISTRATIONS_DB) {
+    console.warn('REGISTRATIONS_DB not bound — skipping mark_paid', billCode);
+    return;
+  }
+  try {
+    await env.REGISTRATIONS_DB
+      .prepare(
+        `UPDATE registrations
+         SET status = 'paid',
+             paid_at = datetime('now'),
+             zoom_sent = ?2
+         WHERE bill_code = ?1`,
+      )
+      .bind(billCode, zoomSent ? 'YES' : 'NO')
+      .run();
+  } catch (e) {
+    console.error('D1 mark_paid failed:', e);
   }
 }
 

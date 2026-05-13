@@ -1,6 +1,6 @@
 import {
   incSeatsTaken,
-  sheetsCall,
+  dbMarkPaid,
   getToyyibpayBase,
   markOnce,
 } from '../_lib.js';
@@ -83,12 +83,8 @@ export async function onRequest(context) {
       console.warn('RESEND_KEY not set — skipping confirmation email');
     }
 
-    // Update Sheet row to "paid"
-    await sheetsCall(env, {
-      action: 'mark_paid',
-      billCode,
-      zoomSent,
-    });
+    // Mark the D1 row paid
+    await dbMarkPaid(env, billCode, zoomSent);
 
     return new Response('OK', { status: 200 });
   } catch (e) {

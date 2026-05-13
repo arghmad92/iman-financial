@@ -7,8 +7,14 @@ pages_build_output_dir = "./dist"
 binding = "REGISTRATIONS_KV"
 id = "2ffc5fe7be384cb390eb3e982449e978"
 
+# D1: webinar registration log (one row per signup)
+[[d1_databases]]
+binding = "REGISTRATIONS_DB"
+database_name = "iman-webinar-registrations"
+database_id = "d31c5cca-d9ca-4e27-a369-0d89fe5cd3a0"
+
 # Non-secret environment variables.
-# Secrets (RESEND_KEY, SHEETS_WEBHOOK_URL, ZOOM_JOIN_URL) are set separately via
+# Secrets (RESEND_KEY, ZOOM_JOIN_URL, TOYYIBPAY_SECRET) are set separately via
 # `wrangler pages secret put …` so they don't land in git.
 [vars]
 RESEND_FROM = "Iman Abdul Rahim <hello@imanabdulrahim.com>"

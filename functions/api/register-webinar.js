@@ -2,7 +2,8 @@ import {
   getSeatsTaken,
   getTierAndAmount,
   getToyyibpayBase,
-  sheetsCall,
+  dbEmailExists,
+  dbInsertRegistration,
   json,
   titleCase,
   cleanPhone,
@@ -73,12 +74,8 @@ export async function onRequest(context) {
 
     const cleanName = titleCase(name);
 
-    // Duplicate check — uses Sheets as the source of truth.
-    const dup = await sheetsCall(env, {
-      action: 'check_email',
-      email: email.toLowerCase(),
-    });
-    if (dup?.exists) {
+    // Duplicate check against D1.
+    if (await dbEmailExists(env, email)) {
       return json(
         {
           error:
@@ -141,18 +138,16 @@ export async function onRequest(context) {
 
     const billCode = result[0].BillCode;
 
-    // Log pending row to Sheets in the background — don't block the redirect.
+    // Log pending row to D1 in the background — don't block the redirect.
     // `waitUntil` keeps the promise alive after the response is sent.
     context.waitUntil(
-      sheetsCall(env, {
-        action: 'insert',
+      dbInsertRegistration(env, {
         name: cleanName,
-        email: email.toLowerCase(),
+        email,
         phone: phoneDigits,
         tier,
         amount,
         billCode,
-        externalRef,
       }),
     );
 
