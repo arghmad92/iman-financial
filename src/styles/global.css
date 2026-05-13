@@ -14,17 +14,17 @@
   --color-ink-2: #6a4d57;
   --color-ink-3: #a08891;
 
-  --color-glass: rgba(255, 255, 255, 0.55);
-  --color-glass-strong: rgba(255, 255, 255, 0.75);
-  --color-glass-ink: rgba(42, 26, 34, 0.65);
+  --color-glass: rgba(255, 255, 255, 0.7);
+  --color-glass-strong: rgba(255, 255, 255, 0.85);
+  --color-glass-ink: rgba(42, 26, 34, 0.72);
 
   /* Borders */
-  --color-hairline: rgba(42, 26, 34, 0.08);
-  --color-hairline-rose: rgba(236, 108, 135, 0.18);
+  --color-hairline: rgba(42, 26, 34, 0.12);
+  --color-hairline-rose: rgba(236, 108, 135, 0.22);
 
-  /* Typography — Fraunces (warm, airy variable serif) + Geist (modern grotesk) */
-  --font-serif: 'Fraunces', 'Iowan Old Style', Georgia, serif;
-  --font-sans: 'Geist', 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  /* Typography — IBM Plex Sans for both (skill's fintech-trust mono-typeface system) */
+  --font-serif: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --font-sans: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
 
   /* Radii */
   --radius-xs: 6px;
@@ -63,9 +63,9 @@ body {
 
 h1, h2, h3, h4 {
   font-family: var(--font-serif);
-  font-weight: 300;
-  line-height: 1.12;
-  letter-spacing: -0.02em;
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
   color: var(--color-ink);
 }
 
@@ -81,6 +81,24 @@ img { max-width: 100%; display: block; }
   outline: 2px solid var(--color-deep);
   outline-offset: 3px;
   border-radius: 6px;
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .btn:hover,
+  .service:hover,
+  .pillar:hover,
+  .lcard:hover {
+    transform: none !important;
+  }
 }
 
 /* ========= Layout ========= */
@@ -129,8 +147,8 @@ img { max-width: 100%; display: block; }
   font-family: var(--font-serif);
   font-weight: 300;
   font-size: clamp(2.6rem, 6.5vw, 5rem);
-  line-height: 1.04;
-  letter-spacing: -0.03em;
+  line-height: 1.05;
+  letter-spacing: -0.035em;
 }
 .h-display em {
   font-style: italic;
@@ -139,10 +157,10 @@ img { max-width: 100%; display: block; }
 }
 .h-section {
   font-family: var(--font-serif);
-  font-weight: 300;
+  font-weight: 400;
   font-size: clamp(1.95rem, 4vw, 3.1rem);
-  line-height: 1.1;
-  letter-spacing: -0.022em;
+  line-height: 1.12;
+  letter-spacing: -0.028em;
 }
 .h-section em {
   font-style: italic;

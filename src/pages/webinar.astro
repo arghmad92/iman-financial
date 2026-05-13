@@ -253,7 +253,14 @@ const faqs = [
           />
         </div>
 
-        <div id="regError" class="reg__error" style="display:none"></div>
+        <div id="regError" class="reg__error" role="alert" aria-live="polite" style="display:none">
+          <svg class="reg__error-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="12" y1="8" x2="12" y2="12"/>
+            <line x1="12" y1="16" x2="12.01" y2="16"/>
+          </svg>
+          <span id="regErrorText"></span>
+        </div>
 
         <button type="submit" class="btn btn--rose btn--lg reg__btn" id="regBtn">
           Register &amp; Pay · RM29
@@ -345,7 +352,7 @@ const faqs = [
 
     if (!name || !email || !phone) {
       errEl.style.display = '';
-      errEl.textContent = 'Please fill in all fields.';
+      document.getElementById('regErrorText')!.textContent = 'Please fill in all fields.';
       return;
     }
 
@@ -364,13 +371,13 @@ const faqs = [
         window.location.href = data.paymentUrl;
       } else {
         errEl.style.display = '';
-        errEl.textContent = data.error || 'Something went wrong. Please try again.';
+        document.getElementById('regErrorText')!.textContent = data.error || 'Something went wrong. Please try again.';
         btn.disabled = false;
         btn.textContent = 'Register & Pay · RM29';
       }
     } catch {
       errEl.style.display = '';
-      errEl.textContent = 'Connection error. Please try again.';
+      document.getElementById('regErrorText')!.textContent = 'Connection error. Please try again.';
       btn.disabled = false;
       btn.textContent = 'Register & Pay · RM29';
     }
@@ -679,6 +686,17 @@ const faqs = [
     padding: 0.75rem 1rem;
     border-radius: 12px;
     margin-bottom: 1rem;
+    display: flex !important;
+    align-items: center;
+    gap: 0.55rem;
+  }
+  .reg__error[style*="display:none"],
+  .reg__error[style*="display: none"] {
+    display: none !important;
+  }
+  .reg__error-icon {
+    flex-shrink: 0;
+    color: var(--color-deep);
   }
   .reg__btn {
     width: 100%;

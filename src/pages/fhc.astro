@@ -1,5 +1,7 @@
 ---
+import { Image } from 'astro:assets';
 import Layout from '../layouts/Layout.astro';
+import wealthVantageScore from '../assets/wealth-vantage-score.jpg';
 
 const bookHref = 'https://form.wealthvantage.com.my/iman-lead/';
 
@@ -189,12 +191,13 @@ const outcomes = [
       </div>
 
       <figure class="sample glass">
-        <img
-          src="/wealth-vantage-score.jpg"
+        <Image
+          src={wealthVantageScore}
           alt="Contoh Wealth Vantage Score report: gauge rated from Bad to Best"
           loading="lazy"
-          width="1200"
-          height="700"
+          widths={[480, 800, 1200]}
+          sizes="(max-width: 800px) 100vw, 760px"
+          format="avif"
         />
         <figcaption>
           Example&nbsp;&middot;&nbsp;Wealth Vantage Score&trade; rated 316/1000
