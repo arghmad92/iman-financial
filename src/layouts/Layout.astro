@@ -69,7 +69,7 @@ const {
 
       // Apple-style scroll reveal
       const revealSelector =
-        '.h-display, .h-section, .lede, .hero__eyebrow, .hero__actions, .hero__small, .trust, .trust__item, .bento__card, .svc, .aud-card, .deliv, .outcome, .quote, .pillar-card, .tl__row, .who-pill, .speaker, .reg, .faq-card, .pricing, .sample, .why-card, .cta-card, .finalcta, .tier, .countdown, .about-card, .accordion details, [data-reveal]';
+        '.h-display, .h-section, .lede, .hero__eyebrow, .hero__actions, .hero__small, .trust, .trust__item, .bento__card, .svc, .aud-card, .deliv, .outcome, .quote, .pillar-card, .tl__row, .who-pill, .speaker, .reg, .faq-card, .pricing, .sample, .why-card, .cta-card, .finalcta, .tier, .countdown, .about-card, .tmn, .accordion details, [data-reveal]';
 
       // Auto-stagger groups (sibling cards within same parent)
       const staggerSelectors = [
@@ -83,6 +83,7 @@ const {
         '.who-pill',
         '.tier',
         '.trust__item',
+        '.tmn',
         '.accordion details',
       ];
       staggerSelectors.forEach((sel) => {
@@ -118,6 +119,45 @@ const {
         revealEls.forEach((el) => io.observe(el));
       } else {
         revealEls.forEach((el) => el.classList.add('is-revealed'));
+      }
+
+      // Number count-up — animate any [data-count-to] from 0 to target
+      // when scrolled into view. Respects prefers-reduced-motion.
+      const reduceMotion = window.matchMedia(
+        '(prefers-reduced-motion: reduce)',
+      ).matches;
+      const countEls = document.querySelectorAll('[data-count-to]');
+      if (countEls.length && 'IntersectionObserver' in window) {
+        const countIo = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting) return;
+              const el = entry.target as HTMLElement;
+              countIo.unobserve(el);
+              const target = parseInt(el.dataset.countTo || '0', 10);
+              if (reduceMotion || !Number.isFinite(target)) {
+                el.textContent = String(target);
+                return;
+              }
+              const duration = 900;
+              const start = performance.now();
+              const tick = (now: number) => {
+                const t = Math.min(1, (now - start) / duration);
+                const eased = 1 - Math.pow(1 - t, 3);
+                el.textContent = String(Math.round(target * eased));
+                if (t < 1) requestAnimationFrame(tick);
+              };
+              requestAnimationFrame(tick);
+            });
+          },
+          { threshold: 0.5 },
+        );
+        countEls.forEach((el) => countIo.observe(el));
+      } else {
+        countEls.forEach((el) => {
+          (el as HTMLElement).textContent =
+            (el as HTMLElement).dataset.countTo || '0';
+        });
       }
     </script>
   </body>

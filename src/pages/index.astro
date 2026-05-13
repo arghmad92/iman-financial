@@ -42,9 +42,8 @@ const faqs = [
         <span class="pink">Jom buat betul-betul.</span>
       </h1>
       <p class="lede lede--xl lede--center hero__lede text-balance">
-        I bantu ladies macam you urus kewangan dengan strategi yang jelas dan
-        nasihat yang personalised, tanpa bias, supaya you boleh buat keputusan
-        kewangan dengan yakin, bijak, dan terancang.
+        Nasihat personalised, tanpa bias, untuk ladies Malaysia yang nak
+        buat keputusan kewangan dengan yakin.
       </p>
       <div class="hero__actions">
         <a
@@ -74,7 +73,7 @@ const faqs = [
         </div>
         <div class="trust__item">
           <span class="trust__label">Experience</span>
-          <span class="trust__val">5 years</span>
+          <span class="trust__val"><span data-count-to="5">0</span> years</span>
         </div>
         <div class="trust__item">
           <span class="trust__label">Approach</span>
@@ -144,6 +143,62 @@ const faqs = [
             </svg>
           </span>
         </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== TESTIMONIALS =================== -->
+  <!--
+    TODO (REQUIRED before going live):
+    These are placeholder testimonials. Financial-planning testimonials in
+    Malaysia must be (a) genuine, (b) given with written consent, and
+    (c) accurate. Replace each .tmn block below with a real client quote
+    once consent is received. Do NOT publish this section as-is.
+  -->
+  <section class="section" id="testimonials">
+    <div class="container-x">
+      <div class="sec-head text-center">
+        <span class="eyebrow eyebrow--center">From clients</span>
+        <h2 class="h-section text-balance">
+          Apa yang ladies kata <span class="pink">pasal kerja sama I.</span>
+        </h2>
+      </div>
+
+      <div class="tmn-grid">
+        <figure class="tmn glass-strong">
+          <p class="tmn__quote">
+            "First time rasa boleh tanya soalan kewangan tanpa rasa stupid.
+            Iman explain everything dalam bahasa yang I faham, dan plan I
+            sekarang ada step-by-step yang clear."
+          </p>
+          <figcaption class="tmn__cite">
+            <span class="tmn__name">Aida</span>
+            <span class="tmn__role">Marketing exec · KL</span>
+          </figcaption>
+        </figure>
+
+        <figure class="tmn tmn--featured">
+          <p class="tmn__quote">
+            "I dah lama nak mula invest tapi takut buat salah. Lepas FHC,
+            I finally tahu mana nak focus first. Worth every ringgit."
+          </p>
+          <figcaption class="tmn__cite">
+            <span class="tmn__name">Sarah</span>
+            <span class="tmn__role">Freelance designer · PJ</span>
+          </figcaption>
+        </figure>
+
+        <figure class="tmn glass-strong">
+          <p class="tmn__quote">
+            "Yang I appreciate, dia tak push product. Dia recommend yang
+            betul-betul sesuai untuk situation I — even kalau maknanya
+            insurance I cukup dah, tak payah top up."
+          </p>
+          <figcaption class="tmn__cite">
+            <span class="tmn__name">Nadia</span>
+            <span class="tmn__role">Doctor · Shah Alam</span>
+          </figcaption>
+        </figure>
       </div>
     </div>
   </section>
@@ -420,6 +475,81 @@ const faqs = [
 
   @media (max-width: 800px) {
     .svc-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* ---------- Testimonials ---------- */
+  .tmn-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: clamp(1rem, 1.8vw, 1.4rem);
+  }
+  .tmn {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.4rem;
+    padding: clamp(1.75rem, 3vw, 2.25rem);
+    border-radius: var(--radius-2xl);
+    background: var(--glass-strong);
+    backdrop-filter: var(--glass-blur-strong);
+    -webkit-backdrop-filter: var(--glass-blur-strong);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-glass);
+    transition: box-shadow 0.25s ease, transform 0.25s ease;
+  }
+  .tmn:hover {
+    box-shadow: var(--shadow-glass-lg);
+    transform: translateY(-4px);
+  }
+  .tmn--featured {
+    background: var(--color-foreground);
+    color: var(--color-paper);
+    border-color: var(--color-foreground);
+    box-shadow: var(--shadow-ink);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+  .tmn__quote {
+    margin: 0;
+    font-size: clamp(1rem, 1.15vw, 1.08rem);
+    line-height: 1.65;
+    color: var(--color-ink-2);
+    flex-grow: 1;
+  }
+  .tmn--featured .tmn__quote {
+    color: rgba(255, 255, 255, 0.92);
+  }
+  .tmn__cite {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    padding-top: 1.1rem;
+    border-top: 1px solid var(--glass-border-pink);
+    font-style: normal;
+  }
+  .tmn--featured .tmn__cite {
+    border-top-color: rgba(255, 255, 255, 0.12);
+  }
+  .tmn__name {
+    font-weight: 600;
+    font-size: 0.96rem;
+    color: var(--color-foreground);
+    letter-spacing: -0.01em;
+  }
+  .tmn--featured .tmn__name {
+    color: var(--color-paper);
+  }
+  .tmn__role {
+    font-size: 0.84rem;
+    color: var(--color-muted-foreground);
+  }
+  .tmn--featured .tmn__role {
+    color: rgba(255, 255, 255, 0.6);
+  }
+  @media (max-width: 900px) {
+    .tmn-grid {
       grid-template-columns: 1fr;
     }
   }
