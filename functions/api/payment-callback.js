@@ -57,7 +57,7 @@ export async function onRequest(context) {
 
                     <p style="color:#7a5660;line-height:1.8"><strong>Zoom link</strong> will be sent to this email 1 day before the webinar.</p>
 
-                    <p style="color:#7a5660;line-height:1.8">If you have any questions, reply to this email or WhatsApp me at <a href="https://wa.me/60186617981" style="color:#c9848c">+6018-6617981</a>.</p>
+                    <p style="color:#7a5660;line-height:1.8">If you have any questions, just reply to this email.</p>
 
                     <p style="color:#7a5660;margin-top:2rem">See you there!<br><strong>Iman Abdul Rahim</strong><br><span style="font-size:0.85rem;color:#b8949c">Licensed Financial Planner</span></p>
                   </div>
