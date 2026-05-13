@@ -28,6 +28,14 @@ export async function incSeatsTaken(env) {
   return next;
 }
 
+/**
+ * ToyyibPay base URL — production by default, sandbox when overridden.
+ * Set TOYYIBPAY_BASE_URL=https://dev.toyyibpay.com to use the sandbox.
+ */
+export function getToyyibpayBase(env) {
+  return env.TOYYIBPAY_BASE_URL || 'https://toyyibpay.com';
+}
+
 export function getEarlyBirdLimit(env) {
   const n = parseInt(env.EARLY_BIRD_LIMIT || '20', 10);
   return Number.isFinite(n) ? n : 20;

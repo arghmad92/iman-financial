@@ -1,4 +1,8 @@
-import { incSeatsTaken, sheetsCall } from '../_lib.js';
+import {
+  incSeatsTaken,
+  sheetsCall,
+  getToyyibpayBase,
+} from '../_lib.js';
 
 // ToyyibPay payment callback (server-to-server).
 // Called every time a bill's status changes. We only act on status=1 (success).
@@ -19,12 +23,13 @@ export async function onRequest(context) {
     // Look up the bill's payment record to get name/email
     const TOYYIBPAY_SECRET =
       env.TOYYIBPAY_SECRET || 'n2iltwy6-pmio-xjh9-6wia-u76b5pz5hanz';
+    const TOYYIBPAY_BASE = getToyyibpayBase(env);
     const billData = new URLSearchParams();
     billData.append('userSecretKey', TOYYIBPAY_SECRET);
     billData.append('billCode', billCode);
 
     const billRes = await fetch(
-      'https://toyyibpay.com/index.php/api/getBillTransactions',
+      `${TOYYIBPAY_BASE}/index.php/api/getBillTransactions`,
       { method: 'POST', body: billData },
     );
     const transactions = await billRes.json();

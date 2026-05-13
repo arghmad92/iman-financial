@@ -1,6 +1,7 @@
 import {
   getSeatsTaken,
   getTierAndAmount,
+  getToyyibpayBase,
   sheetsCall,
   json,
   titleCase,
@@ -53,6 +54,7 @@ export async function onRequest(context) {
     const TOYYIBPAY_SECRET =
       env.TOYYIBPAY_SECRET || 'n2iltwy6-pmio-xjh9-6wia-u76b5pz5hanz';
     const TOYYIBPAY_CATEGORY = env.TOYYIBPAY_CATEGORY || 'uul5ivz0';
+    const TOYYIBPAY_BASE = getToyyibpayBase(env);
     const SITE_URL =
       env.SITE_URL || new URL(context.request.url).origin;
 
@@ -81,13 +83,10 @@ export async function onRequest(context) {
       'Thank you for registering for Cashflow Girlies webinar! Your Zoom link will arrive after payment is confirmed.',
     );
 
-    const res = await fetch(
-      'https://toyyibpay.com/index.php/api/createBill',
-      {
-        method: 'POST',
-        body: formData,
-      },
-    );
+    const res = await fetch(`${TOYYIBPAY_BASE}/index.php/api/createBill`, {
+      method: 'POST',
+      body: formData,
+    });
     const result = await res.json();
 
     if (!result?.[0]?.BillCode) {
@@ -116,7 +115,7 @@ export async function onRequest(context) {
     );
 
     return json({
-      paymentUrl: `https://toyyibpay.com/${billCode}`,
+      paymentUrl: `${TOYYIBPAY_BASE}/${billCode}`,
       tier,
       amount,
     });
