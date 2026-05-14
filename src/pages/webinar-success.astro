@@ -1,152 +1,497 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+// ToyyibPay redirects here after every payment attempt (success, pending,
+// or fail/cancel) with `status_id`, `billcode`, and `order_id` in the
+// query string. We branch on those client-side and render the matching
+// state — the page is statically built but each state is gated by CSS so
+// only one shows.
+//
+//   status_id=1 → confirmed
+//   status_id=2 → pending
+//   status_id=3 → failed / cancelled
+//   missing    → fallback "checking" then default to failed
 ---
 
 <Layout
-  title="Payment Successful · Cashflow Girlies"
-  description="Your registration is confirmed!"
+  title="Payment · Cashflow Girlies"
+  description="Webinar payment status"
 >
-  <section class="success">
-    <div class="glow success__glow-a" aria-hidden="true"></div>
-    <div class="glow success__glow-b" aria-hidden="true"></div>
+  <section class="ps" data-state="checking">
+    <div class="glow ps__glow-a" aria-hidden="true"></div>
+    <div class="glow ps__glow-b" aria-hidden="true"></div>
 
-    <div class="container-narrow success__inner">
-      <span class="success__icon glass-strong" aria-hidden="true">
-        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <polyline points="20 6 9 17 4 12" />
-        </svg>
-      </span>
+    <div class="container-narrow ps__inner">
 
-      <span class="eyebrow eyebrow--center" style="margin: 0 auto; display: inline-flex;">Registration confirmed</span>
-      <h1 class="h-display success__title text-balance">
-        You're <span class="pink">in.</span>
-      </h1>
-      <p class="lede lede--xl lede--center success__sub text-balance">
-        Payment confirmed. Check your email for confirmation details, Zoom link
-        goes out 1 day before the webinar.
-      </p>
-
-      <div class="success__card glass-strong">
-        <span class="badge badge--pink">Cashflow Girlies</span>
-        <h2 class="success__card-title">
-          Cara uruskan cukai for freelancers &amp; content creators
-        </h2>
-        <dl class="success__meta">
-          <div>
-            <dt>Date</dt>
-            <dd>22 May 2026</dd>
-          </div>
-          <div>
-            <dt>Time</dt>
-            <dd>8:00 PM (MYT)</dd>
-          </div>
-          <div>
-            <dt>Platform</dt>
-            <dd>Zoom</dd>
-          </div>
-        </dl>
+      <!-- ============ CHECKING (initial flash) ============ -->
+      <div class="ps__state ps__state--checking">
+        <p class="ps__checking">Checking your payment&hellip;</p>
       </div>
 
-      <div class="success__actions">
-        <a href="/" class="btn btn--glass btn--lg">Back to home</a>
-        <a href="/webinar" class="btn btn--primary btn--lg">
-          Webinar details
-        </a>
+      <!-- ============ CONFIRMED ============ -->
+      <div class="ps__state ps__state--confirmed">
+        <span class="ps__icon ps__icon--ok glass-strong" aria-hidden="true">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12" />
+          </svg>
+        </span>
+
+        <span class="eyebrow eyebrow--center ps__eyebrow">Payment confirmed</span>
+        <h1 class="h-display ps__title text-balance">
+          You're <span class="pink">in.</span>
+        </h1>
+        <p class="lede lede--xl lede--center ps__sub text-balance">
+          We've emailed your receipt and confirmation to
+          <strong data-bind="email">your inbox</strong>. Zoom link goes out
+          one day before the webinar.
+        </p>
+
+        <!-- Receipt -->
+        <div class="ps__receipt glass-strong">
+          <div class="ps__receipt-head">
+            <span class="badge badge--pink">Cashflow Girlies</span>
+            <span class="ps__receipt-ref">
+              Ref&nbsp;<span data-bind="orderId">—</span>
+            </span>
+          </div>
+
+          <h2 class="ps__receipt-title">
+            Cara uruskan cukai for freelancers &amp; content creators
+          </h2>
+
+          <dl class="ps__receipt-meta">
+            <div>
+              <dt>Date</dt>
+              <dd>22 May 2026</dd>
+            </div>
+            <div>
+              <dt>Time</dt>
+              <dd>8:00 PM (MYT)</dd>
+            </div>
+            <div>
+              <dt>Platform</dt>
+              <dd>Zoom</dd>
+            </div>
+          </dl>
+
+          <div class="ps__receipt-pay">
+            <div class="ps__receipt-row">
+              <span>Tier</span>
+              <span data-bind="tier" class="strong">—</span>
+            </div>
+            <div class="ps__receipt-row">
+              <span>Amount paid</span>
+              <span data-bind="amount" class="strong tabular">—</span>
+            </div>
+            <div class="ps__receipt-row">
+              <span>Paid via</span>
+              <span class="strong">ToyyibPay · FPX</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Next steps -->
+        <div class="ps__next">
+          <h3 class="ps__next-title">What's next</h3>
+          <ol class="ps__next-list">
+            <li>
+              Check your inbox for the confirmation email (also check spam).
+            </li>
+            <li>
+              <a href="#" data-bind="calLink" target="_blank" rel="noopener">
+                Add to Google Calendar
+              </a>
+              so you don't miss it.
+            </li>
+            <li>
+              We'll send the Zoom join link one day before, on 21 May 2026.
+            </li>
+          </ol>
+        </div>
+
+        <div class="ps__actions">
+          <button type="button" class="btn btn--glass btn--lg" data-action="print">
+            Print receipt
+          </button>
+          <a href="/" class="btn btn--primary btn--lg">Back to home</a>
+        </div>
       </div>
+
+      <!-- ============ PENDING ============ -->
+      <div class="ps__state ps__state--pending">
+        <span class="ps__icon ps__icon--pending glass-strong" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10" />
+            <polyline points="12 6 12 12 16 14" />
+          </svg>
+        </span>
+
+        <span class="eyebrow eyebrow--center ps__eyebrow">Payment pending</span>
+        <h1 class="h-display ps__title text-balance">
+          Almost <span class="pink">there.</span>
+        </h1>
+        <p class="lede lede--xl lede--center ps__sub text-balance">
+          Your bank is still processing the payment. This usually clears
+          within a few minutes — once it does, you'll get a confirmation
+          email and your seat will be locked in.
+        </p>
+        <p class="ps__small">
+          Ref&nbsp;<span data-bind="orderId">—</span>
+        </p>
+
+        <div class="ps__actions">
+          <button type="button" class="btn btn--glass btn--lg" data-action="reload">
+            Refresh status
+          </button>
+          <a href="/" class="btn btn--primary btn--lg">Back to home</a>
+        </div>
+      </div>
+
+      <!-- ============ FAILED / CANCELLED ============ -->
+      <div class="ps__state ps__state--failed">
+        <span class="ps__icon ps__icon--fail glass-strong" aria-hidden="true">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18" />
+            <line x1="6" y1="6" x2="18" y2="18" />
+          </svg>
+        </span>
+
+        <span class="eyebrow eyebrow--center ps__eyebrow ps__eyebrow--fail">Payment not completed</span>
+        <h1 class="h-display ps__title text-balance">
+          No worries, <span class="pink">try again.</span>
+        </h1>
+        <p class="lede lede--xl lede--center ps__sub text-balance">
+          Your payment was cancelled or didn't go through, so no charge
+          was made. Your seat hasn't been booked yet — head back to
+          register again.
+        </p>
+        <p class="ps__small" data-show="hasRef">
+          Ref&nbsp;<span data-bind="orderId">—</span>
+        </p>
+
+        <div class="ps__actions">
+          <a href="/webinar" class="btn btn--primary btn--lg">Try again</a>
+          <a
+            href="mailto:hello@imanabdulrahim.com?subject=Cashflow%20Girlies%20payment%20issue"
+            class="btn btn--glass btn--lg"
+          >
+            Email us
+          </a>
+        </div>
+      </div>
+
     </div>
   </section>
+
+  <script is:inline>
+    (function () {
+      const params = new URLSearchParams(location.search);
+      const statusId = params.get('status_id') || '';
+      const billCode = params.get('billcode') || '';
+      const orderId = params.get('order_id') || '';
+
+      const root = document.querySelector('.ps');
+      const setState = (state) => root && root.setAttribute('data-state', state);
+
+      const bind = (key, value) => {
+        document.querySelectorAll('[data-bind="' + key + '"]').forEach((el) => {
+          el.textContent = value;
+        });
+      };
+
+      // Toggle [data-show] elements based on truthy flags.
+      const setVisible = (key, visible) => {
+        document.querySelectorAll('[data-show="' + key + '"]').forEach((el) => {
+          el.style.display = visible ? '' : 'none';
+        });
+      };
+
+      if (orderId) {
+        bind('orderId', orderId);
+        setVisible('hasRef', true);
+      } else {
+        setVisible('hasRef', false);
+      }
+
+      // Calendar link (Google Calendar) — 22 May 2026, 8–10 PM MYT (UTC+8).
+      const calStart = '20260522T120000Z'; // 20:00 MYT = 12:00 UTC
+      const calEnd = '20260522T140000Z';
+      const calTitle = encodeURIComponent('Cashflow Girlies Webinar');
+      const calDetails = encodeURIComponent(
+        'Cara uruskan cukai for freelancers & content creators. Zoom link will be emailed one day before.'
+      );
+      const calHref =
+        'https://calendar.google.com/calendar/render?action=TEMPLATE' +
+        '&text=' + calTitle +
+        '&dates=' + calStart + '/' + calEnd +
+        '&details=' + calDetails +
+        '&ctz=Asia/Kuala_Lumpur';
+      document.querySelectorAll('[data-bind="calLink"]').forEach((el) => {
+        el.setAttribute('href', calHref);
+      });
+
+      // Action buttons.
+      document.querySelectorAll('[data-action="print"]').forEach((el) => {
+        el.addEventListener('click', () => window.print());
+      });
+      document.querySelectorAll('[data-action="reload"]').forEach((el) => {
+        el.addEventListener('click', () => location.reload());
+      });
+
+      // Branch on status_id. Fall back to "failed" if missing/unknown —
+      // never show "confirmed" without proof of payment.
+      if (statusId === '1') {
+        setState('confirmed');
+        // Try to enrich with name/amount/tier from our DB.
+        if (billCode) {
+          fetch('/api/registration-status?billCode=' + encodeURIComponent(billCode))
+            .then((r) => (r.ok ? r.json() : null))
+            .then((row) => {
+              if (!row) return;
+              if (row.tier) bind('tier', row.tier);
+              if (typeof row.amount === 'number') bind('amount', 'RM ' + row.amount);
+            })
+            .catch(() => {});
+        }
+      } else if (statusId === '2') {
+        setState('pending');
+      } else {
+        setState('failed');
+      }
+    })();
+  </script>
 </Layout>
 
 <style>
-  .success {
+  .ps {
     min-height: calc(100svh - 200px);
     display: flex;
     align-items: center;
     padding: clamp(3rem, 7vw, 6rem) 0 clamp(4rem, 7vw, 6rem);
-    position: relative; overflow: hidden; isolation: isolate;
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
   }
-  .success__glow-a {
-    width: 640px; height: 640px;
-    top: -200px; right: -180px;
+  .ps__glow-a {
+    width: 640px;
+    height: 640px;
+    top: -200px;
+    right: -180px;
     background: radial-gradient(circle, rgba(196, 69, 105, 0.08), transparent 65%);
     z-index: -1;
   }
-  .success__glow-b {
-    width: 520px; height: 520px;
-    bottom: -160px; left: -160px;
+  .ps__glow-b {
+    width: 520px;
+    height: 520px;
+    bottom: -160px;
+    left: -160px;
     background: radial-gradient(circle, rgba(249, 212, 220, 0.25), transparent 65%);
     z-index: -1;
   }
-  .success__inner {
+  .ps__inner {
     text-align: center;
-    position: relative; z-index: 1;
+    position: relative;
+    z-index: 1;
   }
-  .success__icon {
+
+  /* State gating — only the matching state is visible. */
+  .ps__state {
+    display: none;
+  }
+  .ps[data-state='checking'] .ps__state--checking,
+  .ps[data-state='confirmed'] .ps__state--confirmed,
+  .ps[data-state='pending']   .ps__state--pending,
+  .ps[data-state='failed']    .ps__state--failed {
+    display: block;
+  }
+
+  .ps__checking {
+    color: var(--color-muted-foreground);
+    font-size: 1rem;
+    padding: 3rem 0;
+  }
+
+  .ps__icon {
     display: inline-flex;
-    align-items: center; justify-content: center;
-    width: 80px; height: 80px;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
-    color: var(--color-primary);
-    margin-bottom: 1.75rem;
+    margin-bottom: 1.5rem;
   }
-  .success__title {
+  .ps__icon--ok      { color: var(--color-primary); }
+  .ps__icon--pending { color: #b8851c; }
+  .ps__icon--fail    { color: #c44569; }
+
+  .ps__eyebrow {
+    margin: 0 auto;
+    display: inline-flex;
+  }
+  .ps__eyebrow--fail {
+    color: var(--color-muted-foreground);
+  }
+  .ps__title {
     margin: 1rem 0 1.25rem;
   }
-  .success__sub {
+  .ps__sub {
     margin: 0 auto 2.5rem;
   }
-  .success__card {
+  .ps__sub strong {
+    color: var(--color-foreground);
+    font-weight: 600;
+  }
+  .ps__small {
+    color: var(--color-muted-foreground);
+    font-size: 0.86rem;
+    margin: 0 0 2rem;
+  }
+  .ps__small span {
+    color: var(--color-foreground);
+    font-weight: 500;
+    font-family: ui-monospace, Menlo, monospace;
+  }
+
+  /* Receipt */
+  .ps__receipt {
     text-align: left;
-    max-width: 480px;
+    max-width: 520px;
     margin: 0 auto 2rem;
-    padding: clamp(1.75rem, 3vw, 2.25rem);
+    padding: clamp(1.5rem, 3vw, 2rem);
     border-radius: var(--radius-3xl);
     display: flex;
     flex-direction: column;
-    gap: 1.1rem;
-    align-items: flex-start;
+    gap: 1.25rem;
   }
-  .success__card-title {
+  .ps__receipt-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .ps__receipt-ref {
+    font-size: 0.78rem;
+    color: var(--color-muted-foreground);
+  }
+  .ps__receipt-ref span {
+    font-family: ui-monospace, Menlo, monospace;
+    color: var(--color-foreground);
+    font-weight: 500;
+  }
+  .ps__receipt-title {
     font-family: var(--font-display);
-    font-size: 1.3rem;
+    font-size: 1.25rem;
     font-weight: 700;
     color: var(--color-foreground);
     letter-spacing: -0.025em;
     line-height: 1.25;
     margin: 0;
   }
-  .success__meta {
+  .ps__receipt-meta {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
     padding-top: 1rem;
     border-top: 1px solid var(--glass-border-pink);
     margin: 0;
-    width: 100%;
   }
-  .success__meta div {
-    display: flex; flex-direction: column;
+  .ps__receipt-meta div {
+    display: flex;
+    flex-direction: column;
     gap: 0.3rem;
   }
-  .success__meta dt {
-    font-size: 0.68rem;
+  .ps__receipt-meta dt {
+    font-size: 0.66rem;
     color: var(--color-muted-foreground);
     font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
   }
-  .success__meta dd {
+  .ps__receipt-meta dd {
     font-family: var(--font-display);
-    font-size: 1.05rem;
+    font-size: 1.02rem;
     font-weight: 600;
     color: var(--color-foreground);
     margin: 0;
     letter-spacing: -0.02em;
   }
-  .success__actions {
-    display: flex; gap: 0.75rem;
-    justify-content: center; flex-wrap: wrap;
+  .ps__receipt-pay {
+    padding-top: 1rem;
+    border-top: 1px solid var(--glass-border-pink);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-size: 0.92rem;
+    color: var(--color-muted-foreground);
+  }
+  .ps__receipt-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  .ps__receipt-row .strong {
+    color: var(--color-foreground);
+    font-weight: 600;
+  }
+
+  /* Next steps */
+  .ps__next {
+    text-align: left;
+    max-width: 520px;
+    margin: 0 auto 2rem;
+  }
+  .ps__next-title {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-foreground);
+    margin: 0 0 0.85rem;
+    letter-spacing: -0.015em;
+  }
+  .ps__next-list {
+    margin: 0;
+    padding-left: 1.2rem;
+    color: var(--color-ink-2);
+    font-size: 0.96rem;
+    line-height: 1.65;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .ps__next-list a {
+    color: var(--color-primary);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .ps__next-list a:hover {
+    color: var(--color-rose-deep);
+  }
+
+  .ps__actions {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    flex-wrap: wrap;
   }
 
   @media (max-width: 480px) {
-    .success__meta { grid-template-columns: 1fr; }
+    .ps__receipt-meta {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media print {
+    .ps__glow-a, .ps__glow-b,
+    .ps__next, .ps__actions, .ps__sub, .ps__eyebrow {
+      display: none !important;
+    }
+    .ps__receipt {
+      max-width: 100%;
+      box-shadow: none;
+      border: 1px solid #ddd;
+      background: #fff !important;
+      backdrop-filter: none;
+    }
   }
 </style>
