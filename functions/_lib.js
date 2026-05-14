@@ -104,6 +104,27 @@ export async function dbInsertRegistration(env, row) {
 }
 
 /**
+ * Fetch a registration row by bill code (used to build the receipt email).
+ */
+export async function dbGetByBillCode(env, billCode) {
+  if (!env.REGISTRATIONS_DB) return null;
+  try {
+    return await env.REGISTRATIONS_DB
+      .prepare(
+        `SELECT name, email, phone, tier, amount, status, bill_code, created_at
+         FROM registrations
+         WHERE bill_code = ?1
+         LIMIT 1`,
+      )
+      .bind(billCode)
+      .first();
+  } catch (e) {
+    console.error('D1 get-by-billcode failed:', e);
+    return null;
+  }
+}
+
+/**
  * Mark an existing row paid (by billCode), record the paid timestamp and
  * whether the Zoom confirmation email was sent.
  */
