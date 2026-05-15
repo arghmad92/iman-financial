@@ -244,7 +244,7 @@ ${zoomBlock}
 WHAT'S NEXT
 1. Add to your calendar:
    ${d.calLink}
-2. Watch for the Zoom link one day before the webinar.
+2. ${d.zoomUrl ? "We'll also send a reminder one day before the webinar." : "We'll email the Zoom link one day before the webinar."}
 3. Questions? Just reply to this email.
 
 See you there,
@@ -283,6 +283,11 @@ function renderHtml(d) {
           We'll email your Zoom link one day before the event.
         </p>
       </td></tr>`;
+
+  // Conditional step 2 — accurate to whether the link was already sent.
+  const nextStep2Html = d.zoomUrl
+    ? `<li>We'll also send a reminder one day before, on 21 May 2026.</li>`
+    : `<li>We'll email the Zoom link one day before, on 21 May 2026.</li>`;
 
   return `<!doctype html>
 <html lang="en">
@@ -385,7 +390,7 @@ function renderHtml(d) {
                 <a href="${escapeAttr(d.calLink)}" style="color:#c44569;text-decoration:underline">Add to Google Calendar</a>
                 so you don't miss it.
               </li>
-              <li>We'll email the Zoom link one day before, on 21 May 2026.</li>
+              ${nextStep2Html}
               <li>Questions? Just reply to this email.</li>
             </ol>
           </td></tr>
