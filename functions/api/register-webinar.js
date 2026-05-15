@@ -1,7 +1,7 @@
 import {
   getSeatsTaken,
   getTierAndAmount,
-  getToyyibpayBase,
+  getToyyibpayConfig,
   dbEmailExists,
   dbInsertRegistration,
   json,
@@ -89,11 +89,12 @@ export async function onRequest(context) {
     const seatsTaken = await getSeatsTaken(env);
     const { tier, amount } = getTierAndAmount(seatsTaken, env);
 
-    // ToyyibPay config
-    const TOYYIBPAY_SECRET =
-      env.TOYYIBPAY_SECRET || 'n2iltwy6-pmio-xjh9-6wia-u76b5pz5hanz';
-    const TOYYIBPAY_CATEGORY = env.TOYYIBPAY_CATEGORY || 'uul5ivz0';
-    const TOYYIBPAY_BASE = getToyyibpayBase(env);
+    // ToyyibPay config — picks sandbox or production based on TOYYIBPAY_MODE
+    const {
+      base: TOYYIBPAY_BASE,
+      secret: TOYYIBPAY_SECRET,
+      category: TOYYIBPAY_CATEGORY,
+    } = getToyyibpayConfig(env);
     const SITE_URL =
       env.SITE_URL || new URL(context.request.url).origin;
 

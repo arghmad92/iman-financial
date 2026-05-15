@@ -2,7 +2,7 @@ import {
   incSeatsTaken,
   dbMarkPaid,
   dbGetByBillCode,
-  getToyyibpayBase,
+  getToyyibpayConfig,
   markOnce,
 } from '../_lib.js';
 
@@ -24,9 +24,9 @@ export async function onRequest(context) {
     const env = context.env;
 
     // Look up the bill's payment record to get name/email AND verify payment.
-    const TOYYIBPAY_SECRET =
-      env.TOYYIBPAY_SECRET || 'n2iltwy6-pmio-xjh9-6wia-u76b5pz5hanz';
-    const TOYYIBPAY_BASE = getToyyibpayBase(env);
+    // Use the same mode (sandbox vs production) chosen at registration time.
+    const { base: TOYYIBPAY_BASE, secret: TOYYIBPAY_SECRET } =
+      getToyyibpayConfig(env);
     const billData = new URLSearchParams();
     billData.append('userSecretKey', TOYYIBPAY_SECRET);
     billData.append('billCode', billCode);

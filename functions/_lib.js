@@ -29,11 +29,54 @@ export async function incSeatsTaken(env) {
 }
 
 /**
- * ToyyibPay base URL — production by default, sandbox when overridden.
- * Set TOYYIBPAY_BASE_URL=https://dev.toyyibpay.com to use the sandbox.
+ * ToyyibPay configuration — resolves base URL + credentials together.
+ *
+ *   TOYYIBPAY_MODE = "sandbox" | "production" (default: production)
+ *
+ * Set both sets of credentials side-by-side so you can flip modes
+ * by toggling TOYYIBPAY_MODE without deleting anything:
+ *
+ *   Production env vars     Sandbox env vars
+ *   ------------------      -------------------------
+ *   TOYYIBPAY_SECRET        TOYYIBPAY_SANDBOX_SECRET
+ *   TOYYIBPAY_CATEGORY      TOYYIBPAY_SANDBOX_CATEGORY
+ *
+ * TOYYIBPAY_BASE_URL is still honored as a manual override (escape
+ * hatch). When unset, the base URL is derived from MODE.
  */
+export function getToyyibpayConfig(env) {
+  const mode =
+    (env.TOYYIBPAY_MODE || 'production').toString().trim().toLowerCase() ===
+    'sandbox'
+      ? 'sandbox'
+      : 'production';
+
+  if (mode === 'sandbox') {
+    return {
+      mode: 'sandbox',
+      base: env.TOYYIBPAY_BASE_URL || 'https://dev.toyyibpay.com',
+      secret:
+        env.TOYYIBPAY_SANDBOX_SECRET ||
+        env.TOYYIBPAY_SECRET ||
+        'n2iltwy6-pmio-xjh9-6wia-u76b5pz5hanz',
+      category:
+        env.TOYYIBPAY_SANDBOX_CATEGORY ||
+        env.TOYYIBPAY_CATEGORY ||
+        'uul5ivz0',
+    };
+  }
+  return {
+    mode: 'production',
+    base: env.TOYYIBPAY_BASE_URL || 'https://toyyibpay.com',
+    secret:
+      env.TOYYIBPAY_SECRET || 'n2iltwy6-pmio-xjh9-6wia-u76b5pz5hanz',
+    category: env.TOYYIBPAY_CATEGORY || 'uul5ivz0',
+  };
+}
+
+/** Backwards-compatible — just the base URL. */
 export function getToyyibpayBase(env) {
-  return env.TOYYIBPAY_BASE_URL || 'https://toyyibpay.com';
+  return getToyyibpayConfig(env).base;
 }
 
 export function getEarlyBirdLimit(env) {
