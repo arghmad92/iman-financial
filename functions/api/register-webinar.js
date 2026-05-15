@@ -4,6 +4,7 @@ import {
   getToyyibpayConfig,
   dbEmailExists,
   dbInsertRegistration,
+  processPaidRegistration,
   json,
   titleCase,
   cleanPhone,
@@ -89,16 +90,63 @@ export async function onRequest(context) {
     const seatsTaken = await getSeatsTaken(env);
     const { tier, amount } = getTierAndAmount(seatsTaken, env);
 
-    // ToyyibPay config — picks sandbox or production based on TOYYIBPAY_MODE
+    // ToyyibPay config — picks sandbox, production, or mock based on TOYYIBPAY_MODE
+    const toyyibConfig = getToyyibpayConfig(env);
     const {
       base: TOYYIBPAY_BASE,
       secret: TOYYIBPAY_SECRET,
       category: TOYYIBPAY_CATEGORY,
-    } = getToyyibpayConfig(env);
+    } = toyyibConfig;
     const SITE_URL =
       env.SITE_URL || new URL(context.request.url).origin;
 
     const externalRef = `CG-${Date.now()}-${phoneDigits.slice(-4)}`;
+
+    // ============================================================
+    // MOCK MODE — bypass ToyyibPay entirely.
+    // Triggered by TOYYIBPAY_MODE=mock. Registers + marks paid +
+    // sends the real Resend email, then redirects to the success
+    // page exactly as if ToyyibPay had returned status_id=1.
+    // Useful when the sandbox is unreachable.
+    //
+    // ⚠️ This bypasses payment verification. NEVER leave this mode
+    // enabled in production — anyone could register without paying.
+    // ============================================================
+    if (toyyibConfig.mode === 'mock') {
+      const billCode = `MOCK-${Date.now()}-${phoneDigits.slice(-4)}`;
+
+      // Insert the registration synchronously so dbGetByBillCode can
+      // find it during the post-paid processing below.
+      await dbInsertRegistration(env, {
+        name: cleanName,
+        email,
+        phone: phoneDigits,
+        tier,
+        amount,
+        billCode,
+      });
+
+      // Run the same post-payment side effects as the real callback,
+      // in the background so we can redirect the user immediately.
+      context.waitUntil(
+        processPaidRegistration(env, {
+          billCode,
+          name: cleanName,
+          email,
+          amount,
+          tier,
+          orderId: externalRef,
+          paidAt: new Date(),
+        }),
+      );
+
+      return json({
+        paymentUrl: `/webinar-success?status_id=1&billcode=${encodeURIComponent(billCode)}&order_id=${encodeURIComponent(externalRef)}`,
+        tier,
+        amount,
+        mock: true,
+      });
+    }
 
     // Create ToyyibPay bill
     const formData = new URLSearchParams();

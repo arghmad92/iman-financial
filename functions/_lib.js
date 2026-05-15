@@ -1,6 +1,8 @@
 // Shared helpers for the webinar registration flow.
 // Used by /api/register-webinar, /api/payment-callback, /api/seats.
 
+import { sendConfirmationEmail } from './_email.js';
+
 const SEAT_KEY = 'webinar:22may2026:seats_taken';
 
 /**
@@ -45,11 +47,22 @@ export async function incSeatsTaken(env) {
  * hatch). When unset, the base URL is derived from MODE.
  */
 export function getToyyibpayConfig(env) {
+  const raw = (env.TOYYIBPAY_MODE || 'production').toString().trim().toLowerCase();
   const mode =
-    (env.TOYYIBPAY_MODE || 'production').toString().trim().toLowerCase() ===
-    'sandbox'
-      ? 'sandbox'
-      : 'production';
+    raw === 'mock' ? 'mock' :
+    raw === 'sandbox' ? 'sandbox' :
+    'production';
+
+  // Mock mode: no real payment provider. base/secret/category are
+  // unused but populated so destructuring callers don't crash.
+  if (mode === 'mock') {
+    return {
+      mode: 'mock',
+      base: '',
+      secret: '',
+      category: '',
+    };
+  }
 
   if (mode === 'sandbox') {
     return {
@@ -66,6 +79,7 @@ export function getToyyibpayConfig(env) {
         'uul5ivz0',
     };
   }
+
   return {
     mode: 'production',
     base: env.TOYYIBPAY_BASE_URL || 'https://toyyibpay.com',
@@ -78,6 +92,50 @@ export function getToyyibpayConfig(env) {
 /** Backwards-compatible — just the base URL. */
 export function getToyyibpayBase(env) {
   return getToyyibpayConfig(env).base;
+}
+
+/**
+ * Run all post-payment side effects: send the receipt email,
+ * mark the D1 row paid, and bump the KV seats counter.
+ *
+ * Used by:
+ *   - /api/payment-callback (after real ToyyibPay verification)
+ *   - /api/register-webinar (mock mode, no verification needed)
+ *
+ * Returns { emailSent } so callers can persist that bit if needed.
+ */
+export async function processPaidRegistration(env, {
+  billCode,
+  name,
+  email,
+  amount,
+  tier,
+  orderId,
+  paidAt,
+}) {
+  let emailSent = false;
+  if (email && env.RESEND_KEY) {
+    const result = await sendConfirmationEmail({
+      env,
+      to: email,
+      name,
+      orderId,
+      billCode,
+      amount,
+      tier,
+      paidAt,
+    });
+    emailSent = !!result?.ok;
+  } else if (!env.RESEND_KEY) {
+    console.warn('RESEND_KEY not set — skipping confirmation email');
+  }
+
+  await dbMarkPaid(env, billCode, emailSent);
+  await incSeatsTaken(env).catch((e) =>
+    console.error('KV seat increment failed:', e),
+  );
+
+  return { emailSent };
 }
 
 export function getEarlyBirdLimit(env) {
