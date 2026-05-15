@@ -125,7 +125,7 @@ const faqs = [
 
         <a href="/fhc" class="svc svc--featured">
           <div class="svc__head">
-            <span class="badge badge--on-ink">One-time review</span>
+            <span class="badge badge--ink">One-time review</span>
             <span class="svc__price-amt tabular">RM 350</span>
           </div>
           <h3 class="svc__title">
@@ -412,18 +412,21 @@ const faqs = [
     box-shadow: var(--shadow-glass-lg);
     transform: translateY(-4px);
   }
+  /* Featured service · soft pink panel */
   .svc--featured {
-    background: var(--color-foreground);
-    color: var(--color-paper);
-    border-color: var(--color-foreground);
-    box-shadow: var(--shadow-ink);
+    background: linear-gradient(135deg, #fce7ec 0%, #fbd5dd 100%);
+    color: var(--color-foreground);
+    border-color: rgba(196, 69, 105, 0.12);
+    box-shadow:
+      0 1px 2px rgba(196, 69, 105, 0.06),
+      0 16px 40px -16px rgba(196, 69, 105, 0.18);
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
   }
   .svc--featured:hover {
     box-shadow:
-      0 1px 2px rgba(21, 5, 16, 0.2),
-      0 28px 64px -14px rgba(21, 5, 16, 0.5);
+      0 1px 2px rgba(196, 69, 105, 0.10),
+      0 24px 56px -16px rgba(196, 69, 105, 0.28);
   }
   .svc__head {
     display: flex;
@@ -455,9 +458,7 @@ const faqs = [
     margin: 0;
     flex-grow: 1;
   }
-  .svc--featured .svc__desc {
-    color: rgba(255, 255, 255, 0.78);
-  }
+  /* Featured card inherits regular .svc__desc dark-on-light colors */
   .svc__cta {
     display: inline-flex;
     align-items: center;
@@ -469,8 +470,8 @@ const faqs = [
     border-top: 1px solid var(--glass-border-pink);
   }
   .svc--featured .svc__cta {
-    color: var(--color-accent);
-    border-top-color: rgba(255, 255, 255, 0.12);
+    color: var(--color-primary);
+    border-top-color: rgba(196, 69, 105, 0.18);
   }
   .svc__cta svg {
     transition: transform 0.2s ease;
@@ -509,13 +510,21 @@ const faqs = [
     box-shadow: var(--shadow-glass-lg);
     transform: translateY(-4px);
   }
+  /* Featured testimonial · soft pink panel — text colors inherit from .tmn */
   .tmn--featured {
-    background: var(--color-foreground);
-    color: var(--color-paper);
-    border-color: var(--color-foreground);
-    box-shadow: var(--shadow-ink);
+    background: linear-gradient(135deg, #fce7ec 0%, #fbd5dd 100%);
+    color: var(--color-foreground);
+    border-color: rgba(196, 69, 105, 0.12);
+    box-shadow:
+      0 1px 2px rgba(196, 69, 105, 0.06),
+      0 16px 40px -16px rgba(196, 69, 105, 0.18);
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
+  }
+  .tmn--featured:hover {
+    box-shadow:
+      0 1px 2px rgba(196, 69, 105, 0.10),
+      0 24px 56px -16px rgba(196, 69, 105, 0.28);
   }
   .tmn__quote {
     margin: 0;
@@ -523,9 +532,6 @@ const faqs = [
     line-height: 1.65;
     color: var(--color-ink-2);
     flex-grow: 1;
-  }
-  .tmn--featured .tmn__quote {
-    color: rgba(255, 255, 255, 0.92);
   }
   .tmn__cite {
     display: flex;
@@ -536,7 +542,7 @@ const faqs = [
     font-style: normal;
   }
   .tmn--featured .tmn__cite {
-    border-top-color: rgba(255, 255, 255, 0.12);
+    border-top-color: rgba(196, 69, 105, 0.18);
   }
   .tmn__name {
     font-weight: 600;
@@ -544,15 +550,9 @@ const faqs = [
     color: var(--color-foreground);
     letter-spacing: -0.01em;
   }
-  .tmn--featured .tmn__name {
-    color: var(--color-paper);
-  }
   .tmn__role {
     font-size: 0.84rem;
     color: var(--color-muted-foreground);
-  }
-  .tmn--featured .tmn__role {
-    color: rgba(255, 255, 255, 0.6);
   }
   @media (max-width: 900px) {
     .tmn-grid {
