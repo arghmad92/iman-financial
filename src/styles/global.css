@@ -37,13 +37,13 @@
   --color-blush-deep: #f9d4dc;
   --color-rose-deep: #a03857;
 
-  /* Pink-panel gradient — pink top-left fading to white bottom-right.
+  /* Pink-panel gradient — soft blush top-left fading to pure white bottom-right.
      Used on all featured cards, CTAs, and the wide learn card. */
   --gradient-pink-panel:
-    linear-gradient(135deg, #f7d4dc 0%, #fce8ed 38%, #fff7f9 100%);
+    linear-gradient(135deg, #fde4ea 0%, #fef3f6 42%, #ffffff 100%);
   --gradient-pink-panel-shadow:
-    0 1px 2px rgba(196, 69, 105, 0.06),
-    0 18px 44px -16px rgba(196, 69, 105, 0.18);
+    0 1px 2px rgba(196, 69, 105, 0.04),
+    0 16px 40px -16px rgba(196, 69, 105, 0.14);
 
   /* Glass tokens — reserved for nav, hero overlay, sticky panels */
   --glass-light: rgba(255, 255, 255, 0.58);
