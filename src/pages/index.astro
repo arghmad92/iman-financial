@@ -412,21 +412,19 @@ const faqs = [
     box-shadow: var(--shadow-glass-lg);
     transform: translateY(-4px);
   }
-  /* Featured service · soft pink panel */
+  /* Featured service · pink panel with layered gradient */
   .svc--featured {
-    background: linear-gradient(135deg, #fce7ec 0%, #fbd5dd 100%);
+    background: var(--gradient-pink-panel);
     color: var(--color-foreground);
-    border-color: rgba(196, 69, 105, 0.12);
-    box-shadow:
-      0 1px 2px rgba(196, 69, 105, 0.06),
-      0 16px 40px -16px rgba(196, 69, 105, 0.18);
+    border-color: rgba(196, 69, 105, 0.14);
+    box-shadow: var(--gradient-pink-panel-shadow);
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
   }
   .svc--featured:hover {
     box-shadow:
-      0 1px 2px rgba(196, 69, 105, 0.10),
-      0 24px 56px -16px rgba(196, 69, 105, 0.28);
+      0 1px 2px rgba(196, 69, 105, 0.12),
+      0 28px 64px -16px rgba(196, 69, 105, 0.32);
   }
   .svc__head {
     display: flex;
@@ -510,21 +508,19 @@ const faqs = [
     box-shadow: var(--shadow-glass-lg);
     transform: translateY(-4px);
   }
-  /* Featured testimonial · soft pink panel — text colors inherit from .tmn */
+  /* Featured testimonial · pink panel with layered gradient — text colors inherit from .tmn */
   .tmn--featured {
-    background: linear-gradient(135deg, #fce7ec 0%, #fbd5dd 100%);
+    background: var(--gradient-pink-panel);
     color: var(--color-foreground);
-    border-color: rgba(196, 69, 105, 0.12);
-    box-shadow:
-      0 1px 2px rgba(196, 69, 105, 0.06),
-      0 16px 40px -16px rgba(196, 69, 105, 0.18);
+    border-color: rgba(196, 69, 105, 0.14);
+    box-shadow: var(--gradient-pink-panel-shadow);
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
   }
   .tmn--featured:hover {
     box-shadow:
-      0 1px 2px rgba(196, 69, 105, 0.10),
-      0 24px 56px -16px rgba(196, 69, 105, 0.28);
+      0 1px 2px rgba(196, 69, 105, 0.12),
+      0 28px 64px -16px rgba(196, 69, 105, 0.32);
   }
   .tmn__quote {
     margin: 0;

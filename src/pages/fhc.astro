@@ -173,19 +173,36 @@ const outcomes = [
             Example score of 316 out of 1,000 — needle points to the Poor band.
           </desc>
 
-          <!-- 5 colored band segments · original Wealth Vantage colour wheel -->
-          <g fill="none" stroke-width="34" stroke-linecap="butt">
-            <!-- BAD · red -->
-            <path d="M 50 200 A 150 150 0 0 1 78.65 111.83" stroke="#E1252F" />
-            <!-- POOR · gold -->
-            <path d="M 78.65 111.83 A 150 150 0 0 1 153.65 57.35" stroke="#F1B70F" />
-            <!-- FAIR · green -->
-            <path d="M 153.65 57.35 A 150 150 0 0 1 246.35 57.35" stroke="#3CB44A" />
-            <!-- GOOD · cyan -->
-            <path d="M 246.35 57.35 A 150 150 0 0 1 321.35 111.83" stroke="#4ECDE0" />
-            <!-- BEST · navy -->
-            <path d="M 321.35 111.83 A 150 150 0 0 1 350 200" stroke="#1B4E8D" />
-          </g>
+          <!-- Spectrum gradient · smooth transitions between the 5 original bands -->
+          <defs>
+            <linearGradient
+              id="wvSpectrum"
+              gradientUnits="userSpaceOnUse"
+              x1="50"
+              y1="0"
+              x2="350"
+              y2="0"
+            >
+              <stop offset="0%" stop-color="#E1252F" />
+              <stop offset="14%" stop-color="#E84A1F" />
+              <stop offset="25%" stop-color="#F1B70F" />
+              <stop offset="38%" stop-color="#B8B72A" />
+              <stop offset="50%" stop-color="#3CB44A" />
+              <stop offset="62%" stop-color="#46C293" />
+              <stop offset="75%" stop-color="#4ECDE0" />
+              <stop offset="88%" stop-color="#3A8DB6" />
+              <stop offset="100%" stop-color="#1B4E8D" />
+            </linearGradient>
+          </defs>
+
+          <!-- Single arc rendered with the spectrum gradient -->
+          <path
+            d="M 50 200 A 150 150 0 0 1 350 200"
+            stroke="url(#wvSpectrum)"
+            stroke-width="34"
+            stroke-linecap="round"
+            fill="none"
+          />
 
           <!-- Needle from pivot (200, 200) to score position (118, 74.4) for 316/1000 -->
           <line

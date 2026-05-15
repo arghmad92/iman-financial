@@ -832,16 +832,14 @@ const faqs = [
     .who-list { grid-template-columns: 1fr; }
   }
 
-  /* ---------- Speaker — soft pink panel ---------- */
+  /* ---------- Speaker — pink panel with layered gradient ---------- */
   .speaker {
-    background: linear-gradient(135deg, #fce7ec 0%, #fbd5dd 100%);
+    background: var(--gradient-pink-panel);
     color: var(--color-foreground);
-    border: 1px solid rgba(196, 69, 105, 0.12);
+    border: 1px solid rgba(196, 69, 105, 0.14);
     border-radius: var(--radius-3xl);
     padding: clamp(2.5rem, 5vw, 4rem) clamp(2rem, 4vw, 3rem);
-    box-shadow:
-      0 1px 2px rgba(196, 69, 105, 0.06),
-      0 16px 40px -16px rgba(196, 69, 105, 0.18);
+    box-shadow: var(--gradient-pink-panel-shadow);
   }
   .speaker__title {
     color: var(--color-foreground);
@@ -910,17 +908,15 @@ const faqs = [
     padding: clamp(1.5rem, 3vw, 2.5rem) clamp(2rem, 4vw, 3rem);
   }
 
-  /* ---------- Final CTA — soft pink panel ---------- */
+  /* ---------- Final CTA — pink panel with layered gradient ---------- */
   .finalcta {
-    background: linear-gradient(135deg, #fce7ec 0%, #fbd5dd 100%);
+    background: var(--gradient-pink-panel);
     color: var(--color-foreground);
-    border: 1px solid rgba(196, 69, 105, 0.12);
+    border: 1px solid rgba(196, 69, 105, 0.14);
     border-radius: var(--radius-3xl);
     padding: clamp(2.5rem, 5vw, 4rem) clamp(2rem, 4vw, 3rem);
     text-align: center;
-    box-shadow:
-      0 1px 2px rgba(196, 69, 105, 0.06),
-      0 16px 40px -16px rgba(196, 69, 105, 0.18);
+    box-shadow: var(--gradient-pink-panel-shadow);
   }
   .finalcta .eyebrow { justify-content: center; }
   .finalcta__title {
