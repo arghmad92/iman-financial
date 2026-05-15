@@ -54,7 +54,8 @@ export function getToyyibpayConfig(env) {
   if (mode === 'sandbox') {
     return {
       mode: 'sandbox',
-      base: env.TOYYIBPAY_BASE_URL || 'https://dev.toyyibpay.com',
+      // Note: dev.toyyibpay.com was retired; the active sandbox is dev1.
+      base: env.TOYYIBPAY_BASE_URL || 'https://dev1.toyyibpay.com',
       secret:
         env.TOYYIBPAY_SANDBOX_SECRET ||
         env.TOYYIBPAY_SECRET ||
