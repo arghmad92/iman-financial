@@ -163,64 +163,52 @@ const outcomes = [
 
       <figure class="sample wv-card glass-strong">
         <svg
-          viewBox="0 0 400 260"
+          viewBox="0 0 400 300"
           class="wv-gauge"
           role="img"
           aria-labelledby="wv-title wv-desc"
         >
           <title id="wv-title">Wealth Vantage Score gauge</title>
           <desc id="wv-desc">
-            Example score of 316 out of 1,000 — falls in the Below Average band.
+            Example score of 316 out of 1,000 — needle points to the Poor band.
           </desc>
 
-          <!-- Inactive background arc -->
-          <path
-            d="M 50 200 A 150 150 0 0 1 350 200"
-            stroke="#E5E7EB"
-            stroke-width="3"
-            fill="none"
-            stroke-linecap="round"
-          />
-
-          <!-- Active filled arc · 0 → 316/1000 (123.12°) -->
-          <path
-            d="M 50 200 A 150 150 0 0 1 118 74.4"
-            stroke="#C44569"
-            stroke-width="3"
-            fill="none"
-            stroke-linecap="round"
-            class="wv-arc-active"
-          />
-
-          <!-- Tick marks at band boundaries -->
-          <g
-            stroke="#D1D5DB"
-            stroke-width="1.2"
-            stroke-linecap="round"
-          >
-            <line x1="50" y1="200" x2="35" y2="200" />
-            <line x1="82.7" y1="114.7" x2="66.5" y2="103.0" />
-            <line x1="155.2" y1="62.1" x2="149.0" y2="43.1" />
-            <line x1="244.8" y1="62.1" x2="251.0" y2="43.1" />
-            <line x1="317.3" y1="114.7" x2="333.5" y2="103.0" />
-            <line x1="350" y1="200" x2="365" y2="200" />
+          <!-- 5 colored band segments · original Wealth Vantage colour wheel -->
+          <g fill="none" stroke-width="34" stroke-linecap="butt">
+            <!-- BAD · red -->
+            <path d="M 50 200 A 150 150 0 0 1 78.65 111.83" stroke="#E1252F" />
+            <!-- POOR · gold -->
+            <path d="M 78.65 111.83 A 150 150 0 0 1 153.65 57.35" stroke="#F1B70F" />
+            <!-- FAIR · green -->
+            <path d="M 153.65 57.35 A 150 150 0 0 1 246.35 57.35" stroke="#3CB44A" />
+            <!-- GOOD · cyan -->
+            <path d="M 246.35 57.35 A 150 150 0 0 1 321.35 111.83" stroke="#4ECDE0" />
+            <!-- BEST · navy -->
+            <path d="M 321.35 111.83 A 150 150 0 0 1 350 200" stroke="#1B4E8D" />
           </g>
 
-          <!-- Score marker · sits at (118, 74.4) on the active band -->
-          <circle cx="118" cy="74.4" r="11" fill="#FFFFFF" stroke="#FCE7EC" stroke-width="2" />
-          <circle cx="118" cy="74.4" r="6" fill="#C44569" />
+          <!-- Needle from pivot (200, 200) to score position (118, 74.4) for 316/1000 -->
+          <line
+            x1="200"
+            y1="200"
+            x2="118"
+            y2="74.4"
+            stroke="#1a1216"
+            stroke-width="2.5"
+            stroke-linecap="round"
+          />
+          <circle cx="200" cy="200" r="7" fill="#1a1216" />
 
-          <!-- Score numbers · center -->
-          <text x="200" y="170" text-anchor="middle" class="wv-num">316</text>
-          <text x="200" y="195" text-anchor="middle" class="wv-num-sub">/ 1,000</text>
+          <!-- Score number in navy · matches the original -->
+          <text x="200" y="252" text-anchor="middle" class="wv-num">316</text>
 
-          <!-- Band labels -->
+          <!-- Band labels (uppercase, original wording: BAD POOR FAIR GOOD BEST) -->
           <g class="wv-band-labels">
-            <text x="57.4" y="235" text-anchor="middle">Bad</text>
-            <text x="111.8" y="235" text-anchor="middle" class="is-active">Below Avg</text>
-            <text x="200" y="235" text-anchor="middle">Average</text>
-            <text x="288.2" y="235" text-anchor="middle">Good</text>
-            <text x="342.6" y="235" text-anchor="middle">Best</text>
+            <text x="57.4" y="282" text-anchor="middle">BAD</text>
+            <text x="111.8" y="282" text-anchor="middle">POOR</text>
+            <text x="200" y="282" text-anchor="middle">FAIR</text>
+            <text x="288.2" y="282" text-anchor="middle">GOOD</text>
+            <text x="342.6" y="282" text-anchor="middle">BEST</text>
           </g>
         </svg>
 
@@ -499,7 +487,7 @@ const outcomes = [
   }
 
   /* Sample */
-  /* ---------- Wealth Vantage Score gauge ---------- */
+  /* ---------- Wealth Vantage Score gauge (original colour wheel) ---------- */
   .wv-card {
     margin: 0 auto;
     max-width: 640px;
@@ -510,35 +498,23 @@ const outcomes = [
     display: block;
     width: 100%;
     height: auto;
-    max-width: 520px;
+    max-width: 540px;
     margin: 0 auto;
   }
   .wv-num {
-    font-family: var(--font-mono);
+    font-family: var(--font-sans);
     font-variant-numeric: tabular-nums;
-    font-size: 40px;
-    font-weight: 500;
-    fill: var(--color-foreground);
+    font-size: 38px;
+    font-weight: 600;
+    fill: #1B4E8D; /* navy — matches original WEALTH VANTAGE SCORE™ ink */
     letter-spacing: -0.02em;
   }
-  .wv-num-sub {
-    font-family: var(--font-mono);
-    font-variant-numeric: tabular-nums;
-    font-size: 13px;
-    font-weight: 500;
-    fill: var(--color-ink-3);
-    letter-spacing: 0;
-  }
   .wv-band-labels text {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    font-weight: 500;
-    fill: var(--color-ink-3);
-    letter-spacing: 0.01em;
-  }
-  .wv-band-labels text.is-active {
-    fill: var(--color-primary);
+    font-family: var(--font-sans);
+    font-size: 11.5px;
     font-weight: 600;
+    fill: var(--color-ink-2);
+    letter-spacing: 0.05em;
   }
   .wv-card figcaption {
     margin-top: 1.5rem;
@@ -547,24 +523,7 @@ const outcomes = [
     text-align: center;
   }
 
-  /* Arc reveal — animates the pink fill arc into place when card scrolls in */
-  .wv-arc-active {
-    /* arc length ≈ π × r × (123.12/180) at r=150 ≈ 322.4 */
-    stroke-dasharray: 323;
-    stroke-dashoffset: 323;
-    transition: stroke-dashoffset 1.4s cubic-bezier(0.22, 1, 0.36, 1) 0.15s;
-  }
-  .is-revealed .wv-arc-active,
-  .wv-card.is-revealed .wv-arc-active {
-    stroke-dashoffset: 0;
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .wv-arc-active {
-      stroke-dasharray: none;
-      stroke-dashoffset: 0;
-      transition: none;
-    }
-  }
+  /* Needle is static — matches the original report's resting state */
 
   /* Outcomes */
   .outcomes {
