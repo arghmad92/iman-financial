@@ -23,9 +23,6 @@ const timeline = [
 <Layout title="Full Financial Planning · Iman Abdul Rahim">
   <!-- =================== HERO =================== -->
   <section class="hero">
-    <div class="glow hero__glow-a" aria-hidden="true"></div>
-    <div class="glow hero__glow-b" aria-hidden="true"></div>
-
     <div class="container-x hero__inner">
       <span class="hero__eyebrow">Comprehensive Service · 12 months</span>
       <h1 class="h-display hero__title text-balance">
@@ -110,7 +107,7 @@ const timeline = [
   <section class="section">
     <div class="container-narrow">
       <div class="cta-card">
-        <span class="eyebrow" style="color:#f0a8bc">Next step</span>
+        <span class="eyebrow">Next step</span>
         <h2 class="h-section cta-card__title text-balance">
           Financial planning yang <span class="cta-pink">se-dynamic hidup you.</span>
         </h2>
@@ -121,7 +118,7 @@ const timeline = [
           href="https://form.wealthvantage.com.my/iman-lead/"
           target="_blank"
           rel="noopener"
-          class="btn btn--on-ink btn--lg btn--arrow"
+          class="btn btn--ink btn--lg btn--arrow"
         >
           Book &ldquo;Discovery Session&rdquo;
         </a>
@@ -321,27 +318,30 @@ const timeline = [
     max-width: 60ch;
   }
 
-  /* CTA */
+  /* CTA — soft pink panel */
   .cta-card {
-    background: var(--color-foreground);
-    color: var(--color-paper);
+    background: linear-gradient(135deg, #fce7ec 0%, #fbd5dd 100%);
+    color: var(--color-foreground);
+    border: 1px solid rgba(196, 69, 105, 0.12);
     border-radius: var(--radius-3xl);
     padding: clamp(2.5rem, 5vw, 4rem) clamp(2rem, 4vw, 3rem);
     text-align: center;
-    box-shadow: var(--shadow-ink);
+    box-shadow:
+      0 1px 2px rgba(196, 69, 105, 0.06),
+      0 16px 40px -16px rgba(196, 69, 105, 0.18);
   }
   .cta-card .eyebrow {
     justify-content: center;
   }
   .cta-card__title {
-    color: var(--color-paper);
+    color: var(--color-foreground);
     margin: 1rem 0 1.5rem;
   }
   .cta-pink {
-    color: #f0a8bc;
+    color: var(--color-primary);
   }
   .cta-card__sub {
-    color: rgba(255, 255, 255, 0.78);
+    color: var(--color-ink-2);
     font-size: 1.05rem;
     line-height: 1.6;
     margin: 0 auto 2rem;

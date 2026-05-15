@@ -6,79 +6,87 @@
    ============================================================ */
 
 @theme {
-  /* ── Semantic tokens — chic, very light pink ── */
-  --color-background: #fefafb;
-  --color-foreground: #1a1216;
+  /* ── Semantic tokens — Swiss neutrals + brand pink as accent ── */
+  --color-background: #fcfcfd;
+  --color-foreground: #0a0a0f;
   --color-card: #ffffff;
-  --color-card-foreground: #1a1216;
-  --color-muted: #faedf0;
-  --color-muted-foreground: #847078;
+  --color-card-foreground: #0a0a0f;
+  --color-muted: #f7f8fa;
+  --color-muted-foreground: #8b91a3;
   --color-primary: #c44569;
   --color-primary-foreground: #ffffff;
   --color-secondary: #fce7ec;
   --color-secondary-foreground: #6a2a3e;
   --color-accent: #e8a0b8;
-  --color-border: rgba(196, 69, 105, 0.10);
-  --color-border-strong: rgba(196, 69, 105, 0.22);
-  --color-input: rgba(196, 69, 105, 0.14);
+  --color-border: #e5e7eb;
+  --color-border-strong: #d1d5db;
+  --color-input: #e5e7eb;
   --color-ring: #c44569;
   --color-destructive: #b03356;
 
-  /* Ink scale */
-  --color-ink: #1a1216;
-  --color-ink-2: #4a3a40;
-  --color-ink-3: #847078;
+  /* Ink scale — cool gray family (Stripe-derived) */
+  --color-ink: #0a0a0f;
+  --color-ink-2: #4a5366;
+  --color-ink-3: #8b91a3;
 
   /* Surfaces */
   --color-paper: #ffffff;
-  --color-paper-2: #fdf8f9;
-  --color-paper-3: #fbf2f5;
+  --color-paper-2: #f7f8fa;
+  --color-paper-3: #f0f2f5;
   --color-blush: #fce7ec;
   --color-blush-deep: #f9d4dc;
   --color-rose-deep: #a03857;
 
-  /* Glass tokens — softer */
-  --glass-light: rgba(255, 255, 255, 0.5);
-  --glass-medium: rgba(255, 255, 255, 0.62);
-  --glass-strong: rgba(255, 255, 255, 0.78);
+  /* Glass tokens — reserved for nav, hero overlay, sticky panels */
+  --glass-light: rgba(255, 255, 255, 0.58);
+  --glass-medium: rgba(255, 255, 255, 0.7);
+  --glass-strong: rgba(255, 255, 255, 0.82);
   --glass-pink: rgba(252, 231, 236, 0.55);
-  --glass-ink: rgba(26, 18, 22, 0.7);
+  --glass-ink: rgba(10, 10, 15, 0.78);
   --glass-border: rgba(255, 255, 255, 0.7);
   --glass-border-pink: rgba(196, 69, 105, 0.08);
-  --glass-blur: saturate(150%) blur(20px);
-  --glass-blur-strong: saturate(160%) blur(28px);
+  --glass-blur: saturate(180%) blur(20px);
+  --glass-blur-strong: saturate(180%) blur(28px);
 
-  /* Typography — Inter only, weights for contrast */
+  /* Typography */
   --font-sans:
     'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro',
     'Segoe UI', system-ui, sans-serif;
   --font-display:
     'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro',
     'Segoe UI', system-ui, sans-serif;
+  --font-mono:
+    'IBM Plex Mono', 'SF Mono', 'JetBrains Mono', ui-monospace, Menlo,
+    monospace;
 
-  /* Radii — generous, Apple-style */
-  --radius: 14px;
-  --radius-sm: 10px;
-  --radius-md: 14px;
-  --radius-lg: 20px;
-  --radius-xl: 28px;
-  --radius-2xl: 36px;
-  --radius-3xl: 48px;
+  /* Radii — Stripe-grade restraint */
+  --radius: 10px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-2xl: 24px;
+  --radius-3xl: 32px;
   --radius-full: 9999px;
 
-  /* Elevation — restrained */
+  /* Elevation — neutral cool gray, no brand-color tint */
+  --shadow-card:
+    0 1px 2px rgba(15, 23, 42, 0.04),
+    0 8px 24px -8px rgba(15, 23, 42, 0.08);
   --shadow-glass:
-    0 1px 0 rgba(255, 255, 255, 0.55) inset,
-    0 8px 28px -10px rgba(160, 56, 87, 0.10);
+    0 1px 0 rgba(255, 255, 255, 0.7) inset,
+    0 1px 2px rgba(15, 23, 42, 0.04),
+    0 12px 32px -12px rgba(15, 23, 42, 0.10);
   --shadow-glass-lg:
-    0 1px 0 rgba(255, 255, 255, 0.65) inset,
-    0 16px 44px -14px rgba(160, 56, 87, 0.16);
+    0 1px 0 rgba(255, 255, 255, 0.75) inset,
+    0 1px 2px rgba(15, 23, 42, 0.05),
+    0 20px 48px -16px rgba(15, 23, 42, 0.14);
   --shadow-primary:
-    0 1px 2px rgba(160, 56, 87, 0.12),
-    0 8px 22px -6px rgba(196, 69, 105, 0.24);
+    0 1px 2px rgba(160, 56, 87, 0.14),
+    0 6px 18px -4px rgba(196, 69, 105, 0.22);
   --shadow-ink:
-    0 1px 2px rgba(26, 18, 22, 0.16),
-    0 14px 36px -12px rgba(26, 18, 22, 0.3);
+    0 1px 2px rgba(10, 10, 15, 0.16),
+    0 14px 36px -12px rgba(10, 10, 15, 0.32);
 
   /* Z-index */
   --z-content: 10;
@@ -105,10 +113,10 @@ body {
   font-family: var(--font-sans);
   color: var(--color-foreground);
   background: var(--color-background);
-  /* Very light ambient wash — whispers, not blooms */
+  /* Swiss-precision dot-grid backdrop. No blobs. */
   background-image:
-    radial-gradient(at 10% 6%, rgba(249, 212, 220, 0.32) 0px, transparent 50%),
-    radial-gradient(at 90% 94%, rgba(252, 231, 236, 0.4) 0px, transparent 55%);
+    radial-gradient(circle at 1px 1px, rgba(15, 23, 42, 0.045) 1px, transparent 0);
+  background-size: 28px 28px;
   background-attachment: fixed;
   font-size: 16px;
   line-height: 1.55;
@@ -335,13 +343,21 @@ img, svg {
 .eyebrow {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  font-family: var(--font-sans);
+  gap: 0.55rem;
+  font-family: var(--font-mono);
   font-size: 0.78rem;
-  letter-spacing: -0.005em;
+  letter-spacing: 0;
   text-transform: none;
-  color: var(--color-primary);
-  font-weight: 600;
+  color: var(--color-ink-3);
+  font-weight: 500;
+}
+.eyebrow::before {
+  content: '';
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+  background: var(--color-primary);
+  flex-shrink: 0;
 }
 .eyebrow--center {
   justify-content: center;
@@ -422,34 +438,43 @@ img, svg {
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  min-height: 48px;
-  padding: 0.75rem 1.6rem;
+  min-height: 44px;
+  padding: 0.7rem 1.35rem;
   font-family: var(--font-sans);
-  font-size: 0.96rem;
+  font-size: 0.94rem;
   font-weight: 500;
   letter-spacing: -0.005em;
   line-height: 1.2;
   cursor: pointer;
   border: 1px solid transparent;
-  border-radius: var(--radius-full);
+  border-radius: 10px;
   white-space: nowrap;
   transition: background-color 0.18s ease, color 0.18s ease,
-    border-color 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
+    border-color 0.18s ease, box-shadow 0.18s ease, transform 0.12s ease;
   text-align: center;
+  will-change: transform;
 }
 .btn:focus-visible {
   outline: 2px solid var(--color-ring);
   outline-offset: 2px;
 }
+.btn:active {
+  transform: scale(0.985);
+}
 .btn--lg {
-  min-height: 56px;
-  padding: 1rem 1.9rem;
-  font-size: 1.02rem;
+  min-height: 52px;
+  padding: 0.95rem 1.75rem;
+  font-size: 1rem;
+  border-radius: 12px;
 }
 .btn--sm {
-  min-height: 40px;
-  padding: 0.5rem 1.1rem;
-  font-size: 0.88rem;
+  min-height: 38px;
+  padding: 0.5rem 1.05rem;
+  font-size: 0.86rem;
+  border-radius: 8px;
+}
+.btn--pill {
+  border-radius: 999px;
 }
 .btn--primary {
   background: var(--color-primary);
@@ -458,7 +483,9 @@ img, svg {
 }
 .btn--primary:hover {
   background: var(--color-rose-deep);
-  transform: translateY(-1px);
+  box-shadow:
+    0 1px 2px rgba(160, 56, 87, 0.18),
+    0 10px 24px -6px rgba(196, 69, 105, 0.32);
 }
 .btn--ink {
   background: var(--color-foreground);
@@ -466,19 +493,18 @@ img, svg {
 }
 .btn--ink:hover {
   background: #000000;
-  transform: translateY(-1px);
 }
 .btn--glass {
   background: var(--glass-strong);
   backdrop-filter: var(--glass-blur);
   -webkit-backdrop-filter: var(--glass-blur);
   color: var(--color-foreground);
-  border: 1px solid var(--glass-border);
+  border: 1px solid var(--color-border);
   box-shadow: var(--shadow-glass);
 }
 .btn--glass:hover {
   background: #ffffff;
-  transform: translateY(-1px);
+  border-color: var(--color-border-strong);
 }
 .btn--outline {
   background: transparent;
@@ -486,7 +512,7 @@ img, svg {
   border-color: var(--color-border-strong);
 }
 .btn--outline:hover {
-  background: rgba(255, 255, 255, 0.6);
+  background: var(--color-muted);
   border-color: var(--color-foreground);
 }
 .btn--on-ink {
@@ -494,8 +520,7 @@ img, svg {
   color: var(--color-foreground);
 }
 .btn--on-ink:hover {
-  background: var(--color-blush);
-  transform: translateY(-1px);
+  background: var(--color-muted);
 }
 .btn--full {
   width: 100%;
@@ -715,11 +740,66 @@ img, svg {
   border: 0;
 }
 
-/* Subtle pink ambient blobs (decorative) */
+/* Gradient blobs disabled — anti-pattern. Existing hero__glow-a/b nodes
+   render invisible so legacy markup stays valid. */
 .glow {
+  display: none !important;
+}
+
+/* ============================================================
+   Numerics
+   .tabular  — same font, just monowidth digits (for big display prices)
+   .numeric  — Plex Mono + tabular (for small data: countdown, captions)
+   ============================================================ */
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+.numeric {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: 'zero' 1;
+  letter-spacing: -0.005em;
+}
+
+/* ============================================================
+   Section divider rail — Stripe-style thin rule + flush label
+   Wrap any section heading with .sec-rail to get a hairline rule
+   across the container with the eyebrow flush-left inside it.
+   ============================================================ */
+.sec-rail {
+  position: relative;
+  padding-top: clamp(2rem, 4vw, 3rem);
+  border-top: 1px solid var(--color-border);
+}
+.sec-rail .eyebrow {
+  display: inline-block;
+  margin-bottom: 1.25rem;
+}
+
+/* ============================================================
+   Link micro-interaction — underline grows left-to-right
+   ============================================================ */
+.link-underline {
+  position: relative;
+  display: inline-block;
+  color: var(--color-foreground);
+  transition: color 0.18s ease;
+}
+.link-underline::after {
+  content: '';
   position: absolute;
-  border-radius: 50%;
-  filter: blur(80px);
-  pointer-events: none;
-  z-index: 0;
+  left: 0;
+  right: 0;
+  bottom: -2px;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.link-underline:hover {
+  color: var(--color-primary);
+}
+.link-underline:hover::after {
+  transform: scaleX(1);
 }

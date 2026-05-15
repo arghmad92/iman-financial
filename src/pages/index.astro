@@ -30,55 +30,57 @@ const faqs = [
 ---
 
 <Layout title="Iman Abdul Rahim · Licensed Financial Planner | CFP® | IFP">
-  <!-- =================== HERO =================== -->
+  <!-- =================== HERO — asymmetric 7/5 grid =================== -->
   <section class="hero">
-    <div class="glow hero__glow-a" aria-hidden="true"></div>
-    <div class="glow hero__glow-b" aria-hidden="true"></div>
-
-    <div class="container-x hero__inner">
-      <span class="hero__eyebrow">Licensed Financial Planner · CFP® · IFP</span>
-      <h1 class="h-display h-display--xl hero__title text-balance">
-        Nak rancang kewangan?<br />
-        <span class="pink">Jom buat betul-betul.</span>
-      </h1>
-      <p class="lede lede--xl lede--center hero__lede text-balance">
-        Nasihat personalised, tanpa bias, untuk ladies Malaysia yang nak
-        buat keputusan kewangan dengan yakin.
-      </p>
-      <div class="hero__actions">
-        <a
-          href="https://form.wealthvantage.com.my/iman-lead/"
-          target="_blank"
-          rel="noopener"
-          class="btn btn--primary btn--lg"
-        >
-          Book a call
-        </a>
-        <a href="#services" class="btn btn--glass btn--lg btn--arrow">
-          See services
-        </a>
-      </div>
-    </div>
-
-    <!-- Trust card — Apple-style "specs strip" -->
     <div class="container-x">
-      <div class="trust">
-        <div class="trust__item">
-          <span class="trust__label">Licensed by</span>
-          <span class="trust__val">SC &amp; BNM</span>
+      <div class="hero__grid">
+        <!-- LEFT 7/12 · display + lede + actions -->
+        <div class="hero__main">
+          <span class="hero__eyebrow">Licensed Financial Planner · CFP® · IFP</span>
+          <h1 class="h-display h-display--xl hero__title text-balance">
+            Nak rancang kewangan?<br />
+            <span class="pink">Jom buat betul-betul.</span>
+          </h1>
+          <p class="lede lede--xl hero__lede text-balance">
+            Nasihat personalised, tanpa bias, untuk ladies Malaysia yang nak
+            buat keputusan kewangan dengan yakin.
+          </p>
+          <div class="hero__actions">
+            <a
+              href="https://form.wealthvantage.com.my/iman-lead/"
+              target="_blank"
+              rel="noopener"
+              class="btn btn--primary btn--lg"
+            >
+              Book a call
+            </a>
+            <a href="#services" class="btn btn--glass btn--lg btn--arrow">
+              See services
+            </a>
+          </div>
         </div>
-        <div class="trust__item">
-          <span class="trust__label">Certifications</span>
-          <span class="trust__val">CFP® &middot; IFP</span>
-        </div>
-        <div class="trust__item">
-          <span class="trust__label">Experience</span>
-          <span class="trust__val"><span data-count-to="5">0</span> years</span>
-        </div>
-        <div class="trust__item">
-          <span class="trust__label">Approach</span>
-          <span class="trust__val">Fiduciary</span>
-        </div>
+
+        <!-- RIGHT 5/12 · vertical credentials rail -->
+        <aside class="hero__rail glass" aria-label="Credentials">
+          <dl class="trust trust--rail">
+            <div class="trust__item">
+              <dt class="trust__label">Licensed by</dt>
+              <dd class="trust__val">SC &amp; BNM</dd>
+            </div>
+            <div class="trust__item">
+              <dt class="trust__label">Certifications</dt>
+              <dd class="trust__val">CFP® &middot; IFP</dd>
+            </div>
+            <div class="trust__item">
+              <dt class="trust__label">Experience</dt>
+              <dd class="trust__val"><span class="numeric" data-count-to="5">0</span> years</dd>
+            </div>
+            <div class="trust__item">
+              <dt class="trust__label">Approach</dt>
+              <dd class="trust__val">Fiduciary</dd>
+            </div>
+          </dl>
+        </aside>
       </div>
     </div>
   </section>
@@ -244,121 +246,125 @@ const faqs = [
 </Layout>
 
 <style>
-  /* ---------- Hero ---------- */
+  /* ---------- Hero — asymmetric 7/5 grid ---------- */
   .hero {
-    padding: clamp(3rem, 6vw, 6rem) 0 clamp(4rem, 7vw, 6rem);
+    padding: clamp(4rem, 7vw, 7rem) 0 clamp(4rem, 7vw, 7rem);
     position: relative;
     overflow: hidden;
     isolation: isolate;
   }
-  .hero__glow-a {
-    width: 720px;
-    height: 720px;
-    top: -200px;
-    right: -200px;
-    background: radial-gradient(circle, rgba(196, 69, 105, 0.08), transparent 65%);
-    z-index: -1;
+  .hero__grid {
+    display: grid;
+    grid-template-columns: 7fr 5fr;
+    gap: clamp(2rem, 5vw, 4.5rem);
+    align-items: end;
   }
-  .hero__glow-b {
-    width: 560px;
-    height: 560px;
-    bottom: -180px;
-    left: -160px;
-    background: radial-gradient(circle, rgba(249, 212, 220, 0.25), transparent 65%);
-    z-index: -1;
-  }
-  .hero__inner {
-    text-align: center;
-    padding-top: clamp(2rem, 4vw, 3rem);
-    padding-bottom: clamp(2.5rem, 5vw, 4rem);
-    position: relative;
-    z-index: 1;
+  .hero__main {
+    text-align: left;
   }
   .hero__eyebrow {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
     padding: 0.45rem 1rem;
     background: var(--glass-strong);
     backdrop-filter: var(--glass-blur);
     -webkit-backdrop-filter: var(--glass-blur);
-    border: 1px solid var(--glass-border);
+    border: 1px solid var(--color-border);
     border-radius: 999px;
-    font-size: 0.82rem;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
     font-weight: 500;
-    color: var(--color-primary);
+    color: var(--color-ink-2);
     margin-bottom: 1.75rem;
     box-shadow: var(--shadow-glass);
   }
+  .hero__eyebrow::before {
+    content: '';
+    width: 0.45rem;
+    height: 0.45rem;
+    border-radius: 50%;
+    background: var(--color-primary);
+    flex-shrink: 0;
+  }
   .hero__title {
-    margin: 0 auto;
+    margin: 0;
     max-width: 18ch;
   }
   .hero__lede {
-    margin: 1.75rem auto 0;
+    margin: 1.75rem 0 0;
+    max-width: 52ch;
   }
   .hero__actions {
     display: flex;
     gap: 0.75rem;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: flex-start;
     margin-top: 2.5rem;
   }
 
-  /* Trust strip */
-  .trust {
-    margin-top: clamp(3rem, 6vw, 5rem);
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 0;
-    padding: clamp(1.5rem, 3vw, 2rem) clamp(1.5rem, 3vw, 2.5rem);
-    background: var(--glass-strong);
-    backdrop-filter: var(--glass-blur);
-    -webkit-backdrop-filter: var(--glass-blur);
-    border: 1px solid var(--glass-border);
+  /* Vertical trust rail — Stripe-style data column */
+  .hero__rail {
     border-radius: var(--radius-2xl);
-    box-shadow: var(--shadow-glass);
+    padding: clamp(1.25rem, 2.5vw, 1.75rem) clamp(1.5rem, 3vw, 2rem);
   }
-  .trust__item {
+  .trust--rail {
     display: flex;
     flex-direction: column;
-    gap: 0.4rem;
-    padding: 0 1rem;
-    position: relative;
-    text-align: left;
+    margin: 0;
   }
-  .trust__item + .trust__item::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 1px;
-    height: 70%;
-    background: var(--glass-border-pink);
+  .trust--rail .trust__item {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--color-border);
   }
-  .trust__label {
+  .trust--rail .trust__item:first-child {
+    padding-top: 0;
+  }
+  .trust--rail .trust__item:last-child {
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+  .trust--rail .trust__label {
+    font-family: var(--font-mono);
     font-size: 0.76rem;
-    color: var(--color-muted-foreground);
+    color: var(--color-ink-3);
     font-weight: 500;
-    letter-spacing: -0.005em;
+    letter-spacing: 0;
+    text-transform: none;
+    margin: 0;
   }
-  .trust__val {
-    font-size: 1.18rem;
+  .trust--rail .trust__val {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
     color: var(--color-foreground);
-    font-weight: 700;
-    letter-spacing: -0.022em;
+    font-weight: 600;
+    letter-spacing: -0.018em;
+    margin: 0;
+    text-align: right;
   }
 
-  @media (max-width: 760px) {
-    .trust {
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
-      padding: 1.5rem;
+  @media (max-width: 880px) {
+    .hero__grid {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+      align-items: stretch;
     }
-    .trust__item {
-      padding: 0;
+    .hero__main {
+      text-align: left;
     }
-    .trust__item + .trust__item::before {
-      display: none;
+  }
+  @media (max-width: 480px) {
+    .trust--rail .trust__item {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.25rem;
+    }
+    .trust--rail .trust__val {
+      text-align: left;
     }
   }
 

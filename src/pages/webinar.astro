@@ -34,8 +34,6 @@ const faqs = [
 >
   <!-- =================== HERO =================== -->
   <section class="hero">
-    <div class="glow hero__glow-a" aria-hidden="true"></div>
-    <div class="glow hero__glow-b" aria-hidden="true"></div>
 
     <div class="container-x hero__inner">
       <span class="hero__eyebrow">
@@ -97,22 +95,22 @@ const faqs = [
 
       <div class="countdown" id="countdown" aria-hidden="true">
         <div class="cd-cell">
-          <span class="cd-num tabular" id="cdDays">--</span>
+          <span class="cd-num numeric" id="cdDays">--</span>
           <span class="cd-label">Days</span>
         </div>
         <span class="cd-sep" aria-hidden="true">:</span>
         <div class="cd-cell">
-          <span class="cd-num tabular" id="cdHours">--</span>
+          <span class="cd-num numeric" id="cdHours">--</span>
           <span class="cd-label">Hours</span>
         </div>
         <span class="cd-sep" aria-hidden="true">:</span>
         <div class="cd-cell">
-          <span class="cd-num tabular" id="cdMins">--</span>
+          <span class="cd-num numeric" id="cdMins">--</span>
           <span class="cd-label">Minutes</span>
         </div>
         <span class="cd-sep" aria-hidden="true">:</span>
         <div class="cd-cell">
-          <span class="cd-num tabular" id="cdSecs">--</span>
+          <span class="cd-num numeric" id="cdSecs">--</span>
           <span class="cd-label">Seconds</span>
         </div>
       </div>
@@ -263,7 +261,7 @@ const faqs = [
   <section class="section">
     <div class="container-tight">
       <div class="speaker">
-        <span class="eyebrow" style="color:#f0a8bc">Your host</span>
+        <span class="eyebrow">Your host</span>
         <h2 class="h-section speaker__title text-balance">
           Iman <span class="cta-pink">Abdul Rahim.</span>
         </h2>
@@ -273,9 +271,9 @@ const faqs = [
           simplify the complicated stuff so korang boleh focus on buat duit.
         </p>
         <div class="speaker__chips">
-          <span class="badge badge--on-ink">CFP® Certified</span>
-          <span class="badge badge--on-ink">SC Licensed</span>
-          <span class="badge badge--on-ink">BNM Licensed</span>
+          <span class="badge badge--ink">CFP® Certified</span>
+          <span class="badge badge--ink">SC Licensed</span>
+          <span class="badge badge--ink">BNM Licensed</span>
         </div>
       </div>
     </div>
@@ -355,14 +353,14 @@ const faqs = [
   <section class="section">
     <div class="container-narrow">
       <div class="finalcta">
-        <span class="eyebrow" style="color:#f0a8bc">Don't miss out</span>
+        <span class="eyebrow">Don't miss out</span>
         <h2 class="h-section finalcta__title text-balance">
           Jangan tunggu sampai <span class="cta-pink">kena penalty.</span>
         </h2>
         <p class="finalcta__sub">
           RM29 je untuk ilmu yang boleh save korang thousands. Limited seats.
         </p>
-        <a href="#register" class="btn btn--on-ink btn--lg btn--arrow">Secure my spot</a>
+        <a href="#register" class="btn btn--ink btn--lg btn--arrow">Secure my spot</a>
       </div>
     </div>
   </section>
@@ -834,25 +832,28 @@ const faqs = [
     .who-list { grid-template-columns: 1fr; }
   }
 
-  /* ---------- Speaker ---------- */
+  /* ---------- Speaker — soft pink panel ---------- */
   .speaker {
-    background: var(--color-foreground);
-    color: var(--color-paper);
+    background: linear-gradient(135deg, #fce7ec 0%, #fbd5dd 100%);
+    color: var(--color-foreground);
+    border: 1px solid rgba(196, 69, 105, 0.12);
     border-radius: var(--radius-3xl);
     padding: clamp(2.5rem, 5vw, 4rem) clamp(2rem, 4vw, 3rem);
-    box-shadow: var(--shadow-ink);
+    box-shadow:
+      0 1px 2px rgba(196, 69, 105, 0.06),
+      0 16px 40px -16px rgba(196, 69, 105, 0.18);
   }
   .speaker__title {
-    color: var(--color-paper);
+    color: var(--color-foreground);
     margin: 1rem 0 1.5rem;
   }
   .cta-pink {
-    color: #f0a8bc;
+    color: var(--color-primary);
   }
   .speaker__desc {
     margin: 0 0 1.5rem;
     font-size: 1.05rem;
-    color: rgba(255, 255, 255, 0.78);
+    color: var(--color-ink-2);
     line-height: 1.7;
     max-width: 60ch;
   }
@@ -909,22 +910,25 @@ const faqs = [
     padding: clamp(1.5rem, 3vw, 2.5rem) clamp(2rem, 4vw, 3rem);
   }
 
-  /* ---------- Final CTA ---------- */
+  /* ---------- Final CTA — soft pink panel ---------- */
   .finalcta {
-    background: var(--color-foreground);
-    color: var(--color-paper);
+    background: linear-gradient(135deg, #fce7ec 0%, #fbd5dd 100%);
+    color: var(--color-foreground);
+    border: 1px solid rgba(196, 69, 105, 0.12);
     border-radius: var(--radius-3xl);
     padding: clamp(2.5rem, 5vw, 4rem) clamp(2rem, 4vw, 3rem);
     text-align: center;
-    box-shadow: var(--shadow-ink);
+    box-shadow:
+      0 1px 2px rgba(196, 69, 105, 0.06),
+      0 16px 40px -16px rgba(196, 69, 105, 0.18);
   }
   .finalcta .eyebrow { justify-content: center; }
   .finalcta__title {
-    color: var(--color-paper);
+    color: var(--color-foreground);
     margin: 1rem 0 1.5rem;
   }
   .finalcta__sub {
-    color: rgba(255, 255, 255, 0.78);
+    color: var(--color-ink-2);
     font-size: 1.05rem;
     line-height: 1.6;
     margin: 0 auto 2rem;
